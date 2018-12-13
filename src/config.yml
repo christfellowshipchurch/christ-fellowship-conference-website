@@ -1,0 +1,6 @@
+# This file is used for configuring your web app for API and certain visual settings
+
+# TODO : load this file at the index.js
+
+API:
+    URL: https://christ-fellowship-conference-apollos-api-nmqorrygok.now.sh

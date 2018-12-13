@@ -1,0 +1,256 @@
+/* Bootstrap theme customized with Pinegrow Web Editor */
+/* Vars go before the @import */
+/* Import the Bootstrap files */
+$black: #231f20;
+$blue: #23C0DB;
+$pink: #EC2D82;
+$orange: #FBAE26;
+$yellow: #FAE54D;
+$green: #8DC63F;
+$cyan: #00aeef;
+$light-gray: #bcbec0;
+$primary: $cyan;
+$secondary: $black;
+$success: $green;
+$info: $blue;
+$warning: $orange;
+$danger: $pink;
+$light: $light-gray;
+$border-width: 3px;
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+$font-family-sans-serif: "GothamHTF", "GothamCondensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$navbar-light-color: rgba($pink, .5);
+$navbar-light-hover-color: rgba($pink, .7);
+$navbar-light-active-color: rgba($pink, .9);
+$navbar-light-disabled-color: rgba($pink, .3);
+$navbar-light-toggler-border-color: $pink;
+
+/* Custom SCSS variables come here */
+$copy-padding: 20px;
+$gray-100: #f8f9fa;
+
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+/* Custom CSS rules come here */
+.container, 
+.container-fluid, 
+.row {
+    &:not(:first-child) {
+        margin-top: map-get($spacers, 5);
+        margin-bottom: map-get($spacers, 5);
+    }
+}
+
+@-moz-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-7px);
+    transform: translateY(-7px);
+  }
+  60% {
+    -moz-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+}
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-7px);
+    transform: translateY(-7px);
+  }
+  60% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-7px);
+    -ms-transform: translateY(-7px);
+    -webkit-transform: translateY(-7px);
+    transform: translateY(-7px);
+  }
+  60% {
+    -moz-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+}
+
+.navbar-brand img {
+    width: 100px;
+}
+
+p {
+    font-family: "GothamCondensed" !important;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.bg-yellow {
+    background: $yellow;
+    color: $black !important;
+}
+
+.border-yellow {
+    border-color: $yellow;
+}
+
+.text-yellow {
+    color: $yellow;
+}
+
+.btn-outline-yellow {
+    color: $yellow;
+    background-color: transparent;
+    background-image: none;
+    border-color: $yellow;
+}
+
+.container.banner-img,
+.container-fluid.banner-img {
+    height: 100vh;
+    max-height: 100vw;
+    width: 100vw;
+
+    background: $gray-900;
+    background-image: url('../../assets/Background.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.banner-img .overlay {
+    min-height: 220px;
+}
+
+.banner-img .overlay .strip {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 20vw;
+}
+
+.title {
+    text-align: center;
+}
+
+.title h1:after {
+    content: ".";
+}
+
+.copy {
+    padding: $copy-padding;
+}
+
+.page-tabs-container .page-tabs {
+    overflow: auto;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.page-tabs-container .page-tabs a.tab-link {
+    display: inline-block;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+}
+
+.child-container:not(.active) {
+    display: none;
+}
+
+.tile-img {
+    width: 150px;
+    height: 150px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    pointer-events: none;
+}
+
+
+@include media-breakpoint-up(md) {
+    .title {
+        text-align: right;
+    }
+
+    .title h1:after {
+        content: "";
+    }
+}
+
+.col-img {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 300px;
+}
+
+.slider-img {
+    width: 100vw;
+    max-width: 350px;
+    max-height: 350px;
+    object-fit: contain;
+    height: auto;
+}
+
+.banner {
+    width: 70vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bounce {
+	-moz-animation: bounce 2s infinite;
+	-webkit-animation: bounce 2s infinite;
+	animation: bounce 2s infinite;
+}
+
+.overflow-x-scroll {
+    overflow-x: scroll;
+}
+
+.text-underlined {
+    text-decoration: underline !important;
+}
+
+.text-secondary {
+    font-family: "GothamCondensed" !important;
+}
+
+
+// TEMPORARY
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #00aeef; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
