@@ -1,6 +1,23 @@
-FROM node:8-alpine
+FROM node:8.4.0
+
+# Override the base log level (info).
+ENV NPM_CONFIG_LOGLEVEL warn
+
+# Install `serve`.
+RUN npm install -g serve
+
+# Install all dependencies of the current project.
+COPY package.json package.json
+RUN npm install
+
+# Copy all local files into the image.
+COPY . .
+
 RUN yarn
 RUN yarn add node-sass
-WORKDIR ./
-EXPOSE 4000
-CMD [ "yarn", "build" ]
+
+# Build for production.
+RUN npm run build
+
+# serve static files in dist folder
+CMD serve -p $PORT -s dist
