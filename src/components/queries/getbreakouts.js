@@ -7,10 +7,23 @@ const getBreakoutById = (id) => {
       ... on Group {
         id
         name
+
+        image {
+          sources {
+            uri
+          }
+        }
+
         childGroups {
           name
           description
           id
+          
+          image {
+            sources {
+              uri
+            }
+          }
         }
       }
     }

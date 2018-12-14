@@ -20,12 +20,17 @@ class BreakoutCategories extends Component {
         let renderedCats = [];
 
         for (var i = 0; i < categories.length; i++) {
-            var c = categories[i];
+
+            const c = categories[i];
+
             console.log("Category: ", c);
+
+            const img = c.image.sources.length > 0 && hasProperty(c.image.sources[0], "uri") ?
+                c.image.sources[0].uri : "";
 
             renderedCats.push(
                 <Col xs="12" md="4" className="p-4" key={i}>
-                    <BreakoutTile title={c.name} link={c.name} />
+                    <BreakoutTile title={c.name} link={c.name} img={img} />
                 </Col>
             );
         }
@@ -64,7 +69,7 @@ class BreakoutCategories extends Component {
                         <Container fluid>
                             <Row>
                                 <Col xs="12">
-                                    <img src={bannerImg} alt="Christ Fellowship Conference Breakouts" width="100%" />
+                                    <img src={data.node.image.sources[0].uri} alt="Christ Fellowship Conference Breakouts" width="100%" />
                                 </Col>
                             </Row>
 
