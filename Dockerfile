@@ -3,4 +3,4 @@ RUN yarn
 RUN yarn add node-sass
 WORKDIR ./
 EXPOSE 4000
-CMD [ "yarn", "yarn add node-sass", "yarn start" ]
+CMD [ "yarn", "start" ]
