@@ -18,8 +18,11 @@ import {
 } from 'react-router-dom'
 
 const httpLink = createHttpLink({
-    uri: 'https://conference-apollos-api.herokuapp.com/'
+    uri: 'https://conference-apollos-api.herokuapp.com/',
     //uri: 'http://localhost:4000'
+    opts: {
+        mode: "no-cors",
+    },
 });
 
 const client = new ApolloClient({
