@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
+import {
+    Redirect
+} from 'react-router-dom';
 import classnames from 'classnames';
 import {
     Container, Row, Col
@@ -36,14 +39,15 @@ class SpeakerBio extends Component {
             </Col> : '';
 
         return (
-            <Row className="my-5 d-flex align-items-center">
+            <Row className="py-5 d-flex align-items-center">
                 {imgCol}
 
                 <Col xs="12" md={mdCol} className={textClasses}>
                     <h2 className="font-weight-light">
-                        <span className="font-weight-bold">
+                        <span className="font-weight-bold d-none">
                             {speaker.firstName} {speaker.lastName}
-                        </span>&nbsp;
+                            &nbsp;
+                        </span>
                         <small className="font-weight-light">
                             {speaker.jobTitle}
                         </small>
@@ -74,8 +78,7 @@ class SpeakerBio extends Component {
                             return (
                                 _speaker ?
                                     this.renderBio(_speaker.person, _speaker.images[0].sources[0].uri) :
-                                    //this.renderBio(_speaker.person, '') :
-                                    <LoaderError message="We were unable to find this speaker" />
+                                    <Redirect to={{ pathname: "/speakers" }} />
                             );
                         }}
                     </Query>

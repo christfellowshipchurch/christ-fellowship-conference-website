@@ -20,9 +20,6 @@ import LoaderError from '../loaders/loadererror';
 
 
 class TicketGroup extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     renderTickets = (tickets) => {
         let renderedTickets = [];

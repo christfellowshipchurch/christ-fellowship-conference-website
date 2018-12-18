@@ -5,14 +5,10 @@ import {
 } from 'reactstrap';
 
 class BannerTitles extends Component {
-    constructor(props) {
-        super(props);
-
-    }
 
     renderTitles = (titles) => {
         titles = this.props.titles;
-        
+
         let renderedTitles = [];
 
 
@@ -24,7 +20,7 @@ class BannerTitles extends Component {
                 let classes = classnames(
                     "font-weight-" + fontWeight
                 );
-                
+
                 renderedTitles.push(
                     <div className="d-inline-block d-md-block" key={i}>
                         <h1 className={classes}>

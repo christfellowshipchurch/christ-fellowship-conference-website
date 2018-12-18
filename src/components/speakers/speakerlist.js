@@ -32,7 +32,7 @@ class SpeakerList extends Component {
                 speaker.img = speaker.images[0].sources[0].uri;
 
                 renderedTiles.push(
-                    <Col xs="3" key={i}>
+                    <Col xs="12" md="4" key={i} className="mt-3">
                         <SpeakerTile speaker={speaker} />
                     </Col>
                 );
@@ -54,7 +54,7 @@ class SpeakerList extends Component {
 
                     return (
                         <Container>
-                            <Row className="flex-nowrap overflow-x-scroll">
+                            <Row className="d-flex justify-content-center">
                                 {this.renderTiles(speakers)}
                             </Row>
                         </Container>

@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
 import {
     Container, Row, Col
-}                           from 'reactstrap';
-import SocialMedia          from '../components/socialmedia';
+} from 'reactstrap';
 
-{/**
-* TODO : pull in all links from a dynamically set/defined data source
-*/}
+import SponsorsList from './sponsors/sponsorslist';
+import SocialMedia from '../components/socialmedia';
+
 
 class FooterBar extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
-            <Container className="py-3 px-5 bg-secondary text-white" fluid>
-                <Row>
+            <Container className="bg-secondary text-white" fluid>
+                <Row className="bg-white">
+                    <Col xs="12" className="p-0">
+                        <hr></hr>
+                        <SponsorsList />
+                    </Col>
+                </Row>
+                <Row className="py-3 px-5">
                     <Col xs="12">
                         <SocialMedia className="float-left" fontSize="h3" links={[
-                            { name: "facebook", url: "https://www.facebook.com/ChristFellowshipConf/", color: "light"},
-                            { name: "instagram", url: "https://www.instagram.com/christfellowshipconf/", color: "light"},
-                            { name: "twitter", url: "https://twitter.com/cfconf", color: "light"},
+                            { name: "facebook", url: "https://www.facebook.com/ChristFellowshipConf/", color: "light" },
+                            { name: "instagram", url: "https://www.instagram.com/christfellowshipconf/", color: "light" },
+                            { name: "twitter", url: "https://twitter.com/cfconf", color: "light" },
                         ]} />
 
                         <p className="float-right h4 font-weight-light text-center">

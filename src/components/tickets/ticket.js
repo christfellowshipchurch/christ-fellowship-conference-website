@@ -24,7 +24,7 @@ class Ticket extends Component {
 
         return (
             <div>
-                <Card className="text-center" outline color={this.props.color}>
+                <Card className="text-center my-3" outline color={this.props.color}>
                     <CardHeader className={cardHeaderClasses}>
                         {this.props.type}
                     </CardHeader>

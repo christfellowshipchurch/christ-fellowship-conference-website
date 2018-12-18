@@ -38,23 +38,6 @@ class BreakoutCategories extends Component {
         return renderedCats;
     }
 
-    testBreakouts = (breakouts) => {
-        let rendered = [];
-
-        for (var i = 0; i < breakouts.length; i++) {
-            rendered.push(
-                <div key={i}>
-                    {JSON.stringify(breakouts[i])}
-                </div>
-            );
-            rendered.push(
-                <br></br>
-            );
-        }
-
-        return rendered;
-    }
-
     render() {
         return (
             <Query query={getBreakoutsById(breakoutsGroupId)} fetchPolicy="cache-and-network">
@@ -82,6 +65,7 @@ class BreakoutCategories extends Component {
                                             </h2>
                                         </Col>
                                     </Row>
+                                    <hr></hr>
                                     <Row>
                                         {this.renderCategories(data.node.childGroups)}
                                     </Row>

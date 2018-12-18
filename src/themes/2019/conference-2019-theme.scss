@@ -201,7 +201,6 @@ p {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 300px;
 }
 
 .slider-img {
@@ -228,6 +227,14 @@ p {
 
 .overflow-x-scroll {
     overflow-x: scroll;
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden;
+}
+
+.overflow-y-hidden {
+    overflow-y: hidden;
 }
 
 .text-underlined {

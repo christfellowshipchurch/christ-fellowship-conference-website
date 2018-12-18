@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import {
-    Container
+    Container, Row, Col
 } from 'reactstrap';
 
 import getSpeakers from '../queries/getspeakers';
@@ -54,6 +54,14 @@ class AllSpeakers extends Component {
                     console.log("All Speakers: ", speakers);
                     return (
                         <Container>
+                            <Row>
+                                <Col xs="12" className="text-center">
+                                    <h2 className="text-danger">
+                                        Check out our incredible speaker line-up
+                                    </h2>
+                                </Col>
+                            </Row>
+                            <hr className="w-75"></hr>
                             {this.renderBios(speakers)}
                         </Container>
                     );
