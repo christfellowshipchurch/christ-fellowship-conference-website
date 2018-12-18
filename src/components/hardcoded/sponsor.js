@@ -133,11 +133,11 @@ of church leaders from across the country and around the world. You’ll have th
               <div className="col-12 col-sm">
                 <h3 className="text-uppercase text-primary font-weight-bold">
                   AD FILE FORMATS </h3>
-                <p><p>The preferred file format is CMYK press PDF, with all fonts embedded or converted to outlines. CMYK JPGs or TIFFs at 300ppi are also accepted. All spot colors should be converted to CMYK. Full page ads should include bleed (trim marks are not necessary). Half and quarter page ads should be built to actual dimensions. Black text should be 100% black only (not a CMYK mix). Low-res and web quality files cannot be accepted.</p></p>
+                <p>The preferred file format is CMYK press PDF, with all fonts embedded or converted to outlines. CMYK JPGs or TIFFs at 300ppi are also accepted. All spot colors should be converted to CMYK. Full page ads should include bleed (trim marks are not necessary). Half and quarter page ads should be built to actual dimensions. Black text should be 100% black only (not a CMYK mix). Low-res and web quality files cannot be accepted.</p>
               </div>
               <div className="col-12 col-sm">
                 <h3 className="text-uppercase text-primary font-weight-bold">Other Assets</h3>
-                <p><p>If your sponsorship includes these other opportunities, please provide the correct assets as noted below:</p><p><span className="text-primary">Logo:</span> AI or EPS vector file</p><p><span className="text-primary">Pre-service Slides:</span> 1920px x 1080px JPG</p><p><span className="text-primary">Video:</span> Length of 60 seconds or less; Aspect Ratio of 16 x 9; Format of Dropbox Link</p></p>
+                <p>If your sponsorship includes these other opportunities, please provide the correct assets as noted below:</p><p><span className="text-primary">Logo:</span> AI or EPS vector file</p><p><span className="text-primary">Pre-service Slides:</span> 1920px x 1080px JPG</p><p><span className="text-primary">Video:</span> Length of 60 seconds or less; Aspect Ratio of 16 x 9; Format of Dropbox Link</p>
               </div>
             </div>
           </div>
@@ -220,7 +220,7 @@ of church leaders from across the country and around the world. You’ll have th
                 </div>
                 <div>
                   <h4 className="text-success font-weight-bold">If I am an exhibitor working an exhibit booth, do I automatically have access to the Conference?</h4>
-                  <p><p>To gain access to the Conference, you will need to have a Complimentary Pass or purchase a ticket at christfellowshipconference.com.&nbsp;&nbsp;</p></p>
+                  <p>To gain access to the Conference, you will need to have a Complimentary Pass or purchase a ticket at christfellowshipconference.com.&nbsp;&nbsp;</p>
                 </div>
               </div>
             </div>
