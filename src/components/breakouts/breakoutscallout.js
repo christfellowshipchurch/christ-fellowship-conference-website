@@ -16,7 +16,7 @@ class BreakoutsCallout extends Component {
         return (
             <Callout title="Breakouts">
                 <div className="text-center">
-                    <h3>We are so excited to be offering over 50 breakouts taught by our very own Christ Fellowship staff!</h3>
+                    <h3>We are excited to be offering over 50 breakouts taught by our very own Christ Fellowship staff!</h3>
 
                     <Link to={{
                         pathname: "/breakouts"

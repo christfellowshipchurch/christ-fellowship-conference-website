@@ -61,7 +61,7 @@ class BreakoutCategories extends Component {
                                     <Row>
                                         <Col xs="12" className="text-center text-danger">
                                             <h2>
-                                                Select a breakout category from the list below to see the breakouts offered.
+                                                Select a category from the list below to see the breakouts offered.
                                             </h2>
                                         </Col>
                                     </Row>

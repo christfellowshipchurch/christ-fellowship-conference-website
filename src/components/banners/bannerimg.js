@@ -7,14 +7,17 @@ import {
 class BannerImg extends Component {
     render() {
         const styles = {
-            backgroundImg: "url(https://via.placeholder.com/300)"
+            width: "100%",
+            height: "100%",
+            objectFit: "cover"
         }
 
         return (
             <Col xs="12"
                 lg={{ size: this.props.lgCol, order: (this.props.align === "right" ? "last" : "first") }}
-                className="col-img bg-success text-center overflow-x-hidden overflow-y=-hidden p-0">
-                <img src={this.props.img} className="w-100" />
+                className="col-img bg-success text-center overflow-x-hidden overflow-y-hidden p-0"
+            >
+                <img src={this.props.img} className="img-cover" />
             </Col>
         );
     }
