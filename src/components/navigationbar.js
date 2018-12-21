@@ -28,8 +28,7 @@ class NavigationBar extends Component {
     }
     render() {
         return (
-            <header className="App-header">
-                <Navbar className="bg-white" color="light" light fixed="top">
+                <Navbar className="bg-white shadow-sm" color="light" light fixed="top">
                     <NavbarBrand href="/">
                         <img src={logo} alt="Christ Fellowship Conference Logo" />
                     </NavbarBrand>
@@ -65,7 +64,6 @@ class NavigationBar extends Component {
                         </Nav>
                     </Collapse>
                 </Navbar>
-            </header>
         );
     }
 }
