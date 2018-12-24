@@ -26,6 +26,7 @@ class NavigationBar extends Component {
             isOpen: !this.state.isOpen
         });
     }
+
     render() {
         return (
                 <Navbar className="bg-white shadow-sm" color="light" light fixed="top">
@@ -39,24 +40,24 @@ class NavigationBar extends Component {
 
                     <NavbarToggler onClick={this.toggle} />
 
-                    <Collapse isOpen={this.state.isOpen} navbar>
+                    <Collapse isOpen={this.state.isOpen} navbar className="drop-shadow">
                         <Nav className="ml-auto mt-2 mt-lg-0 pr-1 text-right" navbar>
-                            <NavItem>
+                            <NavItem onClick={this.toggle}>
                                 <Link to={{ pathname: "/" }} className="nav-link">
                                     Home
                                 </Link>
                             </NavItem>
-                            <NavItem>
+                            <NavItem onClick={this.toggle}>
                                 <Link to={{ pathname: "/breakouts" }} className="nav-link">
                                     Breakouts
                                 </Link>
                             </NavItem>
-                            <NavItem>
+                            <NavItem onClick={this.toggle}>
                                 <Link to={{ pathname: "/speakers" }} className="nav-link">
                                     Speakers
                                 </Link>
                             </NavItem>
-                            <NavItem>
+                            <NavItem onClick={this.toggle}>
                                 <Link to={{ pathname: "/2018" }} className="nav-link">
                                     2018 Recap
                                 </Link>
