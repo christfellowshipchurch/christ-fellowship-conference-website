@@ -18,7 +18,7 @@ class PlanYourTrip extends Component {
           <div className="text-center col-md col-12 p-3">
             <h1 className="text-xl text-primary"><i className="fas fa-building"></i></h1>
             <h1 className="text-xl">Christ Fellowship Church</h1>
-            <a role="button" className="btn btn-outline-success text-success" href="https://maps.google.com/?q=5343%20Northlake%20Blvd,%20Palm%20Beach%20Gardens,%20FL%2033418" target="_blank">DIRECTIONS</a>
+            <a role="button" className="btn btn-outline-success text-success" href="https://www.google.com/maps/place/Christ+Fellowship+Church/@26.8106453,-80.1226515,17z/data=!3m1!4b1!4m5!3m4!1s0x88d92ac0d13189a5:0xfcd08babd72fd4ec!8m2!3d26.8106405!4d-80.1204682" target="_blank">DIRECTIONS</a>
           </div>
           <div className="text-center col-md col-12 p-3">
             <h1 className="text-xl text-primary"><i className="fas fa-building"></i></h1>
