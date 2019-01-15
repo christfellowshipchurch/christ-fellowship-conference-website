@@ -15,14 +15,17 @@ class PlanYourTrip extends Component {
           </Col>
         </Row>
         <Row>
-          <div className="text-center col-md col-sm-12 p-3">
+          <div className="text-center col-md col-12 p-3">
+            <h1 className="text-xl text-primary"><i className="fas fa-building"></i></h1>
+            <h1 className="text-xl">Christ Fellowship Church</h1>
+            <a role="button" className="btn btn-outline-success text-success" href="https://maps.google.com/?q=5343%20Northlake%20Blvd,%20Palm%20Beach%20Gardens,%20FL%2033418" target="_blank">DIRECTIONS</a>
+          </div>
+          <div className="text-center col-md col-12 p-3">
             <h1 className="text-xl text-primary"><i className="fas fa-building"></i></h1>
             <h1 className="text-xl">Hotels</h1>
-            <a role="button" className="btn btn-outline-warning text-warning" href="https://maps.google.com/?q=5343%20Northlake%20Blvd,%20Palm%20Beach%20Gardens,%20FL%2033418" target="_blank">DIRECTIONS</a>
-            <br></br>
-            <a role="button" className="btn btn-outline-warning text-warning" href="https://book.passkey.com/event/49596053/owner/3193019/landing" target="_blank">HOTEL SUGGESTIONS</a>
+            <a role="button" className="btn btn-outline-primary text-primary" href="https://book.passkey.com/event/49596053/owner/3193019/landing" target="_blank">HOTEL SUGGESTIONS</a>
           </div>
-          <div className="text-center col-md col-sm-12 p-3">
+          <div className="text-center col-md col-12 p-3">
             <h1 className="text-xl text-success"><i className="fas fa-plane"></i></h1>
             <h1 className="text-xl">Airports</h1>
             <div className="card w-75 m-auto">
