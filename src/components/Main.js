@@ -9,6 +9,7 @@ import {
 import Home from './loaders/homeloader';
 import Speakers from './views/speakers';
 import Breakouts from './views/breakouts';
+import Schedule from './views/schedule';
 
 import Recap2018 from './hardcoded/2018';
 import Sponsor from './hardcoded/sponsor';
@@ -24,6 +25,7 @@ const Main = () => (
         <Route path="/breakouts" component={Breakouts} />
         <Route path="/2018" component={Recap2018} />
         <Route path="/sponsor" component={Sponsor} />
+        <Route path="/schedule" component={Schedule} />
 
         <Route path="*" component={Home} />
     </Switch>
