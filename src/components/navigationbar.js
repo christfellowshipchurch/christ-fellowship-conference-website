@@ -29,42 +29,47 @@ class NavigationBar extends Component {
 
     render() {
         return (
-                <Navbar className="bg-white shadow-sm" color="light" light fixed="top">
-                    <NavbarBrand href="/">
-                        <img src={logo} alt="Christ Fellowship Conference Logo" />
-                    </NavbarBrand>
+            <Navbar className="bg-white shadow-sm" color="light" light fixed="top">
+                <NavbarBrand href="/">
+                    <img src={logo} alt="Christ Fellowship Conference Logo" />
+                </NavbarBrand>
 
-                    <a className="btn btn-outline-primary ml-auto mr-3 font-weight-bold" href="https://cftoday.brushfire.com/church-conference/441903">
-                        register
+                <a className="btn btn-outline-primary ml-auto mr-3 font-weight-bold" href="https://cftoday.brushfire.com/church-conference/441903">
+                    register
                     </a>
 
-                    <NavbarToggler onClick={this.toggle} />
+                <NavbarToggler onClick={this.toggle} />
 
-                    <Collapse isOpen={this.state.isOpen} navbar className="drop-shadow">
-                        <Nav className="ml-auto mt-2 mt-lg-0 pr-1 text-right" navbar>
-                            <NavItem onClick={this.toggle}>
-                                <Link to={{ pathname: "/" }} className="nav-link">
-                                    Home
+                <Collapse isOpen={this.state.isOpen} navbar className="drop-shadow">
+                    <Nav className="ml-auto mt-2 mt-lg-0 pr-1 text-right" navbar>
+                        <NavItem onClick={this.toggle}>
+                            <Link to={{ pathname: "/" }} className="nav-link">
+                                Home
                                 </Link>
-                            </NavItem>
-                            <NavItem onClick={this.toggle}>
-                                <Link to={{ pathname: "/breakouts" }} className="nav-link">
-                                    Breakouts
+                        </NavItem>
+                        <NavItem onClick={this.toggle}>
+                            <Link to={{ pathname: "/breakouts" }} className="nav-link">
+                                Breakouts
                                 </Link>
-                            </NavItem>
-                            <NavItem onClick={this.toggle}>
-                                <Link to={{ pathname: "/speakers" }} className="nav-link">
-                                    Speakers
+                        </NavItem>
+                        <NavItem onClick={this.toggle}>
+                            <Link to={{ pathname: "/schedule" }} className="nav-link">
+                                Conference Schedule
                                 </Link>
-                            </NavItem>
-                            <NavItem onClick={this.toggle}>
-                                <Link to={{ pathname: "/2018" }} className="nav-link">
-                                    2018 Recap
+                        </NavItem>
+                        <NavItem onClick={this.toggle}>
+                            <Link to={{ pathname: "/speakers" }} className="nav-link">
+                                Speakers
                                 </Link>
-                            </NavItem>
-                        </Nav>
-                    </Collapse>
-                </Navbar>
+                        </NavItem>
+                        <NavItem onClick={this.toggle}>
+                            <Link to={{ pathname: "/2018" }} className="nav-link">
+                                2018 Recap
+                                </Link>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Navbar>
         );
     }
 }
