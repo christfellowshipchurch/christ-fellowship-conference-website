@@ -26,7 +26,6 @@ class SpeakerList extends Component {
         if (speakers) {
             for (var i = 0; i < speakers.length; i++) {
                 let speaker = speakers[i];
-                console.log("Speaker Images", speaker.images[0].sources);
 
                 speaker.img = '';
                 speaker.img = speaker.images[0].sources[0].uri;

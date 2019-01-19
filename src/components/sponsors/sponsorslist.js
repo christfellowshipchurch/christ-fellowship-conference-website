@@ -43,8 +43,6 @@ class SponsorsList extends Component {
 
                     const sponsors = data.node.childContentItemsConnection.edges.map(c => c.node);
 
-                    console.log(sponsors);
-
                     return (
                         <Container fluid className="bg-white py-3">
                             <Row>

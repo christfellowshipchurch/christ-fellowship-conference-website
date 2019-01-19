@@ -36,15 +36,12 @@ class BreakoutCategory extends Component {
 
     render() {
         const breakoutCat = this.props.match.params.category;
-        console.log("Category: ", breakoutCat);
 
         return (
             <Query query={getBreakoutsById(breakoutsGroupId)} fetchPolicy="cache-and-network">
                 {({ loading, error, data }) => {
                     if (loading) return <PreLoader />
                     if (error) return <LoaderError />
-
-                    console.log("Categories: ", data);
 
                     const group = data.node.childGroups.find(function (n) {
                         return strip(n.name) === strip(breakoutCat);
@@ -58,8 +55,6 @@ class BreakoutCategory extends Component {
                                 {({ loading, error, data }) => {
                                     if (loading) return <PreLoader />
                                     if (error) return <LoaderError message={JSON.stringify(error)} />
-
-                                    console.log("Breakouts: ", data);
 
                                     return (
                                         <Container fluid>
