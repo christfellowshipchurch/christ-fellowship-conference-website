@@ -13,6 +13,7 @@ import SpeakerList from '../speakers/speakerlist';
 import SpeakerApi from '../speakers/speakersapi';
 
 import BreakoutsCallout from '../breakouts/breakoutscallout';
+import Schedule from './schedule';
 
 import PlanYourTrip from '../hardcoded/planyourtrip';
 
@@ -22,9 +23,6 @@ class Home extends Component {
       const banner = banners[index];
       const titles = banner.title.toUpperCase().split(".");
       const alignment = order % 2 === 0 ? "left" : "right";
-
-      console.log(banners);
-
       const img = banner.images ? banner.images[0].sources[0].uri : '';
 
       return (
@@ -56,6 +54,7 @@ class Home extends Component {
         {this.renderBanner(this.props.banners, 2, 1)}
 
         <BreakoutsCallout />
+        <Schedule />
 
         {this.renderBanner(this.props.banners, 0, 2)}
 
