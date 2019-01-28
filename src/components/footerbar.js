@@ -3,6 +3,7 @@ import {
     Container, Row, Col
 } from 'reactstrap';
 
+import MobileApp from './views/mobileapp';
 import SponsorsList from './sponsors/sponsorslist';
 import SocialMedia from '../components/socialmedia';
 
@@ -13,6 +14,7 @@ class FooterBar extends Component {
             <Container className="bg-secondary text-white" fluid>
                 <Row className="bg-white">
                     <Col xs="12" className="p-0">
+                        <MobileApp />
                         <hr></hr>
                         <SponsorsList />
                     </Col>
