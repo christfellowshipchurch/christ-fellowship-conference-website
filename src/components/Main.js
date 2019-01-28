@@ -11,6 +11,7 @@ import Speakers from './views/speakers';
 import Breakouts from './views/breakouts';
 import Schedule from './views/schedule';
 import MobileApp from './views/mobileapp';
+import Map from './views/map';
 
 import Recap2018 from './hardcoded/2018';
 import Sponsor from './hardcoded/sponsor';
@@ -18,8 +19,6 @@ import Sponsor from './hardcoded/sponsor';
 import '../styles/App.css';
 
 const Main = () => (
-
-
     <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/speakers" component={Speakers} />
@@ -28,6 +27,7 @@ const Main = () => (
         <Route path="/sponsor" component={Sponsor} />
         <Route path="/schedule" component={Schedule} />
         <Route path="/app" component={MobileApp} />
+        <Route path="/map" component={Map} />
 
         <Route path="*" component={Home} />
     </Switch>
