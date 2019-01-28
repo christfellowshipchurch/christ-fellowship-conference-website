@@ -14,6 +14,7 @@ import SpeakerApi from '../speakers/speakersapi';
 
 import BreakoutsCallout from '../breakouts/breakoutscallout';
 import Schedule from './schedule';
+import MobileApp from './mobileapp';
 
 import PlanYourTrip from '../hardcoded/planyourtrip';
 
@@ -43,6 +44,8 @@ class Home extends Component {
         <HeaderImage />
 
         {this.renderBanner(this.props.banners, 1, 0)}
+
+        <MobileApp />
 
         <h1 className="text-center text-danger text-uppercase font-weight-bold">
           Registration
