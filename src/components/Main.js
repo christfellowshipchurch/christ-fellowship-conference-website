@@ -10,6 +10,7 @@ import Home from './loaders/homeloader';
 import Speakers from './views/speakers';
 import Breakouts from './views/breakouts';
 import Schedule from './views/schedule';
+import Map from './views/map';
 
 import Recap2018 from './hardcoded/2018';
 import Sponsor from './hardcoded/sponsor';
@@ -17,8 +18,6 @@ import Sponsor from './hardcoded/sponsor';
 import '../styles/App.css';
 
 const Main = () => (
-
-
     <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/speakers" component={Speakers} />
@@ -26,6 +25,7 @@ const Main = () => (
         <Route path="/2018" component={Recap2018} />
         <Route path="/sponsor" component={Sponsor} />
         <Route path="/schedule" component={Schedule} />
+        <Route path="/map" component={Map} />
 
         <Route path="*" component={Home} />
     </Switch>
