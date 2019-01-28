@@ -30,7 +30,7 @@ class MobileApp extends Component {
             <Row>
               <Col>
                 <h2>
-                  <small className="text-warning text-lowercase">
+                  <small className="text-light text-lowercase">
                     Get ready for Conference
                   </small>
                   <br></br>
@@ -41,7 +41,7 @@ class MobileApp extends Component {
                 <hr className="w-75"></hr>
               </Col>
               <Col xs="12">
-                <p>
+                <p className="text-dark">
                   Check into the conference and your breakouts, view your personalized schedule, navigate around the venue, and more!
                 </p>
               </Col>
