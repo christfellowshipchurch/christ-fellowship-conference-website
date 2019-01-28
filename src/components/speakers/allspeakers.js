@@ -51,7 +51,6 @@ class AllSpeakers extends Component {
 
                     const speakers = data.node.childContentItemsConnection.edges.map(c => c.node);
 
-                    console.log("All Speakers: ", speakers);
                     return (
                         <Container>
                             <Row>

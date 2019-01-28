@@ -22,9 +22,6 @@ class BreakoutCategories extends Component {
         for (var i = 0; i < categories.length; i++) {
 
             const c = categories[i];
-
-            console.log("Category: ", c);
-
             const img = c.image.sources.length > 0 && hasProperty(c.image.sources[0], "uri") ?
                 c.image.sources[0].uri : "";
 
@@ -44,9 +41,6 @@ class BreakoutCategories extends Component {
                 {({ loading, error, data }) => {
                     if (loading) return <PreLoader />
                     if (error) return <LoaderError />
-
-                    console.log(data);
-
 
                     return (
                         <Container fluid>
