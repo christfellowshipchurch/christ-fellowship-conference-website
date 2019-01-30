@@ -251,6 +251,13 @@ p {
     object-fit: cover;
 }
 
+.app-banner {
+    min-height: 40vh;
+    background-image: url('../../assets/app/banner.JPG');
+    background-size: cover;
+    background-position: center;
+}
+
 
 // TEMPORARY
 
