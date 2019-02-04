@@ -44,9 +44,9 @@ class SpeakerBio extends Component {
 
                 <Col xs="12" md={mdCol} className={textClasses}>
                     <h2 className="font-weight-light">
-                        <span className="font-weight-bold d-none">
+                        <span className="font-weight-bold">
                             {speaker.firstName} {speaker.lastName}
-                            &nbsp;
+                            <br></br>
                         </span>
                         <small className="font-weight-light">
                             {speaker.jobTitle}
