@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Link }             from 'react-router-dom';
-import { condense }         from '../utils';
-import { FontAwesomeIcon }  from '@fortawesome/react-fontawesome';
-import { faAngleDown }      from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { condense } from '../utils';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 
 /**
@@ -24,7 +24,7 @@ class SpeakerTile extends Component {
             <Link to={speakerLink}>
                 <div className="border-0 bg-white text-center text-light">
                     <img className="tile-img" src={speaker.img} />
-                    <h4 className="font-weight-light">{speaker.title}</h4>
+                    <h4 className="pt-3 font-weight-light">{speaker.title}</h4>
                     <h4 className="bounce">
                         <FontAwesomeIcon icon={faAngleDown} />
                     </h4>
