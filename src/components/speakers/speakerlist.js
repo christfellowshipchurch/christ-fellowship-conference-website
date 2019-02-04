@@ -20,18 +20,23 @@ import { hasProperty } from '../utils';
  */
 
 class SpeakerList extends Component {
-    renderTiles = (speakers) => {
+    formatTitle = (title) => title.replace(/\s/g, '').toLowerCase();
+
+    renderTiles = (speakers, not = []) => {
         let renderedTiles = [];
 
         if (speakers) {
             for (var i = 0; i < speakers.length; i++) {
                 let speaker = speakers[i];
+                console.log({ not });
+
+                if (not.includes(this.formatTitle(speaker.title))) continue;
 
                 speaker.img = '';
                 speaker.img = speaker.images[0].sources[0].uri;
 
                 renderedTiles.push(
-                    <Col xs="12" md="4" key={i} className="mt-3">
+                    <Col xs="12" md="4" key={i} className="mt-3" data-speaker={this.formatTitle(speaker.title)}>
                         <SpeakerTile speaker={speaker} />
                     </Col>
                 );
@@ -50,11 +55,12 @@ class SpeakerList extends Component {
 
 
                     const speakers = data.node.childContentItemsConnection.edges.map(c => c.node);
+                    const not = this.props.not || [];
 
                     return (
                         <Container>
                             <Row className="d-flex justify-content-center">
-                                {this.renderTiles(speakers)}
+                                {this.renderTiles(speakers, not)}
                             </Row>
                         </Container>
                     );

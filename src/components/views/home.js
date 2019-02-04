@@ -66,7 +66,7 @@ class Home extends Component {
         </h1>
         <hr className="w-75"></hr>
 
-        <SpeakerList speakers={SpeakerApi.speakers} />
+        <SpeakerList speakers={SpeakerApi.speakers} not={['toddmullins', 'juliemullins']} />
 
         <h1 className="text-center text-danger text-uppercase font-weight-bold">
           Hosted By
@@ -82,6 +82,12 @@ class Home extends Component {
         }], 0, 3)}
 
         <PlanYourTrip />
+
+        <script type="text/javascript">
+          (function () {
+
+          })
+        </script>
       </div>
     );
   }
