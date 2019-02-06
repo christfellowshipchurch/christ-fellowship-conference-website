@@ -48,24 +48,29 @@ class NavigationBar extends Component {
                                 </Link>
                         </NavItem>
                         <NavItem onClick={this.toggle}>
+                            <Link to={{ pathname: "/resources" }} className="nav-link">
+                                Conference Resources
+                            </Link>
+                        </NavItem>
+                        <NavItem onClick={this.toggle}>
                             <Link to={{ pathname: "/breakouts" }} className="nav-link">
                                 Breakouts
-                                </Link>
+                            </Link>
                         </NavItem>
                         <NavItem onClick={this.toggle}>
                             <Link to={{ pathname: "/schedule" }} className="nav-link">
                                 Conference Schedule
-                                </Link>
+                            </Link>
                         </NavItem>
                         <NavItem onClick={this.toggle}>
                             <Link to={{ pathname: "/speakers" }} className="nav-link">
                                 Speakers
-                                </Link>
+                            </Link>
                         </NavItem>
                         <NavItem onClick={this.toggle}>
                             <Link to={{ pathname: "/2018" }} className="nav-link">
                                 2018 Recap
-                                </Link>
+                            </Link>
                         </NavItem>
                     </Nav>
                 </Collapse>
