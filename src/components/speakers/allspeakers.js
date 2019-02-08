@@ -56,7 +56,7 @@ class AllSpeakers extends Component {
                             <Row>
                                 <Col xs="12" className="text-center">
                                     <h2 className="text-danger">
-                                        Check out our incredible speaker line-up
+                                        Thank you to our incredible speakers!
                                     </h2>
                                 </Col>
                             </Row>
