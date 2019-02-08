@@ -13,6 +13,8 @@ import Schedule from './views/schedule';
 import Map from './views/map';
 import AppBanner from '../components/mobileapp/appbanner';
 import Resources from './views/resources';
+import Recap from './views/recap';
+// import Recap from './loaders/recaploader';
 
 import Recap2018 from './hardcoded/2018';
 import Sponsor from './hardcoded/sponsor';
@@ -30,6 +32,7 @@ const Main = () => (
         <Route path="/app" component={AppBanner} />
         <Route path="/map" component={Map} />
         <Route path="/resources" component={Resources} />
+        <Route path="/recap" component={Recap} />
 
         <Route path="*" component={Home} />
     </Switch>

@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 
 import ResourcesComingSoon from '../resources/comingsoon';
+import BreakoutCategories from '../breakouts/breakoutcategories';
 
 class Resources extends Component {
 
@@ -11,7 +12,8 @@ class Resources extends Component {
 
     return (
       <Switch>
-        <Route path="*" component={ResourcesComingSoon} />
+        <Route path="*" component={() => <BreakoutCategories title="Select the category to view Breakout Resources" />} />
+        {/* <Route path="*" component={ResourcesComingSoon} /> */}
       </Switch>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import HeaderImage from '../headerimage';
+import HeaderImage from '../headers/headerimage';
 
 import TicketGroup from '../tickets/ticketgroup';
 
@@ -20,7 +20,7 @@ import PlanYourTrip from '../hardcoded/planyourtrip';
 
 class Home extends Component {
   renderBanner = (banners, index, order) => {
-    if (index < banners.length) {
+    if (banners && index < banners.length) {
       const banner = banners[index];
       const titles = banner.title.toUpperCase().split(".");
       const alignment = order % 2 === 0 ? "left" : "right";
@@ -82,12 +82,6 @@ class Home extends Component {
         }], 0, 3)}
 
         <PlanYourTrip />
-
-        <script type="text/javascript">
-          (function () {
-
-          })
-        </script>
       </div>
     );
   }

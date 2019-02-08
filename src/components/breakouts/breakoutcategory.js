@@ -22,10 +22,16 @@ class BreakoutCategory extends Component {
             const breakout = breakouts[i];
 
             rendered.push(
-                <hr className="w-75"></hr>
+                <hr className="w-75" key={'hr_' + i}></hr>
             );
             rendered.push(
-                <BreakoutDescription title={breakout.name} description={breakout.description} key={i} />
+                <BreakoutDescription
+                    key={i}
+                    title={breakout.name}
+                    description={breakout.description}
+                    slideshowPresentation={breakout.slideshowPresentation}
+                    audioRecording={breakout.audioRecording}
+                    additionalResources={breakout.additionalResources} />
             );
         }
 

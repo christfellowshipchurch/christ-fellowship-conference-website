@@ -14,7 +14,9 @@ class FooterBar extends Component {
             <Container className="bg-secondary text-white" fluid>
                 <Row className="bg-white">
                     <Col xs="12" className="p-0">
-                        <MobileApp />
+                        <MobileApp
+                            title="take conference with you"
+                            content="Quickly access the resources from Christ Fellowship Conference 2019 right from your phone." />
                         <hr></hr>
                         <SponsorsList />
                     </Col>

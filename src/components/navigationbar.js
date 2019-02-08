@@ -34,9 +34,9 @@ class NavigationBar extends Component {
                     <img src={logo} alt="Christ Fellowship Conference Logo" />
                 </NavbarBrand>
 
-                <a className="btn btn-outline-primary ml-auto mr-3 font-weight-bold" href="https://cftoday.brushfire.com/church-conference/441903">
+                {/* <a className="btn btn-outline-primary ml-auto mr-3 font-weight-bold" href="https://cftoday.brushfire.com/church-conference/441903">
                     register
-                    </a>
+                    </a> */}
 
                 <NavbarToggler onClick={this.toggle} />
 
@@ -49,17 +49,7 @@ class NavigationBar extends Component {
                         </NavItem>
                         <NavItem onClick={this.toggle}>
                             <Link to={{ pathname: "/resources" }} className="nav-link">
-                                Conference Resources
-                            </Link>
-                        </NavItem>
-                        <NavItem onClick={this.toggle}>
-                            <Link to={{ pathname: "/breakouts" }} className="nav-link">
-                                Breakouts
-                            </Link>
-                        </NavItem>
-                        <NavItem onClick={this.toggle}>
-                            <Link to={{ pathname: "/schedule" }} className="nav-link">
-                                Conference Schedule
+                                Resources
                             </Link>
                         </NavItem>
                         <NavItem onClick={this.toggle}>

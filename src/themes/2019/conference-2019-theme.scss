@@ -123,7 +123,9 @@ p {
 }
 
 .container.banner-img,
-.container-fluid.banner-img {
+.container-fluid.banner-img, 
+.container.banner-video video,
+.container-fluid.banner-video {
     height: 100vh;
     max-height: 100vw;
     width: 100vw;
@@ -133,13 +135,27 @@ p {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    overflow: hidden;
 }
 
-.banner-img .overlay {
+.container.banner-video video,
+.container-fluid.banner-video video { /** center x | top y **/
+    height: 100%;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-right: -50%;
+    transform: translateX(-50%);
+  }
+
+.banner-img .overlay,
+.banner-video .overlay {
     min-height: 220px;
 }
 
-.banner-img .overlay .strip {
+.banner-img .overlay .strip,
+.banner-video .overlay .strip {
     position: absolute;
     bottom: 5%;
     left: 50%;

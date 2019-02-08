@@ -13,15 +13,22 @@ import Callout from '../callout';
 
 class BreakoutsCallout extends Component {
     render() {
+        const buttonText = this.props.buttonText ||
+            'SEE ALL BREAKOUTS';
+        const copy =
+            this.props.content ||
+            'We are excited to be offering over 50 breakouts taught by our very own Christ Fellowship staff!';
         return (
-            <Callout title="Breakouts">
+            <Callout title={this.props.title || "Breakouts"}>
                 <div className="text-center">
-                    <h3>We are excited to be offering over 50 breakouts taught by our very own Christ Fellowship staff!</h3>
+                    <h3>
+                        {copy}
+                    </h3>
 
                     <Link to={{
-                        pathname: "/breakouts"
+                        pathname: this.props.link || "/breakouts"
                     }} className="btn btn-success font-weight-bold text-white mt-5">
-                        SEE ALL BREAKOUTS
+                        {buttonText}
                     </Link>
                 </div>
             </Callout>

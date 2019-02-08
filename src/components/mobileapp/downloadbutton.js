@@ -9,13 +9,6 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-/**
- * type     | string
- * color    | string
- * url      | string
- * price    | int or string
- */
-
 class DownloadButton extends Component {
     render() {
         const textColorProp = get(this.props, "textColor") || "white";
@@ -37,7 +30,7 @@ class DownloadButton extends Component {
                     <FontAwesomeIcon icon={this.props.icon} size="2x" color="white" />
                     &nbsp;
                     &nbsp;
-                <span className={textColor}>
+                    <span className={textColor}>
                         {this.props.text}
                     </span>
                 </Button>
