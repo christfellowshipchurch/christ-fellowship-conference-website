@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import HeaderImage from '../headers/headerimage';
+import HeaderVideo from '../headers/headervideo';
 
 import TicketGroup from '../tickets/ticketgroup';
 
@@ -13,12 +13,9 @@ import SpeakerList from '../speakers/speakerlist';
 import SpeakerApi from '../speakers/speakersapi';
 
 import BreakoutsCallout from '../breakouts/breakoutscallout';
-import Schedule from './schedule';
-import MobileApp from './mobileapp';
+import ResourcesCallout from '../resources/resourcescallout';
 
-import PlanYourTrip from '../hardcoded/planyourtrip';
-
-class Home extends Component {
+class Recap extends Component {
   renderBanner = (banners, index, order) => {
     if (banners && index < banners.length) {
       const banner = banners[index];
@@ -40,36 +37,23 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="home">
-        <HeaderImage />
+      <div className="recap">
+        <HeaderVideo />
 
-        {this.renderBanner(this.props.banners, 1, 0)}
+        <ResourcesCallout />
 
-        <MobileApp />
+        <hr className="w-75 my-5"></hr>
 
-        <h1 className="text-center text-danger text-uppercase font-weight-bold">
-          Registration
+        <h1 className="text-center text-warning text-uppercase font-weight-bold">
+          Thank You to our wonderful Speakers
         </h1>
-        <hr className="w-75"></hr>
-
-        <TicketGroup />
-
-        {this.renderBanner(this.props.banners, 2, 1)}
-
-        <BreakoutsCallout />
-        <Schedule />
-
-        {this.renderBanner(this.props.banners, 0, 2)}
-
-        <h1 className="text-center text-danger text-uppercase font-weight-bold">
-          Speakers
-        </h1>
-        <hr className="w-75"></hr>
 
         <SpeakerList speakers={SpeakerApi.speakers} not={['toddmullins', 'juliemullins']} />
 
-        <h1 className="text-center text-danger text-uppercase font-weight-bold">
-          Hosted By
+        <hr className="w-75 my-5"></hr>
+
+        <h1 className="text-center text-success text-uppercase font-weight-bold mb-5">
+          Thank You to our incredible Hosts
         </h1>
         {this.renderBanner([{
           title: "Todd & Julie Mullins.Senior Pastors of Christ Fellowship Church",
@@ -80,11 +64,9 @@ class Home extends Component {
             }]
           }]
         }], 0, 3)}
-
-        <PlanYourTrip />
       </div>
     );
   }
 }
 
-export default Home;
+export default Recap;

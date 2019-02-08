@@ -17,7 +17,7 @@ class Callout extends Component {
                         </h1>
                     </Col>
                 </Row>
-                <hr className="w-75"></hr>
+                {/* <hr className="w-75"></hr> */}
                 <Row>
                     <Col xs="12">
                         {this.props.children}

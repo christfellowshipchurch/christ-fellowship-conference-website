@@ -9,7 +9,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-class DownloadButton extends Component {
+class ActionButton extends Component {
     render() {
         const textColorProp = get(this.props, "textColor") || "white";
         const textColor = `text-${textColorProp}`;
@@ -17,20 +17,19 @@ class DownloadButton extends Component {
             "d-flex",
             "align-items-center",
             "justify-content-center",
-            "w-100",
-            "font-weight-bold"
+            "font-weight-bold",
         );
 
         return (
-            <a href={this.props.url} target="_blank">
+            <a href={this.props.url} target="_blank" className="my-3">
                 <Button
                     color={this.props.color}
-                    className={classes}
-                    size="lg">
-                    <FontAwesomeIcon icon={this.props.icon} size="2x" color="white" />
+                    outline
+                    className={classes}>
+                    <FontAwesomeIcon icon={this.props.icon} />
                     &nbsp;
                     &nbsp;
-                    <span className={textColor}>
+                    <span>
                         {this.props.text}
                     </span>
                 </Button>
@@ -39,4 +38,4 @@ class DownloadButton extends Component {
     }
 }
 
-export default DownloadButton;
+export default ActionButton;

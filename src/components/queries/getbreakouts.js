@@ -18,6 +18,10 @@ const getBreakoutById = (id) => {
           name
           description
           id
+
+          slideshowPresentation
+          audioRecording
+          additionalResources
           
           image {
             sources {

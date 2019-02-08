@@ -31,7 +31,7 @@ class MobileApp extends Component {
               <Col>
                 <h2>
                   <small className="text-light text-lowercase">
-                    Get ready for Conference
+                    {this.props.title || 'Get ready for Conference'}
                   </small>
                   <br></br>
                   <span className="text-danger font-weight-bold text-uppercase">
@@ -42,7 +42,8 @@ class MobileApp extends Component {
               </Col>
               <Col xs="12">
                 <p className="text-dark">
-                  Check into the conference and your breakouts, view your personalized schedule, navigate around the venue, and more!
+                  {this.props.content ||
+                    'Check into the conference and your breakouts, view your personalized schedule, navigate around the venue, and more!'}
                 </p>
               </Col>
               <Col xs="12" className="py-2">
