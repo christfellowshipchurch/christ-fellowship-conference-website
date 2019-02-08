@@ -48,7 +48,7 @@ class SponsorsList extends Component {
                             <Row>
                                 <Col xs="12" className="text-success text-center">
                                     <h2>
-                                        Proud Sponsors of Christ Fellowship Conference 2019
+                                        A special thank you to our Sponsors
                                     </h2>
                                 </Col>
                             </Row>

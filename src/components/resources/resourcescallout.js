@@ -10,7 +10,7 @@ class ResourcesComingSoon extends Component {
     render() {
         return (
             <BreakoutsCallout
-                title="Conference Resources"
+                title="Conference doesn't have to end!"
                 content='All of the resources are available for you to use at your church!'
                 buttonText='VIEW RESOURCES'
                 link='/resources' />

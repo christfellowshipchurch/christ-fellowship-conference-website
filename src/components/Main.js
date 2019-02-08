@@ -23,7 +23,7 @@ import '../styles/App.css';
 
 const Main = () => (
     <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Recap} />
         <Route path="/speakers" component={Speakers} />
         <Route path="/breakouts" component={Breakouts} />
         <Route path="/2018" component={Recap2018} />
@@ -32,9 +32,9 @@ const Main = () => (
         <Route path="/app" component={AppBanner} />
         <Route path="/map" component={Map} />
         <Route path="/resources" component={Resources} />
-        <Route path="/recap" component={Recap} />
+        <Route path="/home2019" component={Home} />
 
-        <Route path="*" component={Home} />
+        <Route path="*" component={Recap} />
     </Switch>
 )
 
