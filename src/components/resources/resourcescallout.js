@@ -11,7 +11,7 @@ class ResourcesComingSoon extends Component {
         return (
             <BreakoutsCallout
                 title="Conference doesn't have to end!"
-                content='All of the resources are available for you to use at your church!'
+                content='Breakout resources available now. General session messages and breakout audio files coming soon.'
                 buttonText='VIEW RESOURCES'
                 link='/resources' />
         );
