@@ -28,7 +28,7 @@ import {
 
 class SpeakerBio extends Component {
 
-    renderBio = (speaker, img) => {
+    renderBio = (speaker, img, youTubeId) => {
         const align = hasProperty(this.props, 'align') ? this.props.align : "left";
         const alignClasses = align === "right" ? "order-md-last" : "";
         const textClasses = classnames("text-md-" + align, "text-center");
@@ -37,26 +37,44 @@ class SpeakerBio extends Component {
             <Col xs="12" md={12 - mdCol} className={alignClasses}>
                 <img className="w-100" src={img} />
             </Col> : '';
+        const youTubeEmbed = "https://www.youtube.com/embed/" + youTubeId;
 
         return (
-            <Row className="py-5 d-flex align-items-center">
-                {imgCol}
+            <Row>
+                <Col xs="12">
+                    <Row className="py-5 d-flex align-items-center">
+                        {imgCol}
 
-                <Col xs="12" md={mdCol} className={textClasses}>
-                    <h2 className="font-weight-light">
-                        <span className="font-weight-bold">
-                            {speaker.firstName} {speaker.lastName}
-                            <br></br>
-                        </span>
-                        <small className="font-weight-light">
-                            {speaker.jobTitle}
-                        </small>
-                    </h2>
-                    <hr></hr>
-                    <p>{speaker.bio}</p>
-                    <SocialMedia links={speaker.socialMedia} />
+                        <Col xs="12" md={mdCol} className={textClasses}>
+                            <h2 className="font-weight-light">
+                                <span className="font-weight-bold">
+                                    {speaker.firstName} {speaker.lastName}
+                                    <br></br>
+                                </span>
+                                <small className="font-weight-light">
+                                    {speaker.jobTitle}
+                                </small>
+                            </h2>
+                            <hr></hr>
+                            <p>{speaker.bio}</p>
+                            <SocialMedia links={speaker.socialMedia} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs="12" className="mb-3">
+                            <h3 className="text-success text-center">
+                                Watch {speaker.firstName} {speaker.lastName}'s message now
+                            </h3>
+                        </Col>
+                        <Col xs={{ size: 6, offset: 3 }} className="embed-responsive embed-responsive-16by9">
+                            <iframe
+                                src={youTubeEmbed}
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </Col>
+                    </Row>
                 </Col>
-            </Row>
+            </Row >
         );
     }
 
@@ -77,7 +95,7 @@ class SpeakerBio extends Component {
 
                             return (
                                 _speaker ?
-                                    this.renderBio(_speaker.person, _speaker.images[0].sources[0].uri) :
+                                    this.renderBio(_speaker.person, _speaker.images[0].sources[0].uri, _speaker.youTubeId) :
                                     <Redirect to={{ pathname: "/speakers" }} />
                             );
                         }}
@@ -85,7 +103,7 @@ class SpeakerBio extends Component {
                 );
             } else {
                 return (
-                    this.renderBio(speaker, speaker.img)
+                    this.renderBio(speaker, speaker.img, speaker.youTubeId)
                 );
             }
         }
