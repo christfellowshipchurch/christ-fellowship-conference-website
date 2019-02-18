@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import {
+  Link
+} from 'react-router-dom';
+import {
+  Container, Row, Col
+} from 'reactstrap';
 
 import HeaderVideo from '../headers/headervideo';
 
@@ -36,16 +42,34 @@ class Recap extends Component {
   }
 
   render() {
+
+
     return (
       <div className="recap">
         <HeaderVideo />
 
         <ResourcesCallout />
+        <Container>
+          <Row>
+            <Col xs={{ size: 6, offset: 3 }} class="text-center">
+              <Link
+                to={{
+                  pathname: "/speakers"
+                }} className="btn btn-warning font-weight-bold text-uppercase text-white w-100">
+                General Session Videos
+              </Link>
+            </Col>
+          </Row>
+        </Container>
 
         <hr className="w-75 my-5"></hr>
 
         <h1 className="text-center text-warning text-uppercase font-weight-bold">
           Thank You to our wonderful Speakers
+          <br></br>
+          <small class="text-lowercase text-dark">
+            Check Out Their Bios Below to Watch Their General Session Messages
+          </small>
         </h1>
 
         <SpeakerList speakers={SpeakerApi.speakers} not={['toddmullins', 'juliemullins']} />
