@@ -103,7 +103,7 @@ class SpeakerBio extends Component {
                 );
             } else {
                 return (
-                    this.renderBio(speaker, speaker.img)
+                    this.renderBio(speaker, speaker.img, speaker.youTubeId)
                 );
             }
         }

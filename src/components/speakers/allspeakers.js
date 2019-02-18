@@ -31,6 +31,7 @@ class AllSpeakers extends Component {
             const align = rightAligned ? "right" : "left";
             let _speaker = speaker.person;
             _speaker.img = speaker.images[0].sources[0].uri;
+            _speaker.youTubeId = speaker.youTubeId;
 
             renderedBios.push(
                 <SpeakerBio speaker={_speaker} key={i} align={align} grouped />
