@@ -48,6 +48,37 @@ class Recap extends Component {
       <div className="recap">
         <HeaderVideo />
 
+        <Container>
+          <Row>
+            <Col xs="12">
+              <h1 className="text-center text-primary text-uppercase font-weight-bold">
+                Register for Next Year
+              </h1>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <h3 className="text-center">
+                Registration for Christ Fellowship Conference in 2020 is available now.
+              </h3>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col xs={{ size: 6, offset: 3 }} class="text-center">
+              <a
+                href='https://cftoday.brushfire.com/church-conference/451932'
+                target="_blank"
+                className="btn btn-primary font-weight-bold text-uppercase text-white w-100">
+                REGISTER NOW
+              </a>
+            </Col>
+          </Row>
+        </Container>
+
+        <hr className="w-75"></hr>
+
         <ResourcesCallout />
         <Container>
           <Row>
