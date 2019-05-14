@@ -115,7 +115,7 @@ class Recap extends Component {
           htmlContent: "Todd and Julie Mullins are the Co-Senior Pastors of Christ Fellowship Church, on the lead team of the “Association of Related Churches” (ARC), and founders of Church United. Learn from them as they share from their ministry experiences",
           images: [{
             sources: [{
-              uri: "https://rockcon.gocf.org/content/assets/2019/Todd_Julie_CL_FINAL.jpg"
+              uri: "https://rock.christfellowshipconference.com/content/assets/2019/Todd_Julie_CL_FINAL.jpg"
             }]
           }]
         }], 0, 3)}
