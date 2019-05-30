@@ -1,0 +1,13 @@
+$cyan: #00aeef;
+
+$primary: $cyan;
+
+$border-radius: 0px;
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+.container-fluid {
+    padding: 0;
+    color: white;
+    text-align: center;
+}

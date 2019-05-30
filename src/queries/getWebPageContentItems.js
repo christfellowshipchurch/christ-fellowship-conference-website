@@ -38,39 +38,6 @@ export default gql`
               imageRatio
             }
 
-            ... on WebsiteAccordionContentItem {
-              childContentItemsConnection {
-                edges {
-                  node {
-                    id
-                    title
-                    htmlContent
-              
-                    coverImage {
-                      name
-                      sources {
-                        uri
-                      }
-                    }
-                    ... on WebsiteContentItem {
-                      
-                      contentLayout
-                      callsToAction {
-                        call
-                        action
-                      }
-                      target
-                      
-                      imageAlt
-                      imageRatio
-                    }
-
-                  }
-                }
-              }
-            }
-
-
           }
         }
       }

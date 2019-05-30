@@ -13,7 +13,7 @@ import {
     BrowserRouter
 } from 'react-router-dom';
 
-// import '../node_modules/@christfellowshipchurch/flat-ui-web/lib/css/styles.css';
+import './styles/styles.scss';
 
 const httpLink = createHttpLink({
     uri: process.env.REACT_APP_APOLLOS_API,

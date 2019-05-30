@@ -1,44 +1,58 @@
 import React from 'react'
-import { Accordion, Loaders, GeneralContent } from '@christfellowshipchurch/flat-ui-web'
-import PixelManager from '../PixelManager'
+import { Accordion, Loader, Content } from '@christfellowshipchurch/flat-ui-web'
 
-const LoadingPage = () => {
+const DefaultPage = () => {
 
-  console.log("Hitting the Loading Page")
   return (
     <React.Fragment>
-      <Accordion.Wrapper>
-        <Loaders.Standard title="Test 1" />
-        <Loaders.GeneralContent title="Test 2" />
-        <Loaders.Accordion title="Test 3" />
-      </Accordion.Wrapper>
+      <Accordion>
+        <Loader title="Test 1" />
+        <Loader.Content title="Test 2" />
+        <Loader.Accordion title="Test 3" />
+      </Accordion>
 
-      <PixelManager route="/loading" />
-
-      <GeneralContent.Wrapper
+      <Content
         layout='left'
         ratio='1by1'
-        actions={[{ call: 'Test', action: 'https://gochristfellowship.com' }]}
         target='_blank'>
-        <GeneralContent.Title>
+        <Content.Title>
           Title
-        </GeneralContent.Title>
+        </Content.Title>
 
-        <GeneralContent.Body>
+        <Content.Body>
           Title
-        </GeneralContent.Body>
-      </GeneralContent.Wrapper>
+        </Content.Body>
+      </Content>
 
-      <Loaders.Standard />
-      <Loaders.GeneralContent />
-      <Loaders.Accordion />
+      <Loader />
+      <Loader.Content />
+      <Loader.Accordion />
 
+
+      {/* <Content
+        layout='default'
+        imageUrl='https://rock.gocf.org/GetImage.ashx?guid=41d945c3-3dee-4696-88e2-ec25fb681c78'
+        ratio='1by1'
+      >
+        Here's just a random test
+      </Content> */}
     </React.Fragment>
   )
+  // return (
+  //   <React.Fragment>
+  //     <Loader.ContentLoader />
+  //     <Loader.AccordionLoader />
+  //     <Loader.ContentLoader layout="right" />
+  //     <Loader.ContentLoader layout="default" />
+  //     <Loader.ContentLoader layout="left" />
+  //   </React.Fragment>
+  // )
 };
 
-LoadingPage.defaultProps = {}
+DefaultPage.defaultProps = {
+};
 
-LoadingPage.propTypes = {}
+DefaultPage.propTypes = {
+};
 
-export default LoadingPage
+export default DefaultPage;
