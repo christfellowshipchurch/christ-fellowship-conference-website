@@ -1,22 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import App from './App';
+//import ReactPixel from 'react-facebook-pixel';
 import * as serviceWorker from './serviceWorker';
 
-import './styles/index.css'
-import './themes/2019/conference-2019-theme.scss'
-
-import './fonts/gotham/htf/gotham-htf.css'
-import './fonts/gotham/condensed/gotham-condensed.css'
-
-import { ApolloProvider } from 'react-apollo'
-import { ApolloClient } from 'apollo-client'
-import { createHttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import { ApolloProvider } from 'react-apollo';
+import { ApolloClient } from 'apollo-client';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import {
     BrowserRouter
-} from 'react-router-dom'
+} from 'react-router-dom';
+
+// import '../node_modules/@christfellowshipchurch/flat-ui-web/lib/css/styles.css';
 
 const httpLink = createHttpLink({
     uri: process.env.REACT_APP_APOLLOS_API,
