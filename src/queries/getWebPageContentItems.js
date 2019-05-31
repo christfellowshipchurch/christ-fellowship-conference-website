@@ -19,6 +19,7 @@ export default gql`
             }
 
             ... on WebsiteContentItem {
+              subtitle
               htmlContent
               
               contentLayout

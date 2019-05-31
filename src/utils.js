@@ -55,11 +55,15 @@ export const renderContent = (content) => {
                                 : null}
                             ratio={content.imageRatio}
                         >
-                            <Content.Title>
+                            <Content.Subtitle className="text-uppercase text-muted font-weight-bold">
+                                {content.subtitle}
+                            </Content.Subtitle>
+
+                            <Content.Title className="text-uppercase">
                                 {content.title}
                             </Content.Title>
 
-                            <Content.Body>
+                            <Content.Body className="pt-5">
                                 {content.htmlContent}
                             </Content.Body>
 
