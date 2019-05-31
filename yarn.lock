@@ -904,10 +904,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@christfellowshipchurch/flat-ui-web@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@christfellowshipchurch/flat-ui-web/-/flat-ui-web-1.0.0.tgz#71d8fcc8d78790aec73a41e3464ee58b6e76b369"
-  integrity sha512-R25ssDH64rZygvwnL+FxwEGbvE9AE8O2QBhFhMzVGwA6s2Af5K/zqc/ELqh1IBJrfEzV7IIgn7MzD1eJ/OCorQ==
+"@christfellowshipchurch/flat-ui-web@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@christfellowshipchurch/flat-ui-web/-/flat-ui-web-1.0.2.tgz#28593a91f74e586a5eab8252a3d51d24ec3b786c"
+  integrity sha512-O98qhtlpsXaked/xqBVJrio8f5caYViXRMzPKAEK2AjjSPzdUIJYxOYUodFFGqnIM2JkQ1gPKwPXfiN0bC+8Fg==
   dependencies:
     "@babel/cli" "^7.4.3"
     "@fortawesome/fontawesome-svg-core" "^1.2.15"
