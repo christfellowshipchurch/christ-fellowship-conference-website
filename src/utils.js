@@ -14,9 +14,13 @@ export const redirectTo = (uri) => window.location.href = uri;
 export const renderContent = (content) => {
     console.log({ content })
 
+    const styles = {
+        backgroundColor: "#ee1f1e"
+    }
+
     if (lowerCase(content.contentLayout) === "background") {
         return (
-            <Container fluid>
+            <Container fluid style={styles}>
                 <Row>
                     <Col>
                         <Media
@@ -68,7 +72,7 @@ export const renderContent = (content) => {
                             </Content.Body>
 
 
-                            {renderButtons(content.callsToAction)}
+                            {renderButtons(content.callsToAction, content.buttonColor)}
                         </Content>
                     </Col>
                 </Row>
@@ -77,13 +81,23 @@ export const renderContent = (content) => {
     }
 }
 
-const renderButtons = (callsToAction) => (
+const renderButtons = (callsToAction, buttonColor) => (
     <Container className="px-0">
         {callsToAction.map((n) => {
+
+            //Checks for # in hex value
+            const hex = buttonColor.substring(0, 1)
+            if (hex !== "#") {
+                buttonColor = "#" + buttonColor
+            }
+            const styles = {
+                backgroundColor: buttonColor
+            }
+
             return (
                 <Row className="my-2">
                     <Col size="12">
-                        <Button color="primary">{n.call}</Button>
+                        <Button style={styles}>{n.call}</Button>
                     </Col>
                 </Row>
             )
