@@ -54,7 +54,7 @@ export const renderContent = (content) => {
         )
     } else {
         return (
-            <Container style={containerStyles} fluid>
+            <Container style={containerStyles} className="py-5" fluid>
                 <Container>
                     <Row>
                         <Col >
