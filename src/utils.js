@@ -20,7 +20,7 @@ export const renderContent = (content) => {
     if (hex !== "#") {
         content.backgroundColor = "#" + content.backgroundColor
     }
-    const styles1 = {
+    const containerStyles = {
         backgroundColor: content.backgroundColor
     }
 
@@ -54,7 +54,7 @@ export const renderContent = (content) => {
         )
     } else {
         return (
-            <Container style={styles1} fluid>
+            <Container style={containerStyles} fluid>
                 <Container>
                     <Row>
                         <Col >
@@ -101,7 +101,8 @@ const renderButtons = (callsToAction, buttonColor) => (
                 buttonColor = "#" + buttonColor
             }
             const styles = {
-                backgroundColor: buttonColor
+                backgroundColor: buttonColor,
+                borderColor: buttonColor
             }
 
             return (
