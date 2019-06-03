@@ -20,8 +20,10 @@ export default gql`
 
             ... on WebsiteContentItem {
               subtitle
+
               buttonColor
               backgroundColor
+              
               htmlContent
               
               contentLayout

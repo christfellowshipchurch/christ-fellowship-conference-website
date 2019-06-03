@@ -15,7 +15,7 @@ export const renderContent = (content) => {
     console.log({ content })
 
 
-    //Checks for # in hex value
+    //Checks for # in hex value for background color
     const hex = content.backgroundColor.substring(0, 1)
     if (hex !== "#") {
         content.backgroundColor = "#" + content.backgroundColor
@@ -95,7 +95,7 @@ const renderButtons = (callsToAction, buttonColor) => (
     <Container className="px-0">
         {callsToAction.map((n) => {
 
-            //Checks for # in hex value
+            //Checks for # in hex value for button color
             const hex = buttonColor.substring(0, 1)
             if (hex !== "#") {
                 buttonColor = "#" + buttonColor
