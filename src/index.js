@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-//import ReactPixel from 'react-facebook-pixel';
 import * as serviceWorker from './serviceWorker';
 
 import { ApolloProvider } from 'react-apollo';
@@ -9,11 +8,20 @@ import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
+import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
+import introspectionQueryResultData from './fragmentTypes.json';
+
 import {
     BrowserRouter
 } from 'react-router-dom';
 
-import './styles/styles.scss';
+import './styles/styles.scss'
+
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+    introspectionQueryResultData
+});
+
+const cache = new InMemoryCache({ fragmentMatcher });
 
 const httpLink = createHttpLink({
     uri: process.env.REACT_APP_APOLLOS_API,
@@ -25,7 +33,7 @@ const httpLink = createHttpLink({
 
 const client = new ApolloClient({
     link: httpLink,
-    cache: new InMemoryCache()
+    cache
 });
 
 ReactDOM.render(
