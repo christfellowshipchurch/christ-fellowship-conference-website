@@ -118,11 +118,11 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                           {renderContent(item)}
                         </div>
                       )
-                    case 'WebsitePagesContentItem':
-                      // TODO : Caleb to update
-                      return (
-                        <PageCallout title={item.title} route={lowerCase(item.title).replace(' ', '')} key={i} />
-                      );
+                    // case 'WebsitePagesContentItem':
+                    //   // TODO : Caleb to update
+                    //   return (
+                    //     <PageCallout title={item.title} route={lowerCase(item.title).replace(' ', '')} key={i} />
+                    //   );
                     default:
                       return <h1 className="text-center" key={i}>{item.title}</h1>
                   }

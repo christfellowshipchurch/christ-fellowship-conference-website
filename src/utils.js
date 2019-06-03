@@ -14,6 +14,16 @@ export const redirectTo = (uri) => window.location.href = uri;
 export const renderContent = (content) => {
     console.log({ content })
 
+
+    //Checks for # in hex value for background color
+    const hex = content.backgroundColor.substring(0, 1)
+    if (hex !== "#") {
+        content.backgroundColor = "#" + content.backgroundColor
+    }
+    const containerStyles = {
+        backgroundColor: content.backgroundColor
+    }
+
     if (lowerCase(content.contentLayout) === "background") {
         return (
             <Container fluid>
@@ -39,51 +49,66 @@ export const renderContent = (content) => {
                         </Media>
                     </Col>
                 </Row>
+
             </Container>
         )
     } else {
         return (
-            <Container className="my-4">
-                <Row>
-                    <Col>
-                        <Content
-                            layout={lowerCase(content.contentLayout)}
-                            imageUrl={content.coverImage ? content.coverImage.sources[0].uri : null}
-                            imageAlt={content.imageAlt}
-                            videoUrl={content.videos && content.videos[0].sources.length
-                                ? content.videos[0].sources[0].uri
-                                : null}
-                            ratio={content.imageRatio}
-                        >
-                            <Content.Subtitle className="text-uppercase text-muted font-weight-bold">
-                                {content.subtitle}
-                            </Content.Subtitle>
+            <Container style={containerStyles} className="py-5" fluid>
+                <Container>
+                    <Row>
+                        <Col >
+                            <Content
+                                layout={lowerCase(content.contentLayout)}
+                                imageUrl={content.coverImage ? content.coverImage.sources[0].uri : null}
+                                imageAlt={content.imageAlt}
+                                videoUrl={content.videos && content.videos[0].sources.length
+                                    ? content.videos[0].sources[0].uri
+                                    : null}
+                                ratio={content.imageRatio}
+                            >
+                                <Content.Subtitle className="text-uppercase text-muted font-weight-bold">
+                                    {content.subtitle}
+                                </Content.Subtitle>
 
-                            <Content.Title className="text-uppercase">
-                                {content.title}
-                            </Content.Title>
+                                <Content.Title className="text-uppercase">
+                                    {content.title}
+                                </Content.Title>
 
-                            <Content.Body className="pt-5">
-                                {content.htmlContent}
-                            </Content.Body>
+                                <Content.Body className="pt-5">
+                                    {content.htmlContent}
+                                </Content.Body>
 
 
-                            {renderButtons(content.callsToAction)}
-                        </Content>
-                    </Col>
-                </Row>
+                                {renderButtons(content.callsToAction, content.buttonColor)}
+                            </Content>
+                        </Col>
+                    </Row>
+                </Container>
             </Container>
+
         )
     }
 }
 
-const renderButtons = (callsToAction) => (
+const renderButtons = (callsToAction, buttonColor) => (
     <Container className="px-0">
         {callsToAction.map((n) => {
+
+            //Checks for # in hex value for button color
+            const hex = buttonColor.substring(0, 1)
+            if (hex !== "#") {
+                buttonColor = "#" + buttonColor
+            }
+            const styles = {
+                backgroundColor: buttonColor,
+                borderColor: buttonColor
+            }
+
             return (
                 <Row className="my-2">
                     <Col size="12">
-                        <Button color="primary">{n.call}</Button>
+                        <Button style={styles}>{n.call}</Button>
                     </Col>
                 </Row>
             )
