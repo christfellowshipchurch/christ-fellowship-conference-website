@@ -1,47 +1,34 @@
 import React from 'react'
+import classnames from 'classnames'
 import { Container, Row, Col } from 'reactstrap'
+import {
+    pattern, patternLeft, patternRight
+} from '../../styles/grid.module.css'
 
 
-// title is a react component
+// body is a react component
 const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroundImgOrientation = 'left' }) => {
-
-    const demoImg = ('https://data.whicdn.com/images/67020789/original.jpg')
-
     const backgroundStyle = {
-        backgroundColor: { backgroundColor }
+        backgroundColor: backgroundColor
     }
 
     const patternStyle = {
-        position: 'absolute',
-        left: backgroundImgOrientation === 'right' ? '80vw' : '0',
-        backgroundImage: `url(${backgroundImg})`,
-        backgroundRepeat: 'repeat-y',
-        // backgroundSize: '.',
-        width: '20vw',
-        height: '100%',
-        zIndex: '0'
+        backgroundImage: `url(${backgroundImg})`
     }
 
-    const titleStyle = {
-        textTransform: 'uppercase',
-        marginTop: '70px',
-        marginBottom: '0%'
-    }
-
-    const bodyStyle = {
-        marginBottom: '45px'
-    }
+    const patternClasses = classnames(
+        pattern,
+        backgroundImgOrientation === 'right' ? patternRight : patternLeft
+    )
 
     return (
         <Container fluid style={backgroundStyle}>
-            <div style={patternStyle}>
-
-            </div>
-            <Container>
-                <Row>
+            <div style={patternStyle} className={patternClasses}></div>
+            <Container className='py-5'>
+                <Row className="mb-5">
                     <Col>
-                        <h1 style={titleStyle} className='p-2'>{title}</h1>
-                        <div style={bodyStyle}>{body}</div>
+                        <h1 className='text-uppercase'>{title}</h1>
+                        {body}
                     </Col>
                 </Row>
                 <Row className="justify-content-center">

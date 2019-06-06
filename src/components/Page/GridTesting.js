@@ -10,7 +10,7 @@ const DefaultPage = () => {
     <Container fluid className="bg-dark">
       <Row>
         <Col>
-          <Grid title="This is a Title" body="here you can add body text" backgroundImg="https://data.whicdn.com/images/67020789/original.jpg" backgroundColor="black">
+          <Grid title="This is a Title" body={<div>here you can add body text</div>} backgroundImg="https://data.whicdn.com/images/67020789/original.jpg" backgroundColor="white">
             <Loader.Content />
             <Loader.Content />
             <Loader.Content />
