@@ -116,8 +116,6 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                       )
                     case 'WebsiteGroupContentItem':
                       if (lowerCase(item.groupLayout) === 'grid') {
-
-                        console.log(getGroupContentItems(item.id))
                         return (
                           <Container fluid className="bg-dark">
                             <Row>
@@ -129,9 +127,7 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                                       if (loading) return <Loader />
                                       if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
 
-                                      console.log({ groupContent })
                                       const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
-
 
                                       return groupItems.map(groupItem => {
                                         groupItem.contentLayout = "default"
@@ -144,12 +140,15 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                             </Row>
                           </Container>
                         )
+                      } else if (lowerCase(item.groupLayout) === 'accordion') {
+                        return <Loader.Accordion />
+                      } else if (lowerCase(item.groupLayout) === 'carousel') {
+                        return <Loader.Content />
                       }
+
+                      return <h1 className="text-center">{item.title}</h1>
                     case 'WebsitePagesContentItem':
-                      // TODO : Caleb to update
-                      return (
-                        <PageCallout title={item.title} route={lowerCase(item.title).replace(' ', '')} key={i} />
-                      );
+                      return <PageCallout title={item.title} route={lowerCase(item.title).replace(' ', '')} key={i} />
                     default:
                       return <h1 className="text-center" key={i}>{item.title}</h1>
                   }
