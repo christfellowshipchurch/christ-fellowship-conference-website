@@ -1,15 +1,18 @@
 import gql from 'graphql-tag';
 
-export default gql`
-query getWebsitePages($website:String!, $title:String!) {
-  getWebsitePageContentByTitle(website:$website, title:$title) {
-    id
-    title
-
-    childContentItemsConnection {
-      edges {
-        node {
-          id
+export default (id) => gql`
+query {
+  node(id:"${id}") {
+    ... on WebsiteGroupContentItem {
+      id
+      title
+      
+      childContentItemsConnection {
+        edges {
+          node {
+            id
+            title
+            id
           title
 
           htmlContent
@@ -47,12 +50,6 @@ query getWebsitePages($website:String!, $title:String!) {
             imageAlt
             imageRatio
           }
-
-          ... on WebsiteGroupContentItem {
-
-            groupLayout
-            accordionType
-      
           }
         }
       }

@@ -8,6 +8,9 @@ import {
 
 // body is a react component
 const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroundImgOrientation = 'left' }) => {
+    console.log({ children })
+    console.log(children.length)
+
     const backgroundStyle = {
         backgroundColor: backgroundColor
     }
@@ -32,7 +35,9 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
                     </Col>
                 </Row>
                 <Row className="justify-content-center">
-                    {children.map(child => <Col xs="12" md="4" className='p-3 text-center'><div className="bg-white">{child}</div></Col>)}
+                    {children.length
+                        ? children.map((child) => <Col xs="12" md="4" className='p-3 text-center'><div className="bg-white">{child}</div></Col>)
+                        : <Col xs="12" md="4" className='p-3 text-center'><div className="bg-white">{children}</div></Col>}
                 </Row>
             </Container>
         </Container>

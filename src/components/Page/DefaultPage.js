@@ -12,6 +12,7 @@ import {
 } from '../../utils'
 import getWebPageContentIds from '../../queries/getWebPageContentIds'
 import getWebPageContentItems from '../../queries/getWebPageContentItems'
+import getGroupContentItems from '../../queries/getGroupContentItems'
 
 import SEO from '../../seo'
 import PixelManager from '../PixelManager'
@@ -21,6 +22,7 @@ import {
   Container, Row, Col
 } from 'reactstrap'
 import PageCallout from './PageCallout'
+import Grid from '../Grid'
 
 const DefaultPage = ({ title, match: { params: { page } } }) => {
   const website = process.env.REACT_APP_WEBSITE_KEY
@@ -83,15 +85,9 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                           </Row>
                         </Container>
                       )
-                    case 'WebsiteAccordionContentItem':
+                    case 'WebsiteGroupContentItem':
                       return (
-                        <Container key={i} >
-                          <Row>
-                            <Col>
-                              <Loader.Accordion key={i} />
-                            </Col>
-                          </Row>
-                        </Container>
+                        <Loader.Content />
                       )
                     default:
                       return (
@@ -108,7 +104,7 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
 
                 if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
 
-                const contentItems = mapEdgesToNodes(pageContent.getWebsitePageContentByTitle.childContentItemsConnection);
+                const contentItems = mapEdgesToNodes(pageContent.getWebsitePageContentByTitle.childContentItemsConnection)
 
                 return contentItems.map((item, i) => {
                   switch (item.__typename) {
@@ -118,11 +114,42 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                           {renderContent(item)}
                         </div>
                       )
-                    // case 'WebsitePagesContentItem':
-                    //   // TODO : Caleb to update
-                    //   return (
-                    //     <PageCallout title={item.title} route={lowerCase(item.title).replace(' ', '')} key={i} />
-                    //   );
+                    case 'WebsiteGroupContentItem':
+                      if (lowerCase(item.groupLayout) === 'grid') {
+
+                        console.log(getGroupContentItems(item.id))
+                        return (
+                          <Container fluid className="bg-dark">
+                            <Row>
+                              <Col>
+                                <Grid title={item.title} body={item.htmlContent} backgroundImg={item.coverImage} backgroundColor={item.backgroundColor}>
+                                  <Query query={getGroupContentItems(item.id)} fetchPolicy="cache-and-network">
+                                    {({ loading, error, data: groupContent }) => {
+
+                                      if (loading) return <Loader />
+                                      if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
+
+                                      console.log({ groupContent })
+                                      const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
+
+
+                                      return groupItems.map(groupItem => {
+                                        groupItem.contentLayout = "default"
+                                        return renderContent(groupItem)
+                                      })
+                                    }}
+                                  </Query>
+                                </Grid>
+                              </Col>
+                            </Row>
+                          </Container>
+                        )
+                      }
+                    case 'WebsitePagesContentItem':
+                      // TODO : Caleb to update
+                      return (
+                        <PageCallout title={item.title} route={lowerCase(item.title).replace(' ', '')} key={i} />
+                      );
                     default:
                       return <h1 className="text-center" key={i}>{item.title}</h1>
                   }

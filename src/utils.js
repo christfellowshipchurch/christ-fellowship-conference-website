@@ -16,10 +16,10 @@ export const renderContent = (content) => {
 
 
     //Checks for # in hex value for background color
-    const hex = content.backgroundColor.substring(0, 1)
-    if (hex !== "#") {
-        content.backgroundColor = "#" + content.backgroundColor
-    }
+    // const hex = content.backgroundColor.substring(0, 1)
+    // if (hex !== "#") {
+    //     content.backgroundColor = "#" + content.backgroundColor
+    // }
     const containerStyles = {
         backgroundColor: content.backgroundColor
     }
