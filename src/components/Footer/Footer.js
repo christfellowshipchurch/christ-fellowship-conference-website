@@ -13,7 +13,6 @@ const brandStyle = {
     width: '100px'
 }
 
-
 return(
     <Container fluid className='bg-dark'>
         <Row>

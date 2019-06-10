@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { Accordion, Loader, Content } from '@christfellowshipchurch/flat-ui-web'
 import Footer from '../Footer'
+import Navbar from '../Navbar'
 
 const DefaultPage = () => {
    const demoLinks = [
@@ -14,7 +15,11 @@ const DefaultPage = () => {
   const demoIcon = 'https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png'
 
   return (
-    <Footer linkstoPages={demoLinks} brandIcon={demoIcon}></Footer>
+    <div>
+      <Navbar navLinks={demoLinks} brandImage={demoIcon}></Navbar>
+
+      <Footer linkstoPages={demoLinks} brandIcon={demoIcon}></Footer>
+    </div>
   )
 };
 
