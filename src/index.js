@@ -24,7 +24,7 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
 const cache = new InMemoryCache({ fragmentMatcher });
 
 const httpLink = createHttpLink({
-    uri: process.env.REACT_APP_APOLLOS_API,
+    uri: process.env.REACT_APP_APOLLOS_API_DEV,
     opts: {
         credentials: 'same-origin',
         mode: "no-cors",
