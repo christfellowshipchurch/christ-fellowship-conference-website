@@ -23,6 +23,7 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
 
 const cache = new InMemoryCache({ fragmentMatcher });
 
+// Revert before going live
 const httpLink = createHttpLink({
     uri: process.env.REACT_APP_APOLLOS_API_DEV,
     opts: {
