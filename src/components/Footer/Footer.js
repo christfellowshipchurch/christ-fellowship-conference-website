@@ -8,6 +8,10 @@ import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg
 // body is a react component
 const Footer = ({instagramUrl, facebookUrl, twitterUrl, brandIcon, linkstoPages}) => {
 
+const brandStyle = {
+    height: '100px',
+    width: '100px'
+}
 
 
 return(
@@ -25,6 +29,7 @@ return(
                 </div>
                 </Col>
             <Col xs="2" >
+                <img style={brandStyle} src={brandIcon} alt="brand icon"></img>
             </Col>
         </Row>
     </Container>
