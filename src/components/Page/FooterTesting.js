@@ -4,8 +4,17 @@ import { Accordion, Loader, Content } from '@christfellowshipchurch/flat-ui-web'
 import Footer from '../Footer'
 
 const DefaultPage = () => {
+   const demoLinks = [
+    {call: 'Privacy Policy',
+    action: '/privacypolicy' },
+    {call: 'Another Item',
+    action: '/anotheritem' },
+  ]   
+
+  const demoIcon = 'https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png'
+
   return (
-    <Footer></Footer>
+    <Footer linkstoPages={demoLinks} brandIcon={demoIcon}></Footer>
   )
 };
 
