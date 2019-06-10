@@ -17,7 +17,7 @@ import getGroupContentItems from '../../queries/getGroupContentItems'
 import SEO from '../../seo'
 import PixelManager from '../PixelManager'
 
-import { Accordion, Content, Loader } from '@christfellowshipchurch/flat-ui-web'
+import { Accordion, Carousel, Content, Loader } from '@christfellowshipchurch/flat-ui-web'
 import {
   Container, Row, Col
 } from 'reactstrap'
@@ -117,33 +117,59 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                     case 'WebsiteGroupContentItem':
                       if (lowerCase(item.groupLayout) === 'grid') {
                         return (
-                          <Container fluid className="bg-dark">
-                            <Row>
-                              <Col>
-                                <Grid title={item.title} body={item.htmlContent} backgroundImg={item.coverImage} backgroundColor={item.backgroundColor}>
-                                  <Query query={getGroupContentItems(item.id)} fetchPolicy="cache-and-network">
-                                    {({ loading, error, data: groupContent }) => {
+                          <Grid title={item.title} body={item.htmlContent} backgroundImg={item.coverImage} backgroundColor={item.backgroundColor}>
+                            <Query query={getGroupContentItems(item.id)} fetchPolicy="cache-and-network">
+                              {({ loading, error, data: groupContent }) => {
 
-                                      if (loading) return <Loader />
-                                      if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
+                                if (loading) return <Loader />
+                                if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
 
-                                      const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
+                                const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
 
-                                      return groupItems.map(groupItem => {
-                                        groupItem.contentLayout = "default"
-                                        return renderContent(groupItem)
-                                      })
-                                    }}
-                                  </Query>
-                                </Grid>
-                              </Col>
-                            </Row>
-                          </Container>
+                                return groupItems.map(groupItem => {
+                                  groupItem.contentLayout = "default"
+                                  return renderContent(groupItem)
+                                })
+                              }}
+                            </Query>
+                          </Grid>
                         )
                       } else if (lowerCase(item.groupLayout) === 'accordion') {
                         return <Loader.Accordion />
                       } else if (lowerCase(item.groupLayout) === 'carousel') {
-                        return <Loader.Content />
+                        return (
+                          <Query query={getGroupContentItems(item.id)} fetchPolicy="cache-and-network">
+                            {({ loading, error, data: groupContent }) => {
+
+                              if (loading) return <Loader />
+                              if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
+
+                              const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
+
+                              return (
+                                <Container className="my-5">
+                                  <Row>
+                                    <Col className="text-center" md={{ size: 4, offset: 4 }}>
+                                      <Carousel>
+                                        {groupItems.map(groupItem => {
+                                          return (
+                                            <Content
+                                              imageUrl={groupItem.coverImage ? groupItem.coverImage.sources[0].uri : null}
+                                              imageAlt={groupItem.imageAlt}
+                                              ratio='1by1'
+                                              rounded>
+                                              <Content.Body>{groupItem.htmlContent}</Content.Body>
+                                            </Content>
+                                          )
+                                        })}
+                                      </Carousel>
+                                    </Col>
+                                  </Row>
+                                </Container>
+                              )
+                            }}
+                          </Query>
+                        )
                       }
 
                       return <h1 className="text-center">{item.title}</h1>

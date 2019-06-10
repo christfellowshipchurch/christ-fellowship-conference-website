@@ -8,8 +8,6 @@ import {
 
 // body is a react component
 const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroundImgOrientation = 'left' }) => {
-    console.log({ children })
-    console.log(children.length)
 
     const backgroundStyle = {
         backgroundColor: backgroundColor

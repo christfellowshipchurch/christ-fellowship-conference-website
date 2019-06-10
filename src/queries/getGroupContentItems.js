@@ -12,44 +12,42 @@ query {
           node {
             id
             title
-            id
-          title
 
-          htmlContent
+            htmlContent
 
-          videos {
-            sources {
-              uri
-            }
-          }
-
-          images {
-            sources {
-              uri
-            }
-          }
-
-          ... on WebsiteContentItem {
-            subtitle
-
-            buttonColor
-            
-            contentLayout
-            callsToAction {
-              call
-              action
-            }
-            target
-    
-            coverImage {
-              name
+            videos {
               sources {
                 uri
               }
             }
-            imageAlt
-            imageRatio
-          }
+
+            images {
+              sources {
+                uri
+              }
+            }
+
+            ... on WebsiteContentItem {
+              subtitle
+
+              buttonColor
+              
+              contentLayout
+              callsToAction {
+                call
+                action
+              }
+              target
+      
+              coverImage {
+                name
+                sources {
+                  uri
+                }
+              }
+              imageAlt
+              imageRatio
+            }
           }
         }
       }

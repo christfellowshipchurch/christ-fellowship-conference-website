@@ -12,8 +12,6 @@ export const redirectTo = (uri) => window.location.href = uri;
 
 // Content Rendering Utils
 export const renderContent = (content) => {
-    console.log({ content })
-
 
     //Checks for # in hex value for background color
     // const hex = content.backgroundColor.substring(0, 1)
