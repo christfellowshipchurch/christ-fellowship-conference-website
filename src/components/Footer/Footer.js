@@ -6,17 +6,14 @@ import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg
 
 
 // body is a react component
-const Footer = ({instagramUrl, facebookUrl, twitterUrl, brandIcon}) => {
+const Footer = ({instagramUrl, facebookUrl, twitterUrl, brandIcon, linkstoPages}) => {
 
-    const footerLinks = {
-        call: 'Privacy Policy',
-        action: '/privacypolicy'    
-    }
+
 
 return(
-    <Container fluid>
+    <Container fluid className='bg-dark'>
         <Row>
-            <Col xs="10" className="bg-dark d-flex align-items-start flex-column p-3 px-5">
+            <Col xs="10" className="d-flex align-items-start flex-column p-3 px-5">
                 <div>
                     <a href={instagramUrl}><FontAwesomeIcon icon={faInstagram} size='2x'className='mx-2'></FontAwesomeIcon></a>
                     <a href={facebookUrl}><FontAwesomeIcon icon={faTwitter} size='2x'className='mx-2'></FontAwesomeIcon></a>
@@ -24,11 +21,10 @@ return(
                 </div>
                 <p>©2019 Christ Fellowship Church. All Rights Reserved</p>
                 <div className='d-flex'>
-                {/* {footerLinks.map(child, child => <a href={action}>{call}</a>)} */}
+                {linkstoPages.map((link) => <a href={link.action} className='px-2 text-white'>{link.call}</a>)}
                 </div>
                 </Col>
-            <Col xs="2" className='bg-white'>
-                <img alt="brand icon"></img>
+            <Col xs="2" >
             </Col>
         </Row>
     </Container>
