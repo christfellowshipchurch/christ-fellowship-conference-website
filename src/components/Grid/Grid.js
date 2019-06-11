@@ -2,15 +2,16 @@ import React from 'react'
 import classnames from 'classnames'
 import { Container, Row, Col } from 'reactstrap'
 import {
-    pattern, patternLeft, patternRight
+    pattern, patternLeft, patternRight, patternImg
 } from '../../styles/grid.module.css'
 
 
 // body is a react component
-const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroundImgOrientation = 'left' }) => {
+const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroundImgReverse = false }) => {
 
     const backgroundStyle = {
-        backgroundColor: backgroundColor
+        backgroundColor: backgroundColor,
+        position: 'relative'
     }
 
     const patternStyle = {
@@ -19,12 +20,14 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
 
     const patternClasses = classnames(
         pattern,
-        backgroundImgOrientation === 'right' ? patternRight : patternLeft
+        backgroundImgReverse ? patternRight : patternLeft
     )
 
     return (
         <Container fluid style={backgroundStyle}>
-            <div style={patternStyle} className={patternClasses}></div>
+            <div style={patternStyle} className={patternClasses}>
+                {/* <img src={backgroundImg} className={patternClasses} /> */}
+            </div>
             <Container className='py-5'>
                 <Row className="mb-5">
                     <Col>

@@ -26,6 +26,7 @@ import Grid from '../Grid'
 
 const DefaultPage = ({ title, match: { params: { page } } }) => {
   const website = process.env.REACT_APP_WEBSITE_KEY
+  let reversePatternSide = false
 
   PixelManager.initWithPageView(`/${page || ''}`)
 
@@ -129,8 +130,17 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
 
                               const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
 
+                              reversePatternSide = item.coverImage
+                                ? !reversePatternSide
+                                : reversePatternSide
+
                               return (
-                                <Grid title={item.title} body={item.htmlContent} backgroundImg={item.coverImage} backgroundColor={item.backgroundColor}>
+                                <Grid
+                                  title={item.title}
+                                  body={item.htmlContent}
+                                  backgroundImg={item.coverImage ? item.coverImage.sources[0].uri : null}
+                                  backgroundColor={item.backgroundColor}
+                                  backgroundImgReverse={reversePatternSide} >
                                   {groupItems.map(groupItem => {
                                     groupItem.contentLayout = "default"
                                     return renderContent(groupItem)

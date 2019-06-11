@@ -26,6 +26,13 @@ query getWebsitePages($website:String!, $title:String!) {
             }
           }
 
+          coverImage {
+            name
+            sources {
+              uri
+            }
+          }
+
           ... on WebsiteContentItem {
             subtitle
 
@@ -38,21 +45,14 @@ query getWebsitePages($website:String!, $title:String!) {
             }
             target
     
-            coverImage {
-              name
-              sources {
-                uri
-              }
-            }
             imageAlt
             imageRatio
           }
 
           ... on WebsiteGroupContentItem {
-
             groupLayout
             accordionType
-      
+            backgroundColor
           }
         }
       }
