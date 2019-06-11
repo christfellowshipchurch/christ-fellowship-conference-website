@@ -147,19 +147,25 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                               const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
 
                               return (
-                                <Container className="my-5">
+                                <Container fluid>
                                   <Row>
-                                    <Col className="text-center" md={{ size: 4, offset: 4 }}>
+                                    <Col className="text-center">
                                       <Carousel>
                                         {groupItems.map(groupItem => {
                                           return (
-                                            <Content
-                                              imageUrl={groupItem.coverImage ? groupItem.coverImage.sources[0].uri : null}
-                                              imageAlt={groupItem.imageAlt}
-                                              ratio='1by1'
-                                              rounded>
-                                              <Content.Body>{groupItem.htmlContent}</Content.Body>
-                                            </Content>
+                                            <Container className="my-5">
+                                              <Row>
+                                                <Col className="text-center" md={{ size: 4, offset: 4 }}>
+                                                  <Content
+                                                    imageUrl={groupItem.coverImage ? groupItem.coverImage.sources[0].uri : null}
+                                                    imageAlt={groupItem.imageAlt}
+                                                    ratio='1by1'
+                                                    rounded>
+                                                    <Content.Body>{groupItem.htmlContent}</Content.Body>
+                                                  </Content>
+                                                </Col>
+                                              </Row>
+                                            </Container>
                                           )
                                         })}
                                       </Carousel>

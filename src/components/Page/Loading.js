@@ -1,10 +1,62 @@
 import React from 'react'
 import { Accordion, Loader, Content } from '@christfellowshipchurch/flat-ui-web'
 
+import {
+  Carousel, CarouselItem, CarouselIndicators
+} from 'reactstrap'
+
 const DefaultPage = () => {
 
   return (
     <React.Fragment>
+      <Carousel>
+        <CarouselItem>
+          <Content
+            layout='left'
+            ratio='1by1'
+            target='_blank'>
+            <Content.Title>
+              Title
+        </Content.Title>
+
+            <Content.Body>
+              Title
+        </Content.Body>
+          </Content>
+        </CarouselItem>
+        <CarouselItem>
+          <Content
+            layout='left'
+            ratio='1by1'
+            target='_blank'>
+            <Content.Title>
+              Title
+        </Content.Title>
+
+            <Content.Body>
+              Title
+        </Content.Body>
+          </Content>
+        </CarouselItem>
+        <CarouselItem>
+          <Content
+            layout='left'
+            ratio='1by1'
+            target='_blank'>
+            <Content.Title>
+              Title
+        </Content.Title>
+
+            <Content.Body>
+              Title
+        </Content.Body>
+          </Content>
+        </CarouselItem>
+
+      </Carousel>
+
+
+
       <Accordion>
         <Loader title="Test 1" />
         <Loader.Content title="Test 2" />
