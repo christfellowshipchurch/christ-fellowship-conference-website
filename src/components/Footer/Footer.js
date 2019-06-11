@@ -15,7 +15,7 @@ const brandStyle = {
 
 return(
     <Container fluid className='bg-dark'>
-        <Row>
+        <Row className='m-auto'>
             <Col xs="10" className="d-flex align-items-start flex-column p-3 px-5">
                 <div>
                     <a href={instagramUrl}><FontAwesomeIcon icon={faInstagram} size='2x'className='mx-2'></FontAwesomeIcon></a>
@@ -27,8 +27,8 @@ return(
                 {linkstoPages.map((link) => <a href={link.action} className='px-2 text-white'>{link.call}</a>)}
                 </div>
                 </Col>
-            <Col xs="2" >
-                <img style={brandStyle} src={brandIcon} alt="brand icon"></img>
+            <Col xs="2" className='d-flex justify-content-center' >
+                <img style={brandStyle} src={brandIcon} alt="brand icon" className='align-self-center'></img>
             </Col>
         </Row>
     </Container>
