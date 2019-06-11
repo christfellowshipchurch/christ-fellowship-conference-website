@@ -117,22 +117,28 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                     case 'WebsiteGroupContentItem':
                       if (lowerCase(item.groupLayout) === 'grid') {
                         return (
-                          <Grid title={item.title} body={item.htmlContent} backgroundImg={item.coverImage} backgroundColor={item.backgroundColor}>
-                            <Query query={getGroupContentItems(item.id)} fetchPolicy="cache-and-network">
-                              {({ loading, error, data: groupContent }) => {
+                          <Query query={getGroupContentItems(item.id)} fetchPolicy="cache-and-network">
+                            {({ loading, error, data: groupContent }) => {
 
-                                if (loading) return <Loader />
-                                if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
+                              if (loading) return (
+                                <Grid title={item.title} body={item.htmlContent} backgroundImg={item.coverImage} backgroundColor={item.backgroundColor}>
+                                  <Loader />
+                                </Grid>
+                              )
+                              if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
 
-                                const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
+                              const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
 
-                                return groupItems.map(groupItem => {
-                                  groupItem.contentLayout = "default"
-                                  return renderContent(groupItem)
-                                })
-                              }}
-                            </Query>
-                          </Grid>
+                              return (
+                                <Grid title={item.title} body={item.htmlContent} backgroundImg={item.coverImage} backgroundColor={item.backgroundColor}>
+                                  {groupItems.map(groupItem => {
+                                    groupItem.contentLayout = "default"
+                                    return renderContent(groupItem)
+                                  })}
+                                </Grid>
+                              )
+                            }}
+                          </Query>
                         )
                       } else if (lowerCase(item.groupLayout) === 'accordion') {
                         return <Loader.Accordion />
