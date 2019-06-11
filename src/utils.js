@@ -5,6 +5,8 @@ import {
 
 import { Content, Media } from '@christfellowshipchurch/flat-ui-web'
 import { Container, Row, Col, Button } from 'reactstrap'
+import PixelManager from './components/PixelManager'
+
 
 export const mapEdgesToNodes = (data) => data.edges.map(n => n.node);
 export const redirectTo = (uri) => window.location.href = uri;
@@ -89,6 +91,11 @@ export const renderContent = (content) => {
     }
 }
 
+const buttonClick = (call, action) => {
+    PixelManager.reportButtonClick({ call, action })
+    redirectTo(action)
+}
+
 const renderButtons = (callsToAction, buttonColor) => (
     <Container className="px-0">
         {callsToAction.map((n) => {
@@ -106,7 +113,9 @@ const renderButtons = (callsToAction, buttonColor) => (
             return (
                 <Row className="my-2">
                     <Col size="12">
-                        <Button style={styles}>{n.call}</Button>
+                        <Button style={styles} onClick={() => buttonClick(n.call, n.action)}>
+                            {n.call}
+                        </Button>
                     </Col>
                 </Row>
             )
