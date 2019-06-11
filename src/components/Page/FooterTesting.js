@@ -1,6 +1,5 @@
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap'
-import { Accordion, Loader, Content } from '@christfellowshipchurch/flat-ui-web'
+import {Loader, Content } from '@christfellowshipchurch/flat-ui-web'
 import Footer from '../Footer'
 import Navbar from '../Navbar'
 import Grid from '../Grid'
@@ -17,7 +16,7 @@ const DefaultPage = () => {
     action: '/registration'}
   ]
 
-  const demoIcon = 'https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png'
+  const demoIcon = 'https://cdn.iconscout.com/icon/premium/png-256-thumb/demo-2-820993.png'
 
   return (
     <div>
@@ -30,7 +29,7 @@ const DefaultPage = () => {
             <Loader.Content />
 
           </Grid>
-      <Footer linkstoPages={demoLinks} brandIcon={demoIcon}></Footer>
+      <Footer linkstoPages={demoLinks} brandIcon={demoIcon} instagramUrl="https://www.instagram.com/cfimpact/?hl=en"></Footer>
     </div>
   )
 };
