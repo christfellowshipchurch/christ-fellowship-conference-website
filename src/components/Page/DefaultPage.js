@@ -151,7 +151,46 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                           </Query>
                         )
                       } else if (lowerCase(item.groupLayout) === 'accordion') {
-                        return <Loader.Accordion />
+                        return (
+                          <Query query={getGroupContentItems(item.id)} fetchPolicy="cache-and-network">
+                            {({ loading, error, data: groupContent }) => {
+
+                              if (loading) return <Loader />
+                              if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
+
+                              const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
+
+                              return (
+                                <Container>
+                                  <Row>
+                                    <Col className="bg-white">
+                                      <Accordion key={i}>
+                                        {groupItems.map((accordionItem, j) => {
+                                          switch (accordionItem.__typename) {
+                                            case 'WebsiteContentItem':
+                                              return (
+                                                <div key={i} title={accordionItem.title}>
+                                                  {renderContent(accordionItem)}
+                                                </div>
+                                              )
+                                            default:
+                                              return (
+                                                <div title={accordionItem.title} key={i}>
+                                                  <h2>{accordionItem.title}</h2>
+                                                  {accordionItem.htmlContent}
+                                                </div>
+                                              )
+                                          }
+                                        })}
+                                      </Accordion>
+                                    </Col>
+                                  </Row>
+                                </Container>
+                              )
+                            }}
+                          </Query>
+
+                        )
                       } else if (lowerCase(item.groupLayout) === 'carousel') {
                         return (
                           <Query query={getGroupContentItems(item.id)} fetchPolicy="cache-and-network">
