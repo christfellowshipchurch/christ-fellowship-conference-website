@@ -16,7 +16,7 @@ const Hero = ({ hide = false }) => hide
             </div>
 
             <div className={heroContainer}>
-                <h1 className="font-weight-bold text-uppercase align-self-end text-light">
+                <h1 className="font-weight-bold text-uppercase text-light">
                     Feb 12-13 • West Palm Beach, FL
                 </h1>
             </div>
