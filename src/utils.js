@@ -11,18 +11,51 @@ import PixelManager from './components/PixelManager'
 export const mapEdgesToNodes = (data) => data.edges.map(n => n.node);
 export const redirectTo = (uri) => window.location.href = uri;
 
+export const hexToRGB = (hex) => {
+    // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+        return r + r + g + g + b + b;
+    });
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+export const getTextColorClass = (backgroundColor) => {
+    var rgb = hexToRGB(backgroundColor)
+    var o = Math.round(((parseInt(rgb.r) * 299) +
+        (parseInt(rgb.g) * 587) +
+        (parseInt(rgb.b) * 114)) / 1000);
+    // return (o > 125) ? 'text-dark' : 'text-light';
+    return (o > 150) ? 'text-dark' : 'text-light';
+}
+
 
 // Content Rendering Utils
 export const renderContent = (content) => {
 
+    console.log(content.title)
     //Checks for # in hex value for background color
-    // const hex = content.backgroundColor.substring(0, 1)
-    // if (hex !== "#") {
-    //     content.backgroundColor = "#" + content.backgroundColor
-    // }
-    const containerStyles = {
-        backgroundColor: content.backgroundColor
+    let textColor = 'text-dark'
+    let containerStyles = {}
+    if (content.backgroundColor && content.backgroundColor !== '') {
+        const hex = content.backgroundColor.substring(0, 1)
+        if (hex !== "#") {
+            content.backgroundColor = "#" + content.backgroundColor
+        }
+        containerStyles = {
+            backgroundColor: content.backgroundColor
+        }
+        textColor = getTextColorClass(content.backgroundColor)
+
+        console.log(content.backgroundColor)
     }
+
+    console.log({ textColor })
 
     const layout = lowerCase(content.contentLayout)
 
@@ -30,7 +63,7 @@ export const renderContent = (content) => {
         return (
             <Container fluid>
                 <Row>
-                    <Col>
+                    <Col className={textColor}>
                         <Media
                             imageUrl={content.coverImage ? content.coverImage.sources[0].uri : null}
                             imageAlt={content.imageAlt}
@@ -66,7 +99,7 @@ export const renderContent = (content) => {
             <Container style={containerStyles} className="py-5" fluid>
                 <Container>
                     <Row>
-                        <Col>
+                        <Col className={textColor}>
                             <Content
                                 layout={layout}
                                 imageUrl={imageUrl}

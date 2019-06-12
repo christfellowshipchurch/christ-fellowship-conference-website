@@ -37,7 +37,8 @@ query getWebsitePages($website:String!, $title:String!) {
             subtitle
 
             buttonColor
-            
+            backgroundColor
+
             contentLayout
             callsToAction {
               call

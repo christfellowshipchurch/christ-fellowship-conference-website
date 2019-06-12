@@ -2,8 +2,12 @@ import React from 'react'
 import classnames from 'classnames'
 import { Container, Row, Col } from 'reactstrap'
 import {
-    pattern, patternLeft, patternRight, patternImg
+    pattern, patternLeft, patternRight
 } from '../../styles/grid.module.css'
+
+import {
+    getTextColorClass
+} from '../../utils'
 
 
 // body is a react component
@@ -15,6 +19,10 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
         overflowX: 'hidden'
     }
 
+    const backgroundClasses = classnames(
+        getTextColorClass(backgroundColor)
+    )
+
     const patternStyle = {
         backgroundImage: `url(${backgroundImg})`
     }
@@ -25,9 +33,8 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
     )
 
     return (
-        <Container fluid style={backgroundStyle}>
+        <Container fluid style={backgroundStyle} className={backgroundClasses}>
             <div style={patternStyle} className={patternClasses}>
-                {/* <img src={backgroundImg} className={patternClasses} /> */}
             </div>
             <Row className="m-0">
                 <Col>
@@ -35,7 +42,9 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
                         <Row className="mb-5">
                             <Col>
                                 <h1 className='text-uppercase'>{title}</h1>
-                                {body}
+                                <div>
+                                    {body}
+                                </div>
                             </Col>
                         </Row>
                         <Row className="justify-content-center">
