@@ -21,6 +21,7 @@ import { Accordion, Carousel, Content, Loader } from '@christfellowshipchurch/fl
 import {
   Container, Row, Col
 } from 'reactstrap'
+import Hero from '../Hero'
 import PageCallout from './PageCallout'
 import Grid from '../Grid'
 
@@ -56,6 +57,8 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
 
         const pageTitle = page || title
 
+        console.log({ pageTitle })
+
         return (
           <React.Fragment>
             <SEO
@@ -65,6 +68,8 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
               openGraphProtocols={openGraphProtocols}
               twitterProtocols={twitterProtocols}
             />
+
+            {pageTitle.toLowerCase() === 'home' ? <Hero /> : null}
 
             <Query query={getWebPageContentItems} variables={{ title: pageTitle, website }} fetchPolicy="cache-and-network">
               {({ loading, error, data: pageContent }) => {
@@ -189,7 +194,6 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                               )
                             }}
                           </Query>
-
                         )
                       } else if (lowerCase(item.groupLayout) === 'carousel') {
                         return (

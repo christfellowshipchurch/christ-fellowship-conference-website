@@ -11,7 +11,8 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
 
     const backgroundStyle = {
         backgroundColor: backgroundColor,
-        position: 'relative'
+        position: 'relative',
+        overflowX: 'hidden'
     }
 
     const patternStyle = {
@@ -28,19 +29,23 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
             <div style={patternStyle} className={patternClasses}>
                 {/* <img src={backgroundImg} className={patternClasses} /> */}
             </div>
-            <Container className='py-5'>
-                <Row className="mb-5">
-                    <Col>
-                        <h1 className='text-uppercase'>{title}</h1>
-                        {body}
-                    </Col>
-                </Row>
-                <Row className="justify-content-center">
-                    {children.length
-                        ? children.map((child) => <Col xs="12" md="4" className='p-3 text-center'><div className="bg-white">{child}</div></Col>)
-                        : <Col xs="12" md="4" className='p-3 text-center'><div className="bg-white">{children}</div></Col>}
-                </Row>
-            </Container>
+            <Row className="m-0">
+                <Col>
+                    <Container className='py-5'>
+                        <Row className="mb-5">
+                            <Col>
+                                <h1 className='text-uppercase'>{title}</h1>
+                                {body}
+                            </Col>
+                        </Row>
+                        <Row className="justify-content-center">
+                            {children.length
+                                ? children.map((child) => <Col xs="12" md="4" className='p-3 text-center'><div className="bg-white">{child}</div></Col>)
+                                : <Col xs="12" md="4" className='p-3 text-center'><div className="bg-white">{children}</div></Col>}
+                        </Row>
+                    </Container>
+                </Col>
+            </Row>
         </Container>
     )
 }
