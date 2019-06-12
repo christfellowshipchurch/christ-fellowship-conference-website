@@ -12,18 +12,22 @@ import {
 } from '../../utils'
 import getWebPageContentIds from '../../queries/getWebPageContentIds'
 import getWebPageContentItems from '../../queries/getWebPageContentItems'
+import getGroupContentItems from '../../queries/getGroupContentItems'
 
 import SEO from '../../seo'
 import PixelManager from '../PixelManager'
 
-import { Accordion, Content, Loader } from '@christfellowshipchurch/flat-ui-web'
+import { Accordion, Carousel, Content, Loader } from '@christfellowshipchurch/flat-ui-web'
 import {
   Container, Row, Col
 } from 'reactstrap'
+import Hero from '../Hero'
 import PageCallout from './PageCallout'
+import Grid from '../Grid'
 
 const DefaultPage = ({ title, match: { params: { page } } }) => {
   const website = process.env.REACT_APP_WEBSITE_KEY
+  let reversePatternSide = false
 
   PixelManager.initWithPageView(`/${page || ''}`)
 
@@ -53,6 +57,8 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
 
         const pageTitle = page || title
 
+        console.log({ pageTitle })
+
         return (
           <React.Fragment>
             <SEO
@@ -62,6 +68,8 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
               openGraphProtocols={openGraphProtocols}
               twitterProtocols={twitterProtocols}
             />
+
+            {pageTitle.toLowerCase() === 'home' ? <Hero /> : null}
 
             <Query query={getWebPageContentItems} variables={{ title: pageTitle, website }} fetchPolicy="cache-and-network">
               {({ loading, error, data: pageContent }) => {
@@ -83,15 +91,9 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                           </Row>
                         </Container>
                       )
-                    case 'WebsiteAccordionContentItem':
+                    case 'WebsiteGroupContentItem':
                       return (
-                        <Container key={i} >
-                          <Row>
-                            <Col>
-                              <Loader.Accordion key={i} />
-                            </Col>
-                          </Row>
-                        </Container>
+                        <Loader.Content />
                       )
                     default:
                       return (
@@ -108,7 +110,7 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
 
                 if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
 
-                const contentItems = mapEdgesToNodes(pageContent.getWebsitePageContentByTitle.childContentItemsConnection);
+                const contentItems = mapEdgesToNodes(pageContent.getWebsitePageContentByTitle.childContentItemsConnection)
 
                 return contentItems.map((item, i) => {
                   switch (item.__typename) {
@@ -118,11 +120,126 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                           {renderContent(item)}
                         </div>
                       )
-                    // case 'WebsitePagesContentItem':
-                    //   // TODO : Caleb to update
-                    //   return (
-                    //     <PageCallout title={item.title} route={lowerCase(item.title).replace(' ', '')} key={i} />
-                    //   );
+                    case 'WebsiteGroupContentItem':
+                      if (lowerCase(item.groupLayout) === 'grid') {
+                        return (
+                          <Query query={getGroupContentItems(item.id)} fetchPolicy="cache-and-network">
+                            {({ loading, error, data: groupContent }) => {
+
+                              if (loading) return (
+                                <Grid title={item.title} body={item.htmlContent} backgroundImg={item.coverImage} backgroundColor={item.backgroundColor}>
+                                  <Loader />
+                                </Grid>
+                              )
+                              if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
+
+                              const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
+
+                              reversePatternSide = item.coverImage
+                                ? !reversePatternSide
+                                : reversePatternSide
+
+                              return (
+                                <Grid
+                                  title={item.title}
+                                  body={item.htmlContent}
+                                  backgroundImg={item.coverImage ? item.coverImage.sources[0].uri : null}
+                                  backgroundColor={item.backgroundColor}
+                                  backgroundImgReverse={reversePatternSide} >
+                                  {groupItems.map(groupItem => {
+                                    groupItem.contentLayout = "default"
+                                    return renderContent(groupItem)
+                                  })}
+                                </Grid>
+                              )
+                            }}
+                          </Query>
+                        )
+                      } else if (lowerCase(item.groupLayout) === 'accordion') {
+                        return (
+                          <Query query={getGroupContentItems(item.id)} fetchPolicy="cache-and-network">
+                            {({ loading, error, data: groupContent }) => {
+
+                              if (loading) return <Loader />
+                              if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
+
+                              const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
+
+                              return (
+                                <Container>
+                                  <Row>
+                                    <Col className="bg-white">
+                                      <Accordion key={i}>
+                                        {groupItems.map((accordionItem, j) => {
+                                          switch (accordionItem.__typename) {
+                                            case 'WebsiteContentItem':
+                                              return (
+                                                <div key={i} title={accordionItem.title}>
+                                                  {renderContent(accordionItem)}
+                                                </div>
+                                              )
+                                            default:
+                                              return (
+                                                <div title={accordionItem.title} key={i}>
+                                                  <h2>{accordionItem.title}</h2>
+                                                  {accordionItem.htmlContent}
+                                                </div>
+                                              )
+                                          }
+                                        })}
+                                      </Accordion>
+                                    </Col>
+                                  </Row>
+                                </Container>
+                              )
+                            }}
+                          </Query>
+                        )
+                      } else if (lowerCase(item.groupLayout) === 'carousel') {
+                        return (
+                          <Query query={getGroupContentItems(item.id)} fetchPolicy="cache-and-network">
+                            {({ loading, error, data: groupContent }) => {
+
+                              if (loading) return <Loader />
+                              if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
+
+                              const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
+
+                              return (
+                                <Container fluid>
+                                  <Row>
+                                    <Col className="text-center">
+                                      <Carousel>
+                                        {groupItems.map(groupItem => {
+                                          return (
+                                            <Container className="my-5">
+                                              <Row>
+                                                <Col className="text-center" md={{ size: 4, offset: 4 }}>
+                                                  <Content
+                                                    imageUrl={groupItem.coverImage ? groupItem.coverImage.sources[0].uri : null}
+                                                    imageAlt={groupItem.imageAlt}
+                                                    ratio='1by1'
+                                                    rounded>
+                                                    <Content.Body>{groupItem.htmlContent}</Content.Body>
+                                                  </Content>
+                                                </Col>
+                                              </Row>
+                                            </Container>
+                                          )
+                                        })}
+                                      </Carousel>
+                                    </Col>
+                                  </Row>
+                                </Container>
+                              )
+                            }}
+                          </Query>
+                        )
+                      }
+
+                      return <h1 className="text-center">{item.title}</h1>
+                    case 'WebsitePagesContentItem':
+                      return <PageCallout title={item.title} route={lowerCase(item.title).replace(' ', '')} key={i} />
                     default:
                       return <h1 className="text-center" key={i}>{item.title}</h1>
                   }

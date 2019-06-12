@@ -5,6 +5,8 @@ import {
 
 import { Content, Media } from '@christfellowshipchurch/flat-ui-web'
 import { Container, Row, Col, Button } from 'reactstrap'
+import PixelManager from './components/PixelManager'
+
 
 export const mapEdgesToNodes = (data) => data.edges.map(n => n.node);
 export const redirectTo = (uri) => window.location.href = uri;
@@ -12,19 +14,19 @@ export const redirectTo = (uri) => window.location.href = uri;
 
 // Content Rendering Utils
 export const renderContent = (content) => {
-    console.log({ content })
-
 
     //Checks for # in hex value for background color
-    const hex = content.backgroundColor.substring(0, 1)
-    if (hex !== "#") {
-        content.backgroundColor = "#" + content.backgroundColor
-    }
+    // const hex = content.backgroundColor.substring(0, 1)
+    // if (hex !== "#") {
+    //     content.backgroundColor = "#" + content.backgroundColor
+    // }
     const containerStyles = {
         backgroundColor: content.backgroundColor
     }
 
-    if (lowerCase(content.contentLayout) === "background") {
+    const layout = lowerCase(content.contentLayout)
+
+    if (layout === "background") {
         return (
             <Container fluid>
                 <Row>
@@ -53,20 +55,37 @@ export const renderContent = (content) => {
             </Container>
         )
     } else {
+        const imageUrl = content.coverImage && layout !== 'original'
+            ? content.coverImage.sources[0].uri
+            : null
+        const videoUrl = content.videos && content.videos[0].sources.length && layout !== 'original'
+            ? content.videos[0].sources[0].uri
+            : null
+
         return (
             <Container style={containerStyles} className="py-5" fluid>
                 <Container>
                     <Row>
-                        <Col >
+                        <Col>
                             <Content
-                                layout={lowerCase(content.contentLayout)}
-                                imageUrl={content.coverImage ? content.coverImage.sources[0].uri : null}
+                                layout={layout}
+                                imageUrl={imageUrl}
                                 imageAlt={content.imageAlt}
-                                videoUrl={content.videos && content.videos[0].sources.length
-                                    ? content.videos[0].sources[0].uri
-                                    : null}
+                                videoUrl={videoUrl}
                                 ratio={content.imageRatio}
                             >
+                                {layout === 'original'
+                                    ? (
+                                        <div className="w-100">
+                                            <video playsInline autoPlay loop muted className="w-100">
+                                                <source type="video/mp4" src={videoUrl} />
+                                            </video>
+
+                                            <img src={imageUrl} alt={content.imageAlt} className="w-100" />
+                                        </div>
+                                    )
+                                    : null}
+
                                 <Content.Subtitle className="text-uppercase text-muted font-weight-bold">
                                     {content.subtitle}
                                 </Content.Subtitle>
@@ -91,6 +110,11 @@ export const renderContent = (content) => {
     }
 }
 
+const buttonClick = (call, action) => {
+    PixelManager.reportButtonClick({ call, action })
+    redirectTo(action)
+}
+
 const renderButtons = (callsToAction, buttonColor) => (
     <Container className="px-0">
         {callsToAction.map((n) => {
@@ -108,7 +132,9 @@ const renderButtons = (callsToAction, buttonColor) => (
             return (
                 <Row className="my-2">
                     <Col size="12">
-                        <Button style={styles}>{n.call}</Button>
+                        <Button style={styles} onClick={() => buttonClick(n.call, n.action)}>
+                            {n.call}
+                        </Button>
                     </Col>
                 </Row>
             )
