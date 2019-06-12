@@ -1,5 +1,8 @@
 import React from 'react';
 import Router from './components/Router/index';
+
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import SEO from './seo';
 
 const App = () => {
@@ -8,9 +11,14 @@ const App = () => {
   return (
     <div className="App">
       <SEO />
-      <div className="App-body">
+
+      <Navbar />
+
+      <div className="App-body mt-5">
         <Router />
       </div>
+
+      <Footer />
     </div>
   )
 }
