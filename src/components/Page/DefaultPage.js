@@ -57,8 +57,6 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
 
         const pageTitle = page || title
 
-        console.log({ pageTitle })
-
         return (
           <React.Fragment>
             <SEO
@@ -123,37 +121,7 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                     case 'WebsiteGroupContentItem':
                       if (lowerCase(item.groupLayout) === 'grid') {
                         return (
-                          <Query query={getGroupContentItems(item.id)} fetchPolicy="cache-and-network">
-                            {({ loading, error, data: groupContent }) => {
-
-                              if (loading) return (
-                                <Grid title={item.title} body={item.htmlContent} backgroundImg={item.coverImage} backgroundColor={item.backgroundColor}>
-                                  <Loader />
-                                </Grid>
-                              )
-                              if (error) return <h1 className="text-center">There was an error loading the page. Please try again</h1>
-
-                              const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
-
-                              reversePatternSide = item.coverImage
-                                ? !reversePatternSide
-                                : reversePatternSide
-
-                              return (
-                                <Grid
-                                  title={item.title}
-                                  body={item.htmlContent}
-                                  backgroundImg={item.coverImage ? item.coverImage.sources[0].uri : null}
-                                  backgroundColor={item.backgroundColor}
-                                  backgroundImgReverse={reversePatternSide} >
-                                  {groupItems.map(groupItem => {
-                                    groupItem.contentLayout = "default"
-                                    return renderContent(groupItem)
-                                  })}
-                                </Grid>
-                              )
-                            }}
-                          </Query>
+                          <Grid {...item} />
                         )
                       } else if (lowerCase(item.groupLayout) === 'accordion') {
                         return (

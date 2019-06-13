@@ -1,61 +1,88 @@
 import React from 'react'
 import classnames from 'classnames'
+import {
+    Query
+} from 'react-apollo'
+import {
+    lowerCase
+} from 'lodash'
+import {
+    Content, Loader, Media
+} from '@christfellowshipchurch/flat-ui-web'
 import { Container, Row, Col } from 'reactstrap'
 import {
     pattern, patternLeft, patternRight
 } from '../../styles/grid.module.css'
 
 import {
-    getTextColorClass
+    mapEdgesToNodes, renderButtons
 } from '../../utils'
 
+import getGroupContentItems from '../../queries/getGroupContentItems'
+import GridLayout from './GridLayout'
 
 // body is a react component
-const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroundImgReverse = false }) => {
-
-    const backgroundStyle = {
-        backgroundColor: backgroundColor,
-        position: 'relative',
-        overflowX: 'hidden'
-    }
-
-    const backgroundClasses = classnames(
-        getTextColorClass(backgroundColor)
-    )
-
-    const patternStyle = {
-        backgroundImage: `url(${backgroundImg})`
-    }
-
-    const patternClasses = classnames(
-        pattern,
-        backgroundImgReverse ? patternRight : patternLeft
-    )
+const Grid = ({ id, title, htmlContent, coverImage, backgroundColor, reversePatternSide }) => {
+    const img = coverImage ? coverImage.sources[0].uri : null
 
     return (
-        <Container fluid style={backgroundStyle} className={backgroundClasses}>
-            <div style={patternStyle} className={patternClasses}>
-            </div>
-            <Row className="m-0">
-                <Col>
-                    <Container className='py-5'>
-                        <Row className="mb-5">
-                            <Col>
-                                <h1 className='text-uppercase'>{title}</h1>
-                                <div>
-                                    {body}
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row className="justify-content-center">
-                            {children.length
-                                ? children.map((child) => <Col xs="12" md="4" className='p-3 text-center'><div className="bg-white">{child}</div></Col>)
-                                : <Col xs="12" md="4" className='p-3 text-center'><div className="bg-white">{children}</div></Col>}
-                        </Row>
-                    </Container>
-                </Col>
-            </Row>
-        </Container>
+        <Query query={getGroupContentItems(id)} fetchPolicy="cache-and-network">
+            {({ loading, error, data: groupContent }) => {
+
+                if (loading) return (
+                    <GridLayout title={title} body={htmlContent} backgroundImg={img} backgroundColor={backgroundColor}>
+                        <Loader />
+                    </GridLayout>
+                )
+                if (error) return (
+                    <GridLayout title={title} body={htmlContent} backgroundImg={img} backgroundColor={backgroundColor}>
+                        <h1>There was an error loading this content. Please try again later.</h1>
+                    </GridLayout>
+                )
+
+                const groupItems = mapEdgesToNodes(groupContent.node.childContentItemsConnection)
+
+                return (
+                    <GridLayout
+                        title={title}
+                        body={htmlContent}
+                        backgroundImg={img}
+                        backgroundColor={backgroundColor}
+                        backgroundImgReverse={reversePatternSide} >
+                        {groupItems.map(groupItem => {
+                            const props = {
+                                imageUrl: groupItem.coverImage ? groupItem.coverImage.sources[0].uri : null,
+                                imageAlt: groupItem.imageAlt,
+                                videoUrl: groupItem.videos && groupItem.videos[0].sources.length
+                                    ? groupItem.videos[0].sources[0].uri
+                                    : null
+                            }
+
+                            console.log(groupItem.imageRatio)
+
+                            return groupItem.gridImageLink
+                                ? (
+                                    <a href={groupItem.gridImageLink}>
+                                        <Media {...props} ratio="1by1" />
+                                    </a>
+                                )
+                                : (
+                                    <div className="text-dark">
+                                        <Media {...props} ratio={groupItem.imageRatio} />
+                                        <Content layout='default'>
+                                            <Content.Body>
+                                                {groupItem.htmlContent}
+                                            </Content.Body>
+
+                                            {renderButtons(groupItem.callsToAction, groupItem.buttonColor)}
+                                        </Content>
+                                    </div>
+                                )
+                        })}
+                    </GridLayout>
+                )
+            }}
+        </Query>
     )
 }
 

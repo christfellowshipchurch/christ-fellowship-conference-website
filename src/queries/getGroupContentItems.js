@@ -47,6 +47,8 @@ query {
               }
               imageAlt
               imageRatio
+
+              gridImageLink
             }
           }
         }

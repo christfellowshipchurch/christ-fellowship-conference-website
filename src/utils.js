@@ -37,8 +37,6 @@ export const getTextColorClass = (backgroundColor) => {
 
 // Content Rendering Utils
 export const renderContent = (content) => {
-
-    console.log(content.title)
     //Checks for # in hex value for background color
     let textColor = 'text-dark'
     let containerStyles = {}
@@ -54,8 +52,6 @@ export const renderContent = (content) => {
 
         console.log(content.backgroundColor)
     }
-
-    console.log({ textColor })
 
     const layout = lowerCase(content.contentLayout)
 
@@ -88,52 +84,12 @@ export const renderContent = (content) => {
             </Container>
         )
     } else {
-        const imageUrl = content.coverImage && layout !== 'original'
-            ? content.coverImage.sources[0].uri
-            : null
-        const videoUrl = content.videos && content.videos[0].sources.length && layout !== 'original'
-            ? content.videos[0].sources[0].uri
-            : null
-
         return (
             <Container style={containerStyles} className="py-5" fluid>
                 <Container>
                     <Row>
                         <Col className={textColor}>
-                            <Content
-                                layout={layout}
-                                imageUrl={imageUrl}
-                                imageAlt={content.imageAlt}
-                                videoUrl={videoUrl}
-                                ratio={content.imageRatio}
-                            >
-                                {layout === 'original'
-                                    ? (
-                                        <div className="w-100">
-                                            <video playsInline autoPlay loop muted className="w-100">
-                                                <source type="video/mp4" src={videoUrl} />
-                                            </video>
-
-                                            <img src={imageUrl} alt={content.imageAlt} className="w-100" />
-                                        </div>
-                                    )
-                                    : null}
-
-                                <Content.Subtitle className="text-uppercase text-muted font-weight-bold">
-                                    {content.subtitle}
-                                </Content.Subtitle>
-
-                                <Content.Title className="text-uppercase">
-                                    {content.title}
-                                </Content.Title>
-
-                                <Content.Body className="pt-5">
-                                    {content.htmlContent}
-                                </Content.Body>
-
-
-                                {renderButtons(content.callsToAction, content.buttonColor)}
-                            </Content>
+                            {renderContentWithImgSizing(content)}
                         </Col>
                     </Row>
                 </Container>
@@ -143,12 +99,60 @@ export const renderContent = (content) => {
     }
 }
 
+const renderContentWithImgSizing = (content) => {
+    const layout = lowerCase(content.contentLayout)
+    const imageUrl = content.coverImage && layout !== 'original'
+        ? content.coverImage.sources[0].uri
+        : null
+    const videoUrl = content.videos && content.videos[0].sources.length && layout !== 'original'
+        ? content.videos[0].sources[0].uri
+        : null
+
+    return (
+        <div>
+            {layout === 'original'
+                ? (
+                    <div className="w-100">
+                        <video playsInline autoPlay loop muted className="w-100">
+                            <source type="video/mp4" src={videoUrl} />
+                        </video>
+
+                        <img src={imageUrl} alt={content.imageAlt} className="w-100" />
+                    </div>
+                )
+                : null}
+            <Content
+                layout={layout}
+                imageUrl={imageUrl}
+                imageAlt={content.imageAlt}
+                videoUrl={videoUrl}
+                ratio={content.imageRatio}
+            >
+                <Content.Subtitle className="text-uppercase text-muted font-weight-bold">
+                    {content.subtitle}
+                </Content.Subtitle>
+
+                <Content.Title className="text-uppercase">
+                    {content.title}
+                </Content.Title>
+
+                <Content.Body className="pt-5">
+                    {content.htmlContent}
+                </Content.Body>
+
+
+                {renderButtons(content.callsToAction, content.buttonColor)}
+            </Content>
+        </div>
+    )
+}
+
 const buttonClick = (call, action) => {
     PixelManager.reportButtonClick({ call, action })
     redirectTo(action)
 }
 
-const renderButtons = (callsToAction, buttonColor) => (
+export const renderButtons = (callsToAction, buttonColor) => (
     <Container className="px-0">
         {callsToAction.map((n) => {
 
