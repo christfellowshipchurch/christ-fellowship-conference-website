@@ -22,7 +22,7 @@ import getGroupContentItems from '../../queries/getGroupContentItems'
 import GridLayout from './GridLayout'
 
 // body is a react component
-const Grid = ({ id, title, htmlContent, coverImage, backgroundColor, reversePatternSide }) => {
+const Grid = ({ id, title, htmlContent, coverImage, backgroundColor, reversePatternSide = false }) => {
     const img = coverImage ? coverImage.sources[0].uri : null
 
     return (

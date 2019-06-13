@@ -120,8 +120,9 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                       )
                     case 'WebsiteGroupContentItem':
                       if (lowerCase(item.groupLayout) === 'grid') {
+                        reversePatternSide = !reversePatternSide
                         return (
-                          <Grid {...item} />
+                          <Grid {...item} reversePatternSide={reversePatternSide} />
                         )
                       } else if (lowerCase(item.groupLayout) === 'accordion') {
                         return (
