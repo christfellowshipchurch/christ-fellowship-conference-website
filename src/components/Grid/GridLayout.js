@@ -1,5 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
+import { Parser } from 'html-to-react';
 import { Container, Row, Col } from 'reactstrap'
 import {
     pattern, patternLeft, patternRight
@@ -8,6 +9,8 @@ import {
 import {
     getTextColorClass
 } from '../../utils'
+
+const htmlToReactParser = new Parser();
 
 
 // body is a react component
@@ -43,7 +46,7 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
                             <Col>
                                 <h1 className='text-uppercase'>{title}</h1>
                                 <div>
-                                    {body}
+                                    {htmlToReactParser.parse(body)}
                                 </div>
                             </Col>
                         </Row>

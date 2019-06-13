@@ -31,7 +31,7 @@ export const getTextColorClass = (backgroundColor) => {
         (parseInt(rgb.g) * 587) +
         (parseInt(rgb.b) * 114)) / 1000);
     // return (o > 125) ? 'text-dark' : 'text-light';
-    return (o > 150) ? 'text-dark' : 'text-light';
+    return (o > 175) ? 'text-dark' : 'text-light';
 }
 
 
@@ -49,8 +49,6 @@ export const renderContent = (content) => {
             backgroundColor: content.backgroundColor
         }
         textColor = getTextColorClass(content.backgroundColor)
-
-        console.log(content.backgroundColor)
     }
 
     const layout = lowerCase(content.contentLayout)
