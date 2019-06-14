@@ -7,7 +7,6 @@ $primary: $cyan;
 $border-radius: 0px;
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
-// @import '~/node_modules/@christfellowshipchurch/web-fonts/lib/gotham/gotham.font.css';
 
 body,
 .font-primary {
@@ -57,3 +56,12 @@ span,
 #header-footer-color {
     background-color: #1A1818
 }
+
+@media (min-width: 576px) {
+
+    #content-text-left {
+        text-align: left;
+    }
+
+}
+
