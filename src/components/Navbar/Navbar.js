@@ -5,7 +5,6 @@ import {
 import {
     get, has, find, first
 } from 'lodash'
-
 import getWebsiteHeader from '../../queries/getWebsiteHeader'
 
 import { Nav, NavItem, NavLink, UncontrolledCollapse } from 'reactstrap'
@@ -36,8 +35,8 @@ const Navbar = () => {
 
                 return (
                     <div className='fixed-top'>
-                        <Nav vertical className="bg-dark">
-                            <div className="d-flex bg-dark">
+                        <Nav vertical id='headerFooter'>
+                            <div className="d-flex">
                                 {img && get(img, 'sources', null)
                                     ? (
                                         <div className='py-3 ml-3'>

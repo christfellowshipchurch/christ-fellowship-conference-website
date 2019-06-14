@@ -25,6 +25,10 @@ const socialMediaButton = (link, icon) => {
 const Footer = () => {
     const website = process.env.REACT_APP_WEBSITE_KEY
 
+    const footerStyle = {
+        backgroundColor:'#1A1818'
+    }
+
     return (
         <Query query={getWebsiteFooter} variables={{ website }} fetchPolicy="cache-and-network">
             {({ loading, error, data }) => {
@@ -37,7 +41,7 @@ const Footer = () => {
                 const img = find(data.images, (n) => n.name === 'Brand Icon')
 
                 return (
-                    <Container fluid className='bg-dark'>
+                    <Container fluid id='headerFooter'>
                         <Row className='m-auto align-items-center'>
                             <Col xs="12" md="10" className="text-left py-3">
                                 <div>
