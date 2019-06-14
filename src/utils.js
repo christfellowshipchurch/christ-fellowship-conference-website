@@ -125,6 +125,7 @@ const renderContentWithImgSizing = (content) => {
                 imageAlt={content.imageAlt}
                 videoUrl={videoUrl}
                 ratio={content.imageRatio}
+                className="text-left"
             >
                 <Content.Subtitle className="text-uppercase text-muted font-weight-bold">
                     {content.subtitle}
