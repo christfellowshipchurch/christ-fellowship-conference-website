@@ -35,7 +35,7 @@ const Navbar = () => {
 
                 return (
                     <div className='fixed-top'>
-                        <Nav vertical id='headerFooter'>
+                        <Nav vertical id='header-footer-color'>
                             <div className="d-flex">
                                 {img && get(img, 'sources', null)
                                     ? (
@@ -51,7 +51,7 @@ const Navbar = () => {
 
                                 <div className="ml-auto d-flex align-items-center">
                                     {quickAction.display
-                                        ? <div>
+                                        ? <div className='d-none d-sm-block'>
                                             <h5 className="mb-0">
                                                 <NavLink
                                                     href={quickAction.action}

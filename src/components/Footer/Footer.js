@@ -41,7 +41,7 @@ const Footer = () => {
                 const img = find(data.images, (n) => n.name === 'Brand Icon')
 
                 return (
-                    <Container fluid id='headerFooter'>
+                    <Container fluid id='header-footer-color'>
                         <Row className='m-auto align-items-center'>
                             <Col xs="12" md="10" className="text-left py-3">
                                 <div>
@@ -65,7 +65,7 @@ const Footer = () => {
                             <Col xs="12" md="2" className='py-3'>
                                 {img && get(img, 'sources', null)
                                     ? (
-                                        <div className='py-3 ml-3'>
+                                        <div className='py-3 ml-3 d-none d-sm-block'>
                                             <a href="/">
                                                 <img src={get(img, 'sources[0].uri', '')}
                                                     style={{ height: '50px', width: 'auto' }}
