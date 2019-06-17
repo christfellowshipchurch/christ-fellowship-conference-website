@@ -6,6 +6,7 @@ import {
 import { Content, Media } from '@christfellowshipchurch/flat-ui-web'
 import { Container, Row, Col, Button } from 'reactstrap'
 import PixelManager from './components/PixelManager'
+import { text } from '@fortawesome/fontawesome-svg-core';
 
 
 export const mapEdgesToNodes = (data) => data.edges.map(n => n.node);
@@ -106,10 +107,14 @@ const renderContentWithImgSizing = (content) => {
     const videoUrl = content.videos && content.videos[0].sources.length && layout !== 'original'
         ? content.videos[0].sources[0].uri
         : null
+
     let textAlign
     {layout==='right'
-    ? textAlign = 'text-left'
-    : textAlign =''}
+    ? textAlign = 'text-left' : textAlign=''}
+
+    let header
+    {layout != 'right'
+    ? header = 'h1' : header = 'h2'}
 
     return (
         <div>
@@ -137,11 +142,11 @@ const renderContentWithImgSizing = (content) => {
                     {content.subtitle}
                 </Content.Subtitle>
 
-                <Content.Title className={`text-uppercase ${textAlign}`}>
+                <Content.Title className={`text-uppercase ${textAlign} ${header}`}>
                     {content.title}
                 </Content.Title>
 
-                <Content.Body className={`pt-5 ${textAlign}`}>
+                <Content.Body className={`pt-1 ${textAlign}`}>
                     {content.htmlContent}
                 </Content.Body>
 
