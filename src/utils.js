@@ -66,15 +66,15 @@ export const renderContent = (content) => {
                                 ? content.videos[0].sources[0].uri
                                 : null}
                             ratio={content.imageRatio}
-                        >             
-      
-                                <Content.Title>
-                                    {content.title}
-                                </Content.Title>
+                        >
 
-                                <Content.Body>
-                                    {content.htmlContent}
-                                </Content.Body>
+                            <Content.Title>
+                                {content.title}
+                            </Content.Title>
+
+                            <Content.Body>
+                                {content.htmlContent}
+                            </Content.Body>
 
                             {renderButtons(content.callsToAction)}
                         </Media>
@@ -109,12 +109,16 @@ const renderContentWithImgSizing = (content) => {
         : null
 
     let textAlign
-    {layout=='right' || layout=='left'
-    ? textAlign = 'text-left' : textAlign=''}
+    {
+        layout == 'right' || layout == 'left'
+            ? textAlign = 'text-left' : textAlign = ''
+    }
 
     let header
-    {layout == 'right' || layout == 'left'
-    ? header = 'h2' : header = 'h1'}
+    {
+        layout == 'right' || layout == 'left'
+            ? header = 'h2' : header = 'h1'
+    }
 
     return (
         <div>
@@ -129,7 +133,7 @@ const renderContentWithImgSizing = (content) => {
                     </div>
                 )
                 : null}
-                
+
             <Content
                 layout={layout}
                 imageUrl={imageUrl}
@@ -137,7 +141,7 @@ const renderContentWithImgSizing = (content) => {
                 videoUrl={videoUrl}
                 ratio={content.imageRatio}
             >
-            
+
                 <Content.Subtitle className={`text-uppercase text-muted font-weight-bold ${textAlign}`}>
                     {content.subtitle}
                 </Content.Subtitle>
@@ -150,18 +154,18 @@ const renderContentWithImgSizing = (content) => {
                     {content.htmlContent}
                 </Content.Body>
 
-                {renderButtons(content.callsToAction, content.buttonColor)}
+                {renderButtons(content.callsToAction, content.buttonColor, content.title)}
             </Content>
         </div>
     )
 }
 
-const buttonClick = (call, action) => {
-    PixelManager.reportButtonClick({ call, action })
+export const buttonClick = (call, action, title) => {
+    PixelManager.reportButtonClick({ call: `${title} - ${call}`, action })
     redirectTo(action)
 }
 
-export const renderButtons = (callsToAction, buttonColor) => (
+export const renderButtons = (callsToAction, buttonColor, title) => (
     <Container className="px-0">
         {callsToAction.map((n) => {
 
@@ -178,7 +182,7 @@ export const renderButtons = (callsToAction, buttonColor) => (
             return (
                 <Row className="my-2">
                     <Col size="12">
-                        <Button style={styles} onClick={() => buttonClick(n.call, n.action)}>
+                        <Button style={styles} onClick={() => buttonClick(n.call, n.action, title)}>
                             {n.call}
                         </Button>
                     </Col>
