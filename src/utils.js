@@ -65,14 +65,15 @@ export const renderContent = (content) => {
                                 ? content.videos[0].sources[0].uri
                                 : null}
                             ratio={content.imageRatio}
-                        >
-                            <Content.Title>
-                                {content.title}
-                            </Content.Title>
+                        >             
+      
+                                <Content.Title>
+                                    {content.title}
+                                </Content.Title>
 
-                            <Content.Body>
-                                {content.htmlContent}
-                            </Content.Body>
+                                <Content.Body>
+                                    {content.htmlContent}
+                                </Content.Body>
 
                             {renderButtons(content.callsToAction)}
                         </Media>
@@ -105,6 +106,10 @@ const renderContentWithImgSizing = (content) => {
     const videoUrl = content.videos && content.videos[0].sources.length && layout !== 'original'
         ? content.videos[0].sources[0].uri
         : null
+    let textAlign
+    {layout==='right'
+    ? textAlign = 'text-left'
+    : textAlign =''}
 
     return (
         <div>
@@ -119,26 +124,26 @@ const renderContentWithImgSizing = (content) => {
                     </div>
                 )
                 : null}
+                
             <Content
                 layout={layout}
                 imageUrl={imageUrl}
                 imageAlt={content.imageAlt}
                 videoUrl={videoUrl}
                 ratio={content.imageRatio}
-                className="text-left"
             >
-                <Content.Subtitle className="text-uppercase text-muted font-weight-bold">
+            
+                <Content.Subtitle className={`text-uppercase text-muted font-weight-bold ${textAlign}`}>
                     {content.subtitle}
                 </Content.Subtitle>
 
-                <Content.Title className="text-uppercase">
+                <Content.Title className={`text-uppercase ${textAlign}`}>
                     {content.title}
                 </Content.Title>
 
-                <Content.Body className="pt-5">
+                <Content.Body className={`pt-5 ${textAlign}`}>
                     {content.htmlContent}
                 </Content.Body>
-
 
                 {renderButtons(content.callsToAction, content.buttonColor)}
             </Content>

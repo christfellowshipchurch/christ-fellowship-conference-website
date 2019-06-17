@@ -6,7 +6,6 @@ import {
 import {
   lowerCase
 } from 'lodash'
-
 import {
   mapEdgesToNodes, renderContent
 } from '../../utils'
@@ -84,11 +83,7 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                         <Container layout={layout} key={i} >
                           <Row>
                             <Col>
-                            {console.log(layout)}
-                            {layout==='right'||'left'
-                              ? <Loader.Content className='content-text-left' layout={layout} key={i}/>
-                              : <Loader.Content layout={layout} key={i} />
-                            }
+                              <Loader.Content layout={layout} key={i} />
                             </Col>
                           </Row>
                         </Container>
