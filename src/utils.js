@@ -109,11 +109,11 @@ const renderContentWithImgSizing = (content) => {
         : null
 
     let textAlign
-    {layout==='right'
+    {layout=='right' || layout=='left'
     ? textAlign = 'text-left' : textAlign=''}
 
     let header
-    {layout != 'right'
+    {layout != 'right' || layout != 'left'
     ? header = 'h1' : header = 'h2'}
 
     return (
