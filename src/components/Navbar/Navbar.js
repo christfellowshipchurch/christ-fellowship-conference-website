@@ -10,11 +10,16 @@ import getWebsiteHeader from '../../queries/getWebsiteHeader'
 import { Nav, NavItem, NavLink, UncontrolledCollapse } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import {buttonClick} from '../../utils'
 
 
 // body is a react component
 const Navbar = () => {
     const website = process.env.REACT_APP_WEBSITE_KEY
+    const title = {
+        quickAction: 'QuickAction',
+        navbar: 'Navbar'
+    }
 
     return (
         <Query query={getWebsiteHeader} variables={{ website }} fetchPolicy="cache-and-network">
@@ -55,6 +60,7 @@ const Navbar = () => {
                                             <h5 className="mb-0">
                                                 <NavLink
                                                     href={quickAction.action}
+                                                    onClick={() => buttonClick(quickAction.call, quickAction.action, title.quickAction)} 
                                                     className='py-4 text-white text-uppercase font-weight-bold'>
                                                     {quickAction.call}
                                                 </NavLink>
@@ -71,12 +77,16 @@ const Navbar = () => {
                                 {data.navigationLinks.map((link) => (
                                     <NavItem>
                                         <h1 className='d-none d-lg-block'>
-                                            <NavLink href={link.action} className='text-white text-uppercase font-weight-bold'>
+                                            <NavLink href={link.action} 
+                                                onClick={() => buttonClick(link.call, link.action, title.navbar)} 
+                                                className='text-white text-uppercase font-weight-bold'>
                                                 {link.call}
                                             </NavLink>
                                         </h1>
                                         <h2 className='d-lg-none'>
-                                            <NavLink href={link.action} className='text-white text-uppercase font-weight-bold'>
+                                            <NavLink href={link.action} 
+                                                onClick={() => buttonClick(link.call, link.action, title.navbar)} 
+                                                className='text-white text-uppercase font-weight-bold'>
                                                 {link.call}
                                             </NavLink>
                                         </h2>

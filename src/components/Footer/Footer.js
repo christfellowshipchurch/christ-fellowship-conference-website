@@ -11,12 +11,24 @@ import getWebsiteFooter from '../../queries/getWebsiteFooter'
 import { Container, Row, Col } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import {buttonClick} from '../../utils'
 
-const socialMediaButton = (link, icon) => {
+const title ={
+    socialMedia: 'Social Media Icon',
+    footerLink: 'Footer Links'
+}
+
+const socialMediaButton = (link, icon, call) => {
     if (link && link !== '') {
         return (
             <a href={link}>
-                <FontAwesomeIcon color='white' icon={icon} size='2x' className='mr-3'></FontAwesomeIcon>
+                <FontAwesomeIcon 
+                    color='white' 
+                    icon={icon} 
+                    size='2x' 
+                    className='mr-3'
+                    onClick={() => buttonClick(call, link, title.socialMedia)}>
+                </FontAwesomeIcon>
             </a>
         )
     }
@@ -45,9 +57,9 @@ const Footer = () => {
                         <Row className='m-auto align-items-center'>
                             <Col xs="12" md="10" className="text-left pt-3">
                                 <div>
-                                    {socialMediaButton(data.instagramUrl, faInstagram)}
-                                    {socialMediaButton(data.facebookUrl, faFacebook)}
-                                    {socialMediaButton(data.twitterUrl, faTwitter)}
+                                    {socialMediaButton(data.instagramUrl, faInstagram, 'Instagram')}
+                                    {socialMediaButton(data.facebookUrl, faFacebook, 'Facebook')}
+                                    {socialMediaButton(data.twitterUrl, faTwitter, 'Twitter')}
                                 </div>
 
                                 <p className='mb-0 font-weight-light text-light'>
@@ -56,7 +68,9 @@ const Footer = () => {
 
                                 <div className='d-flex'>
                                     {data.footerLinks.map((link) => (
-                                        <a href={link.action} className='pr-3 text-white font-weight-bold'>
+                                        <a href={link.action} 
+                                            className='pr-3 text-white font-weight-bold'
+                                            onClick={() => buttonClick(link.call, link.action, title.footerLink)}>
                                             {link.call}
                                         </a>
                                     ))}
