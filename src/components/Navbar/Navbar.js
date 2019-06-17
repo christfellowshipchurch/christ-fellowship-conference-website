@@ -70,11 +70,16 @@ const Navbar = () => {
                             <UncontrolledCollapse toggler="#toggler" className='p-5'>
                                 {data.navigationLinks.map((link) => (
                                     <NavItem>
-                                        <h1>
+                                        <h1 className='d-none d-lg-block'>
                                             <NavLink href={link.action} className='text-white text-uppercase font-weight-bold'>
                                                 {link.call}
                                             </NavLink>
                                         </h1>
+                                        <h2 className='d-lg-none'>
+                                            <NavLink href={link.action} className='text-white text-uppercase font-weight-bold'>
+                                                {link.call}
+                                            </NavLink>
+                                        </h2>
                                     </NavItem>
                                 ))}
                             </UncontrolledCollapse>
