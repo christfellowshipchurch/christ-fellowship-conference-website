@@ -84,8 +84,9 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                         <Container layout={layout} key={i} >
                           <Row>
                             <Col>
-                            {layout==="right"||"left"
-                              ? <Loader.Content layout={layout} id="content-text-left" key={i} />
+                            {console.log(layout)}
+                            {layout==='right'||'left'
+                              ? <Loader.Content className='content-text-left' layout={layout} key={i}/>
                               : <Loader.Content layout={layout} key={i} />
                             }
                             </Col>

@@ -904,7 +904,7 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@christfellowshipchurch/flat-ui-web@^1.0.7":
+"@christfellowshipchurch/flat-ui-web@^1.0.6":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@christfellowshipchurch/flat-ui-web/-/flat-ui-web-1.0.7.tgz#8ae8d31f9daee002bac453d53b00cd2e1cd833e6"
   integrity sha512-Ms84t4LpIi8LpO2XVPQN/VqS3QSt2ulhXn0SXPlCUYBsZCWbVgnI9asBs39orGd8TQD6+wJ+7bpOS1ekKalT7g==

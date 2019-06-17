@@ -42,7 +42,7 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
             <Row className="m-0">
                 <Col>
                     <Container className='py-5'>
-                        <Row className="mb-5">
+                        <Row className="mb-2">
                             <Col>
                                 <h1 className='text-uppercase'>{title}</h1>
                                 <div>

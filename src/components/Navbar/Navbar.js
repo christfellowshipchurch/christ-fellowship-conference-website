@@ -35,7 +35,7 @@ const Navbar = () => {
 
                 return (
                     <div className='fixed-top'>
-                        <Nav vertical id='header-footer-color'>
+                        <Nav vertical className='header-footer-color'>
                             <div className="d-flex">
                                 {img && get(img, 'sources', null)
                                     ? (

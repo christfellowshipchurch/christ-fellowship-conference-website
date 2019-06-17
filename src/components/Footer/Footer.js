@@ -41,9 +41,9 @@ const Footer = () => {
                 const img = find(data.images, (n) => n.name === 'Brand Icon')
 
                 return (
-                    <Container fluid id='header-footer-color'>
+                    <Container fluid className='header-footer-color'>
                         <Row className='m-auto align-items-center'>
-                            <Col xs="12" md="10" className="text-left py-3">
+                            <Col xs="12" md="10" className="text-left pt-3">
                                 <div>
                                     {socialMediaButton(data.instagramUrl, faInstagram)}
                                     {socialMediaButton(data.facebookUrl, faFacebook)}
