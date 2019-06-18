@@ -14,7 +14,7 @@ const App = () => {
 
       <Navbar />
 
-      <div className="App-body mt-5">
+      <div className="App-body mt-5 container-fluid">
         <Router />
       </div>
 

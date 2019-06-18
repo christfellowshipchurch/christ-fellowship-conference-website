@@ -39,12 +39,12 @@ const Navbar = () => {
                 const img = find(data.images, (n) => n.name === 'Brand Image')
 
                 return (
-                    <div className='fixed-top'>
+                    <div className='fixed-top' fluid>
                         <Nav vertical className='header-footer-color'>
                             <div className="d-flex">
                                 {img && get(img, 'sources', null)
                                     ? (
-                                        <div className='py-3 ml-3'>
+                                        <div className='py-3 px-4 ml-3'>
                                             <a href="/">
                                                 <img src={get(img, 'sources[0].uri', '')}
                                                     style={{ height: '50px', width: 'auto' }}
@@ -68,7 +68,7 @@ const Navbar = () => {
                                         </div>
                                         : null
                                     }
-                                    <div className='mr-3'>
+                                    <div className='px-3 mr-3'>
                                         <FontAwesomeIcon id="toggler" icon={faBars} size='5x' color="white" className='px-3 py-4'></FontAwesomeIcon>
                                     </div>
                                 </div>

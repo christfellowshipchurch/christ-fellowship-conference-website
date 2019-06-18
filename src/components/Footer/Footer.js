@@ -55,7 +55,7 @@ const Footer = () => {
                 return (
                     <Container fluid className='header-footer-color'>
                         <Row className='m-auto align-items-center'>
-                            <Col xs="12" md="10" className="text-left pt-3">
+                            <Col xs="12" md="11" className="text-left pt-4 pb-3 px-5">
                                 <div>
                                     {socialMediaButton(data.instagramUrl, faInstagram, 'Instagram')}
                                     {socialMediaButton(data.facebookUrl, faFacebook, 'Facebook')}
@@ -76,10 +76,10 @@ const Footer = () => {
                                     ))}
                                 </div>
                             </Col>
-                            <Col xs="12" md="2" className='py-3'>
+                            <Col xs="12" md="1" className='py-4 d-none d-sm-block'>
                                 {img && get(img, 'sources', null)
                                     ? (
-                                        <div className='py-3 ml-3 d-none d-sm-block'>
+                                        <div className='px-3'>
                                             <a href="/">
                                                 <img src={get(img, 'sources[0].uri', '')}
                                                     style={{ height: '50px', width: 'auto' }}
