@@ -61,10 +61,27 @@ span,
 }
 
 .header-footer-color {
-    background-color: #1A1818
+    background-color: #1A1818;
 }
 
 .smaller-carousel {
     width: 170px;
     margin: auto;
+}
+
+.navbarExtend {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    background-color: #232121;
+}
+
+.navbarFooter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }

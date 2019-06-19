@@ -11,6 +11,7 @@ import { Nav, NavItem, NavLink, UncontrolledCollapse } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { buttonClick } from '../../utils'
+import Footer from '../Footer'
 
 
 // body is a react component
@@ -80,7 +81,7 @@ const Navbar = () => {
                                     </div>
                                 </div>
                             </div>
-                            <UncontrolledCollapse toggler="#toggler" className='p-5'>
+                            <UncontrolledCollapse toggler="#toggler" className='navbarExtend p-5 mt-5'>
                                 {data.navigationLinks.map((link) => (
                                     <NavItem>
                                         <h1 className='d-none d-lg-block'>
@@ -99,6 +100,9 @@ const Navbar = () => {
                                         </h2>
                                     </NavItem>
                                 ))}
+                                <div className='navbarFooter'>
+                                    <Footer></Footer>
+                                </div>
                             </UncontrolledCollapse>
                         </Nav>
                     </div>
