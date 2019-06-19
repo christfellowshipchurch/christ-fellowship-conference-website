@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Query
 } from 'react-apollo'
@@ -9,12 +9,13 @@ import getWebsiteHeader from '../../queries/getWebsiteHeader'
 
 import { Nav, NavItem, NavLink, UncontrolledCollapse } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import {buttonClick} from '../../utils'
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { buttonClick } from '../../utils'
 
 
 // body is a react component
 const Navbar = () => {
+    const [isExpanded, setIsExpanded] = useState(false)
     const website = process.env.REACT_APP_WEBSITE_KEY
     const title = {
         quickAction: 'QuickAction',
@@ -39,7 +40,7 @@ const Navbar = () => {
                 const img = find(data.images, (n) => n.name === 'Brand Image')
 
                 return (
-                    <div className='fixed-top' fluid>
+                    <div className='fixed-top'>
                         <Nav vertical className='header-footer-color'>
                             <div className="d-flex">
                                 {img && get(img, 'sources', null)
@@ -60,7 +61,7 @@ const Navbar = () => {
                                             <h5 className="mb-0">
                                                 <NavLink
                                                     href={quickAction.action}
-                                                    onClick={() => buttonClick(quickAction.call, quickAction.action, title.quickAction)} 
+                                                    onClick={() => buttonClick(quickAction.call, quickAction.action, title.quickAction)}
                                                     className='py-4 text-white text-uppercase font-weight-bold'>
                                                     {quickAction.call}
                                                 </NavLink>
@@ -69,7 +70,13 @@ const Navbar = () => {
                                         : null
                                     }
                                     <div className='px-3 mr-3'>
-                                        <FontAwesomeIcon id="toggler" icon={faBars} size='5x' color="white" className='px-3 py-4'></FontAwesomeIcon>
+                                        <FontAwesomeIcon
+                                            id="toggler"
+                                            icon={isExpanded ? faTimes : faBars}
+                                            size='5x'
+                                            color="white"
+                                            className='px-3 py-4'
+                                            onClick={() => setIsExpanded(!isExpanded)} />
                                     </div>
                                 </div>
                             </div>
@@ -77,15 +84,15 @@ const Navbar = () => {
                                 {data.navigationLinks.map((link) => (
                                     <NavItem>
                                         <h1 className='d-none d-lg-block'>
-                                            <NavLink href={link.action} 
-                                                onClick={() => buttonClick(link.call, link.action, title.navbar)} 
+                                            <NavLink href={link.action}
+                                                onClick={() => buttonClick(link.call, link.action, title.navbar)}
                                                 className='text-white text-uppercase font-weight-bold'>
                                                 {link.call}
                                             </NavLink>
                                         </h1>
                                         <h2 className='d-lg-none'>
-                                            <NavLink href={link.action} 
-                                                onClick={() => buttonClick(link.call, link.action, title.navbar)} 
+                                            <NavLink href={link.action}
+                                                onClick={() => buttonClick(link.call, link.action, title.navbar)}
                                                 className='text-white text-uppercase font-weight-bold'>
                                                 {link.call}
                                             </NavLink>
