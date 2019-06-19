@@ -43,8 +43,7 @@ span,
     color: #FFFFFF;
     letter-spacing: -0.25px;
     text-align: center;
-    margin: 15px;
-    
+    margin: 15px;    
 
     @media (max-width: 1200px) { 
         padding: 12px 25px;
@@ -102,5 +101,14 @@ span,
     @media (max-width: 576px) { 
         padding-left: 20px;
         padding-right: 5px;
+    }
+}
+
+.gridPadding {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    @media (max-width: 576px) { 
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 }

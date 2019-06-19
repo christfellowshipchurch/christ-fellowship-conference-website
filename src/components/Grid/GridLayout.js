@@ -41,8 +41,8 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
             </div>
             <Row className="m-0">
                 <Col>
-                    <Container className='py-5'>
-                        <Row className="mb-2">
+                    <Container className='gridPadding'>
+                        <Row>
                             <Col>
                                 <h1 className='text-uppercase'>{title}</h1>
                                 <div>
