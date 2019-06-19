@@ -24,6 +24,8 @@ import GridLayout from './GridLayout'
 // body is a react component
 const Grid = ({ id, title, htmlContent, coverImage, backgroundColor, reversePatternSide = false }) => {
     const img = coverImage ? coverImage.sources[0].uri : null
+    
+    
 
     return (
         <Query query={getGroupContentItems(id)} fetchPolicy="cache-and-network">

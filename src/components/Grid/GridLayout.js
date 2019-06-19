@@ -35,6 +35,11 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
         backgroundImgReverse ? patternRight : patternLeft
     )
 
+    let childBg = 'bg-white'
+    backgroundColor === '#1A1818'
+        ? childBg = ''
+        : childBg ='bg-white'
+
     return (
         <Container fluid style={backgroundStyle} className={backgroundClasses}>
             <div style={patternStyle} className={patternClasses}>
@@ -52,8 +57,19 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
                         </Row>
                         <Row className="justify-content-center">
                             {children.length
-                                ? children.map((child) => <Col xs="12" md="6" lg="4" className='p-3 text-center'><div className="bg-white">{child}</div></Col>)
-                                : <Col xs="12" md="6" lg="4" className='p-3 text-center'><div className="bg-white">{children}</div></Col>}
+                                ? children.map((child) => 
+                                <Col xs="12" md="6" lg="4" className='p-3 text-center'>
+                                    {console.log(children.backgroundColor)}
+                                    <div className={childBg}>
+                                        {child}
+                                    </div></Col>)
+                                : <Col xs="12" md="6" lg="4" className='p-3 text-center'>
+                                    <div 
+                                        className={childBg}>
+                                        {children}
+                                    </div>
+                                </Col>
+                            }
                         </Row>
                     </Container>
                 </Col>
