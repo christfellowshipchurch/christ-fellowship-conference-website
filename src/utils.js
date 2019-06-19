@@ -146,7 +146,7 @@ const renderContentWithImgSizing = (content) => {
                     {content.subtitle}
                 </Content.Subtitle>
 
-                <Content.Title className={`text-uppercase ${textAlign} ${header}`}>
+                <Content.Title className={`text-uppercase titleWeight ${textAlign} ${header}`}>
                     {content.title}
                 </Content.Title>
 
