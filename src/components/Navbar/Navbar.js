@@ -46,7 +46,7 @@ const Navbar = () => {
                             <div className="d-flex">
                                 {img && get(img, 'sources', null)
                                     ? (
-                                        <div className='py-3 px-4 ml-3'>
+                                        <div className='navbarPadding py-3'>
                                             <a href="/">
                                                 <img src={get(img, 'sources[0].uri', '')}
                                                     style={{ height: '50px', width: 'auto' }}
@@ -70,13 +70,13 @@ const Navbar = () => {
                                         </div>
                                         : null
                                     }
-                                    <div className='px-3 mr-3'>
+                                    <div className='navbarPadding'>
                                         <FontAwesomeIcon
                                             id="toggler"
                                             icon={isExpanded ? faTimes : faBars}
                                             size='5x'
                                             color="white"
-                                            className='px-3 py-4'
+                                            className='py-4'
                                             onClick={() => setIsExpanded(!isExpanded)} />
                                     </div>
                                 </div>
