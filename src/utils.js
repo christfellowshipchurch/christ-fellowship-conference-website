@@ -6,7 +6,6 @@ import {
 import { Content, Media } from '@christfellowshipchurch/flat-ui-web'
 import { Container, Row, Col, Button } from 'reactstrap'
 import PixelManager from './components/PixelManager'
-import { text } from '@fortawesome/fontawesome-svg-core';
 
 
 export const mapEdgesToNodes = (data) => data.edges.map(n => n.node);
@@ -41,6 +40,7 @@ export const renderContent = (content) => {
     //Checks for # in hex value for background color
     let textColor = 'text-dark'
     let containerStyles = {}
+    console.log(content.backgroundColor)
     if (content.backgroundColor && content.backgroundColor !== '') {
         const hex = content.backgroundColor.substring(0, 1)
         if (hex !== "#") {
@@ -109,17 +109,13 @@ const renderContentWithImgSizing = (content) => {
         : null
 
     let textAlign
-    {
-        layout == 'right' || layout == 'left'
+        layout === 'right' || layout === 'left'
             ? textAlign = 'text-left' : textAlign = ''
-    }
 
     let header
-    {
-        layout == 'right' || layout == 'left'
+        layout === 'right' || layout === 'left'
             ? header = 'h2' : header = 'h1'
-    }
-
+            
     return (
         <div>
             {layout === 'original'
@@ -174,13 +170,13 @@ export const renderButtons = (callsToAction, buttonColor, title) => (
             if (hex !== "#") {
                 buttonColor = "#" + buttonColor
             }
+        {callsToAction.map((n, i) => {
             const styles = {
                 backgroundColor: buttonColor,
                 borderColor: buttonColor
             }
-
             return (
-                <Row className="my-2">
+                <Row className="my-2" key={i}>
                     <Col size="12">
                         <Button style={styles} onClick={() => buttonClick(n.call, n.action, title)}>
                             {n.call}

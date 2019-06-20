@@ -1,18 +1,10 @@
 import React from 'react'
-import classnames from 'classnames'
 import {
     Query
 } from 'react-apollo'
 import {
-    lowerCase
-} from 'lodash'
-import {
     Content, Loader, Media
 } from '@christfellowshipchurch/flat-ui-web'
-import { Container, Row, Col } from 'reactstrap'
-import {
-    pattern, patternLeft, patternRight
-} from '../../styles/grid.module.css'
 
 import {
     mapEdgesToNodes, renderButtons
@@ -51,7 +43,7 @@ const Grid = ({ id, title, htmlContent, coverImage, backgroundColor, reversePatt
                         backgroundImg={img}
                         backgroundColor={backgroundColor}
                         backgroundImgReverse={reversePatternSide} >
-                        {groupItems.map(groupItem => {
+                        {groupItems.map((groupItem, i) => {
                             const props = {
                                 imageUrl: groupItem.coverImage ? groupItem.coverImage.sources[0].uri : null,
                                 imageAlt: groupItem.imageAlt,
@@ -60,16 +52,14 @@ const Grid = ({ id, title, htmlContent, coverImage, backgroundColor, reversePatt
                                     : null
                             }
 
-                            console.log({ groupItem })
-
                             return groupItem.gridImageLink
                                 ? (
-                                    <a href={groupItem.gridImageLink} backgroundcolor={groupItem.backgroundColor}>
+                                    <a href={groupItem.gridImageLink} backgroundcolor={groupItem.backgroundColor} key={i}>
                                         <Media {...props} ratio="1by1" />
                                     </a>
                                 )
                                 : (
-                                    <div className="text-dark" backgroundcolor={groupItem.backgroundColor}>
+                                    <div className="text-dark" backgroundcolor={groupItem.backgroundColor} key={i}>
                                         <Media {...props} ratio={groupItem.imageRatio} />
                                         <Content layout='default'>
                                             <Content.Body>

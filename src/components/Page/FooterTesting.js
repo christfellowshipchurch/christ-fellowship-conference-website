@@ -1,5 +1,5 @@
 import React from 'react'
-import {Loader, Content } from '@christfellowshipchurch/flat-ui-web'
+import {Loader } from '@christfellowshipchurch/flat-ui-web'
 import Footer from '../Footer'
 import Navbar from '../Navbar'
 import Grid from '../Grid'

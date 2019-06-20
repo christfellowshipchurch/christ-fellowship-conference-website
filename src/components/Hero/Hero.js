@@ -1,5 +1,4 @@
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap'
 import { hero, heroImg, heroContainer } from '../../styles/hero.module.css'
 import titleImg from './Christ-Fellowship-Church-Conference-2020.png'
 import yearImg from './Christ-Fellowship-Conference-February-2020.png'

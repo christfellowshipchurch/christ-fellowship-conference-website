@@ -90,7 +90,7 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                       )
                     case 'WebsiteGroupContentItem':
                       return (
-                        <Loader.Content />
+                        <Loader.Content/>
                       )
                     default:
                       return (
@@ -121,7 +121,7 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                       if (lowerCase(item.groupLayout) === 'grid') {
                         reversePatternSide = !reversePatternSide
                         return (
-                          <Grid {...item} reversePatternSide={reversePatternSide} />
+                          <Grid {...item} reversePatternSide={reversePatternSide}/>
                         )
                       } else if (lowerCase(item.groupLayout) === 'accordion') {
                         return (
@@ -148,7 +148,7 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                                               )
                                             default:
                                               return (
-                                                <div title={accordionItem.title} key={i}>
+                                                <div key={i} title={accordionItem.title}>
                                                   <h2>{accordionItem.title}</h2>
                                                   {accordionItem.htmlContent}
                                                 </div>
@@ -179,7 +179,7 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                                   <Row>
                                     <Col className="text-center">
                                       <Carousel>
-                                        {groupItems.map(groupItem => {
+                                        {groupItems.map((groupItem, i) => {
                                         
                                         const mediaProps = {
                                           imageUrl: groupItem.coverImage ? groupItem.coverImage.sources[0].uri : null ,
@@ -190,7 +190,7 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                                         }
 
                                           return (
-                                            <Row>
+                                            <Row key={i}>
                                               <Col className="text-center px-0" md={{ size: 6, offset: 3 }}>
                                                 <Content media={mediaProps}>
                                                   <Content.Body>{groupItem.htmlContent}</Content.Body>

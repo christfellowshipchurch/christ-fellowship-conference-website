@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
-import { Accordion, Loader, Content } from '@christfellowshipchurch/flat-ui-web'
+import { Loader } from '@christfellowshipchurch/flat-ui-web'
 import Grid from '../Grid'
 
 const DefaultPage = () => {

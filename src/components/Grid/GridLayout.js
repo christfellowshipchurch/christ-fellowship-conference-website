@@ -39,8 +39,6 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
         backgroundColor: children.backgroundcolor
     }
 
-    console.log({ children })
-
     return (
         <Container fluid style={backgroundStyle} className={backgroundClasses}>
             <div style={patternStyle} className={patternClasses}>
@@ -58,13 +56,13 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
                         </Row>
                         <Row className="justify-content-center">
                             {children.length
-                                ? children.map((child) => {
+                                ? children.map((child, i) => {
                                     colStyles = {
                                         backgroundColor: child.props.backgroundcolor
                                     }
 
                                     return (
-                                        <Col xs="12" md="6" lg="4" className='p-3 text-center'>
+                                        <Col xs="12" md="6" lg="4" className='p-3 text-center' key={i}>
                                             <div style={colStyles}>
                                                 {child}
                                                 <h1>{child.backgroundcolor}</h1>

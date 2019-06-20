@@ -3,7 +3,7 @@ import {
     Query
 } from 'react-apollo'
 import {
-    get, has, find
+    get, find
 } from 'lodash'
 
 import getWebsiteFooter from '../../queries/getWebsiteFooter'
@@ -37,10 +37,6 @@ const socialMediaButton = (link, icon, call) => {
 const Footer = () => {
     const website = process.env.REACT_APP_WEBSITE_KEY
 
-    const footerStyle = {
-        backgroundColor:'#1A1818'
-    }
-
     return (
         <Query query={getWebsiteFooter} variables={{ website }} fetchPolicy="cache-and-network">
             {({ loading, error, data }) => {
@@ -67,8 +63,9 @@ const Footer = () => {
                                 </p>
 
                                 <div className='d-flex'>
-                                    {data.footerLinks.map((link) => (
-                                        <a href={link.action} 
+                                    {data.footerLinks.map((link, i) => (
+                                        <a  key={i}
+                                            href={link.action} 
                                             className='pr-3 text-white font-weight-bold'
                                             onClick={() => buttonClick(link.call, link.action, title.footerLink)}>
                                             {link.call}
