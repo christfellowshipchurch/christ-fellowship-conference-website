@@ -24,8 +24,8 @@ import GridLayout from './GridLayout'
 // body is a react component
 const Grid = ({ id, title, htmlContent, coverImage, backgroundColor, reversePatternSide = false }) => {
     const img = coverImage ? coverImage.sources[0].uri : null
-    
-    
+
+
 
     return (
         <Query query={getGroupContentItems(id)} fetchPolicy="cache-and-network">
@@ -60,16 +60,16 @@ const Grid = ({ id, title, htmlContent, coverImage, backgroundColor, reversePatt
                                     : null
                             }
 
-                            console.log(groupItem.imageRatio)
+                            console.log({ groupItem })
 
                             return groupItem.gridImageLink
                                 ? (
-                                    <a href={groupItem.gridImageLink}>
+                                    <a href={groupItem.gridImageLink} backgroundcolor={groupItem.backgroundColor}>
                                         <Media {...props} ratio="1by1" />
                                     </a>
                                 )
                                 : (
-                                    <div className="text-dark">
+                                    <div className="text-dark" backgroundcolor={groupItem.backgroundColor}>
                                         <Media {...props} ratio={groupItem.imageRatio} />
                                         <Content layout='default'>
                                             <Content.Body>

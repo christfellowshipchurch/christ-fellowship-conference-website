@@ -9,6 +9,7 @@ import {
 import {
     getTextColorClass
 } from '../../utils'
+import { closeSync } from 'fs';
 
 const htmlToReactParser = new Parser();
 
@@ -35,10 +36,9 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
         backgroundImgReverse ? patternRight : patternLeft
     )
 
-    let childBg = 'bg-white'
-    backgroundColor === '#1A1818'
-        ? childBg = ''
-        : childBg ='bg-white'
+    let colStyles = {
+        backgroundColor: children.backgroundcolor
+    }
 
     return (
         <Container fluid style={backgroundStyle} className={backgroundClasses}>
@@ -57,18 +57,26 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
                         </Row>
                         <Row className="justify-content-center">
                             {children.length
-                                ? children.map((child) => 
-                                <Col xs="12" md="6" lg="4" className='p-3 text-center'>
-                                    {console.log(children.backgroundColor)}
-                                    <div className={childBg}>
-                                        {child}
-                                    </div></Col>)
-                                : <Col xs="12" md="6" lg="4" className='p-3 text-center'>
-                                    <div 
-                                        className={childBg}>
-                                        {children}
-                                    </div>
-                                </Col>
+                                ? children.map((child) => {
+                                    colStyles = {
+                                        backgroundColor: child.backgroundcolor
+                                    }
+
+                                    return (
+                                        <Col xs="12" md="6" lg="4" className='p-3 text-center' style={colStyles}>
+                                            <div>
+                                                {child}
+                                            </div>
+                                        </Col>
+                                    )
+                                })
+                                : (
+                                    <Col xs="12" md="6" lg="4" className='p-3 text-center' style={colStyles}>
+                                        <div>
+                                            {children}
+                                        </div>
+                                    </Col>
+                                )
                             }
                         </Row>
                     </Container>

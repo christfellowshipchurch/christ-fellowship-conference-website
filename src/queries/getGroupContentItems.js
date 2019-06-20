@@ -31,6 +31,7 @@ query {
               subtitle
 
               buttonColor
+              backgroundColor
               
               contentLayout
               callsToAction {
