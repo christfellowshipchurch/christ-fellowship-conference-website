@@ -9,9 +9,8 @@ import {
 import {
     getTextColorClass
 } from '../../utils'
-import { closeSync } from 'fs';
 
-const htmlToReactParser = new Parser();
+const htmlToReactParser = new Parser()
 
 
 // body is a react component
@@ -40,6 +39,8 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
         backgroundColor: children.backgroundcolor
     }
 
+    console.log({ children })
+
     return (
         <Container fluid style={backgroundStyle} className={backgroundClasses}>
             <div style={patternStyle} className={patternClasses}>
@@ -59,21 +60,23 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
                             {children.length
                                 ? children.map((child) => {
                                     colStyles = {
-                                        backgroundColor: child.backgroundcolor
+                                        backgroundColor: child.props.backgroundcolor
                                     }
 
                                     return (
-                                        <Col xs="12" md="6" lg="4" className='p-3 text-center' style={colStyles}>
-                                            <div>
+                                        <Col xs="12" md="6" lg="4" className='p-3 text-center'>
+                                            <div style={colStyles}>
                                                 {child}
+                                                <h1>{child.backgroundcolor}</h1>
                                             </div>
                                         </Col>
                                     )
                                 })
                                 : (
-                                    <Col xs="12" md="6" lg="4" className='p-3 text-center' style={colStyles}>
-                                        <div>
+                                    <Col xs="12" md="6" lg="4" className='p-3 text-center'>
+                                        <div style={colStyles}>
                                             {children}
+                                            <h1 className="text-white">{children.backgroundcolor}</h1>
                                         </div>
                                     </Col>
                                 )
