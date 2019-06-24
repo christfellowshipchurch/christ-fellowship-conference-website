@@ -40,12 +40,7 @@ export const renderContent = (content) => {
     //Checks for # in hex value for background color
     let textColor = 'text-dark'
     let containerStyles = {}
-    console.log(content.backgroundColor)
     if (content.backgroundColor && content.backgroundColor !== '') {
-        const hex = content.backgroundColor.substring(0, 1)
-        if (hex !== "#") {
-            content.backgroundColor = "#" + content.backgroundColor
-        }
         containerStyles = {
             backgroundColor: content.backgroundColor
         }
@@ -163,13 +158,6 @@ export const buttonClick = (call, action, title) => {
 
 export const renderButtons = (callsToAction, buttonColor, title) => (
     <Container className="px-0">
-        {callsToAction.map((n) => {
-
-            //Checks for # in hex value for button color
-            const hex = buttonColor.substring(0, 1)
-            if (hex !== "#") {
-                buttonColor = "#" + buttonColor
-            }
         {callsToAction.map((n, i) => {
             const styles = {
                 backgroundColor: buttonColor,
