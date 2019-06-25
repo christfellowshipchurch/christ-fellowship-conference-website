@@ -1,22 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import './styles/index.css'
-import './themes/2019/conference-2019-theme.scss'
+import { ApolloProvider } from 'react-apollo';
+import { ApolloClient } from 'apollo-client';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import './fonts/gotham/htf/gotham-htf.css'
-import './fonts/gotham/condensed/gotham-condensed.css'
-
-import { ApolloProvider } from 'react-apollo'
-import { ApolloClient } from 'apollo-client'
-import { createHttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
+import introspectionQueryResultData from './fragmentTypes.json';
 
 import {
     BrowserRouter
-} from 'react-router-dom'
+} from 'react-router-dom';
+
+import '@christfellowshipchurch/web-fonts/lib/gotham/gotham.font.css'
+import './styles/styles.scss'
+
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+    introspectionQueryResultData
+});
+
+const cache = new InMemoryCache({ fragmentMatcher });
 
 const httpLink = createHttpLink({
     uri: process.env.REACT_APP_APOLLOS_API,
@@ -28,7 +34,7 @@ const httpLink = createHttpLink({
 
 const client = new ApolloClient({
     link: httpLink,
-    cache: new InMemoryCache()
+    cache
 });
 
 ReactDOM.render(
