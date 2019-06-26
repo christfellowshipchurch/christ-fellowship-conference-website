@@ -151,7 +151,6 @@ const renderContentWithImgSizing = (content) => {
 
 export const buttonClick = (call, action, title, openLinksInNewTab) => {
     PixelManager.reportButtonClick({ call: `${title} - ${call}`, action })
-    // const lowerCall = lowerCase(call)
     if(openLinksInNewTab){
         const win = window.open(action,'_blank')
         win.focus()
