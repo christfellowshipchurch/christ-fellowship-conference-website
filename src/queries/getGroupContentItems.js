@@ -50,6 +50,7 @@ query {
               imageRatio
 
               gridImageLink
+              openLinksInNewTab
             }
           }
         }
