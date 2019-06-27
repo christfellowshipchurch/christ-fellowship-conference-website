@@ -48,6 +48,8 @@ query getWebsitePages($website:String!, $title:String!) {
     
             imageAlt
             imageRatio
+
+            openLinksInNewTab
           }
 
           ... on WebsiteGroupContentItem {
