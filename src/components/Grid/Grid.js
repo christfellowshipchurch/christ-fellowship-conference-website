@@ -66,7 +66,7 @@ const Grid = ({ id, title, htmlContent, coverImage, backgroundColor, reversePatt
                                                 {groupItem.htmlContent}
                                             </Content.Body>
 
-                                            {renderButtons(groupItem.callsToAction, groupItem.buttonColor)}
+                                            {renderButtons(groupItem.callsToAction, groupItem.buttonColor, title, groupItem.openLinksInNewTab)}
                                         </Content>
                                     </div>
                                 )
