@@ -21,13 +21,13 @@ const title ={
 const socialMediaButton = (link, icon, call) => {
     if (link && link !== '') {
         return (
-            <a href={link}>
+            <a href="/#">
                 <FontAwesomeIcon 
                     color='white' 
                     icon={icon} 
                     size='2x' 
                     className='mr-3'
-                    onClick={() => buttonClick(call, link, title.socialMedia)}>
+                    onClick={() => buttonClick(call, link, title.socialMedia, 'True')}>
                 </FontAwesomeIcon>
             </a>
         )
@@ -65,9 +65,9 @@ const Footer = () => {
                                 <div className='d-flex'>
                                     {data.footerLinks.map((link, i) => (
                                         <a  key={i}
-                                            href={link.action} 
+                                            href="/#"
                                             className='pr-3 text-white font-weight-bold'
-                                            onClick={() => buttonClick(link.call, link.action, title.footerLink)}>
+                                            onClick={() => buttonClick(link.call, link.action, title.footerLink, 'True')}>
                                             {link.call}
                                         </a>
                                     ))}

@@ -61,8 +61,8 @@ const Navbar = () => {
                                         ? <div className='d-none d-sm-block'>
                                             <h5 className="mb-0">
                                                 <NavLink
-                                                    href={quickAction.action}
-                                                    onClick={() => buttonClick(quickAction.call, quickAction.action, title.quickAction)}
+                                                    href="/#"
+                                                    onClick={() => buttonClick(quickAction.call, quickAction.action, title.quickAction, 'True')}
                                                     className='py-4 text-white text-uppercase font-weight-bold'>
                                                     {quickAction.call}
                                                 </NavLink>
@@ -85,14 +85,14 @@ const Navbar = () => {
                                 {data.navigationLinks.map((link, i) => (
                                     <NavItem key={i}>
                                         <h1 className='d-none d-lg-block'>
-                                            <NavLink href={link.action}
+                                            <NavLink href="/#"
                                                 onClick={() => buttonClick(link.call, link.action, title.navbar)}
                                                 className='text-white text-uppercase font-weight-bold'>
                                                 {link.call}
                                             </NavLink>
                                         </h1>
                                         <h2 className='d-lg-none'>
-                                            <NavLink href={link.action}
+                                            <NavLink href="/#"
                                                 onClick={() => buttonClick(link.call, link.action, title.navbar)}
                                                 className='text-white text-uppercase font-weight-bold'>
                                                 {link.call}

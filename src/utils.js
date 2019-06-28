@@ -89,7 +89,6 @@ export const renderContent = (content) => {
                     </Row>
                 </Container>
             </Container>
-
         )
     }
 }
@@ -145,18 +144,26 @@ const renderContentWithImgSizing = (content) => {
                     {content.htmlContent}
                 </Content.Body>
 
-                {renderButtons(content.callsToAction, content.buttonColor, content.title)}
+                {renderButtons(content.callsToAction, content.buttonColor, content.title, content.openLinksInNewTab)}
             </Content>
         </div>
     )
 }
 
-export const buttonClick = (call, action, title) => {
+export const buttonClick = (call, action, title, openLinksInNewTab) => {
     PixelManager.reportButtonClick({ call: `${title} - ${call}`, action })
-    redirectTo(action)
+
+    if(openLinksInNewTab){
+        const win = window.open(action,'_blank')
+        win.focus()
+    }
+    else { 
+        redirectTo(action)
+    }
+
 }
 
-export const renderButtons = (callsToAction, buttonColor, title) => (
+export const renderButtons = (callsToAction, buttonColor, title, openLinksInNewTab) => (
     <Container className="px-0">
         {callsToAction.map((n, i) => {
             const styles = {
@@ -166,7 +173,8 @@ export const renderButtons = (callsToAction, buttonColor, title) => (
             return (
                 <Row className="my-2" key={i}>
                     <Col size="12">
-                        <Button style={styles} onClick={() => buttonClick(n.call, n.action, title)}>
+                        <Button style={styles} onClick={() => buttonClick(n.call, n.action, title, openLinksInNewTab)}>
+                            {console.log(openLinksInNewTab)}
                             {n.call}
                         </Button>
                     </Col>
