@@ -1,9 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # Christ Fellowship Conference 2020 Website
 
 This is a repository for the Christ Fellowship Conference website. 
 The website is a *ReactJS* Web App and uses *GraphQL* to pull content from *Rock RMS*.
+
+
+
 
 ## Getting Started
 
@@ -36,6 +37,12 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+
+
+
+
+
+
 ## Extras
 
 The app includes built-in components such as the **Navbar**, **Footer**, and **Grid**. These all use content that is set up in *Rock*.
@@ -49,6 +56,8 @@ In order to use this component you will need to add your Pixel ID and Google Tra
 REACT_APP_FB_CODE=
 REACT_APP_GA_CODE=
 ```
+
+
 
 
 ## Learn More
