@@ -16,6 +16,11 @@ const htmlToReactParser = new Parser()
 // body is a react component
 const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroundImgReverse = false }) => {
 
+    //Default Background Color for Grid
+    if(backgroundColor == null){
+        backgroundColor = '#FFFFFF'
+    }
+
     const backgroundStyle = {
         backgroundColor: backgroundColor,
         position: 'relative',
