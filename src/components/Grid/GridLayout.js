@@ -53,7 +53,7 @@ const Grid = ({ children, title, body, backgroundImg, backgroundColor, backgroun
                     <Container className='gridPadding'>
                         <Row>
                             <Col>
-                                <h1 className='text-uppercase titleWeight'>{title}</h1>
+                                <h1 className='text-uppercase titleWeight py-3'>{title}</h1>
                                 <div>
                                     {htmlToReactParser.parse(body)}
                                 </div>
