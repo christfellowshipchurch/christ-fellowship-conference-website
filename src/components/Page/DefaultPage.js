@@ -32,9 +32,10 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
   PixelManager.initWithPageView(`/${page || ''}`)
 
   const tagManagerArgs = {
-    gtmId: 'GTM-000000',
-    auth: '6sBOnZx1hqPcO01xPOytLK',
-    preview: 'env-2'
+    gtmId: process.env.REACT_APP_GTM_CODE,
+    events: {
+      sendUserInfo: 'userInfo'
+  }
 }
 
 TagManager.initialize(tagManagerArgs)
