@@ -15,6 +15,7 @@ import getGroupContentItems from '../../queries/getGroupContentItems'
 
 import SEO from '../../seo'
 import PixelManager from '../PixelManager'
+import TagManager from 'react-gtm-module'
 
 import { Accordion, Carousel, Content, Loader } from '@christfellowshipchurch/flat-ui-web'
 import {
@@ -29,6 +30,14 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
   let reversePatternSide = false
 
   PixelManager.initWithPageView(`/${page || ''}`)
+
+  const tagManagerArgs = {
+    gtmId: 'GTM-000000',
+    auth: '6sBOnZx1hqPcO01xPOytLK',
+    preview: 'env-2'
+}
+
+TagManager.initialize(tagManagerArgs)
 
   return (
     <Query query={getWebPageContentIds} variables={{ title: page || title, website }} fetchPolicy="cache-and-network">
