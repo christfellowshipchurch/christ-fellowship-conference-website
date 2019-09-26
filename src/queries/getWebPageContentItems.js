@@ -26,13 +26,6 @@ query getWebsitePages($website:String!, $title:String!) {
             }
           }
 
-          coverImage {
-            name
-            sources {
-              uri
-            }
-          }
-
           ... on WebsiteContentItem {
             subtitle
 

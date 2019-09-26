@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    lowerCase
+    lowerCase, get
 } from 'lodash';
 
 import { Content, Media } from '@christfellowshipchurch/flat-ui-web'
@@ -55,7 +55,7 @@ export const renderContent = (content) => {
                 <Row>
                     <Col className={textColor}>
                         <Media
-                            imageUrl={content.coverImage ? content.coverImage.sources[0].uri : null}
+                            imageUrl={get(content, 'images[0].sources[0].uri', null)}
                             imageAlt={content.imageAlt}
                             videoUrl={content.videos && content.videos[0].sources.length
                                 ? content.videos[0].sources[0].uri
@@ -95,21 +95,21 @@ export const renderContent = (content) => {
 
 const renderContentWithImgSizing = (content) => {
     const layout = lowerCase(content.contentLayout)
-    const imageUrl = content.coverImage && layout !== 'original'
-        ? content.coverImage.sources[0].uri
+    const imageUrl = content.images.length && layout !== 'original'
+        ? get(content, "images[0].sources[0].uri", null)
         : null
     const videoUrl = content.videos && content.videos[0].sources.length && layout !== 'original'
         ? content.videos[0].sources[0].uri
         : null
 
     let textAlign
-        layout === 'right' || layout === 'left'
-            ? textAlign = 'text-left' : textAlign = ''
+    layout === 'right' || layout === 'left'
+        ? textAlign = 'text-left' : textAlign = ''
 
     let header
-        layout === 'right' || layout === 'left'
-            ? header = 'h2' : header = 'h1'
-            
+    layout === 'right' || layout === 'left'
+        ? header = 'h2' : header = 'h1'
+
     return (
         <div>
             {layout === 'original'
@@ -153,11 +153,11 @@ const renderContentWithImgSizing = (content) => {
 export const buttonClick = (call, action, title, openLinksInNewTab) => {
     PixelManager.reportButtonClick({ call: `${title} - ${call}`, action })
 
-    if(openLinksInNewTab){
-        const win = window.open(action,'_blank')
+    if (openLinksInNewTab) {
+        const win = window.open(action, '_blank')
         win.focus()
     }
-    else { 
+    else {
         redirectTo(action)
     }
 
@@ -174,7 +174,6 @@ export const renderButtons = (callsToAction, buttonColor, title, openLinksInNewT
                 <Row className="my-2" key={i}>
                     <Col size="12">
                         <Button style={styles} onClick={() => buttonClick(n.call, n.action, title, openLinksInNewTab)}>
-                            {console.log(openLinksInNewTab)}
                             {n.call}
                         </Button>
                     </Col>
