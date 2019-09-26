@@ -40,12 +40,6 @@ query {
               }
               target
       
-              coverImage {
-                name
-                sources {
-                  uri
-                }
-              }
               imageAlt
               imageRatio
 

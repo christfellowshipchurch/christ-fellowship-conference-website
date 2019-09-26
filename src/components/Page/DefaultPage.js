@@ -4,7 +4,7 @@ import {
   Query
 } from 'react-apollo'
 import {
-  lowerCase
+  lowerCase, get
 } from 'lodash'
 import {
   mapEdgesToNodes, renderContent
@@ -68,7 +68,11 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
 
             {pageTitle.toLowerCase() === 'home' ? <Hero /> : null}
 
-            <Query query={getWebPageContentItems} variables={{ title: pageTitle, website }} fetchPolicy="cache-and-network">
+            <Query
+              query={getWebPageContentItems}
+              variables={{ title: pageTitle, website }}
+              fetchPolicy="cache-and-network"
+            >
               {({ loading, error, data: pageContent }) => {
 
                 if (loading) return nodes.map((n, i) => {
@@ -90,14 +94,14 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                       )
                     case 'WebsiteGroupContentItem':
                       return (
-                        <Loader.Content/>
+                        <Loader.Content key={i} />
                       )
                     default:
                       return (
                         <Container layout="default" key={i}>
                           <Row>
                             <Col>
-                              <Loader.Content layout="default" key={i} />
+                              <Loader.Content layout="default" />
                             </Col>
                           </Row>
                         </Container>
@@ -121,7 +125,7 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                       if (lowerCase(item.groupLayout) === 'grid') {
                         reversePatternSide = !reversePatternSide
                         return (
-                          <Grid {...item} reversePatternSide={reversePatternSide}/>
+                          <Grid {...item} reversePatternSide={reversePatternSide} key={i} />
                         )
                       } else if (lowerCase(item.groupLayout) === 'accordion') {
                         return (
@@ -180,14 +184,14 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                                     <Col className="text-center">
                                       <Carousel>
                                         {groupItems.map((groupItem, i) => {
-                                        
-                                        const mediaProps = {
-                                          imageUrl: groupItem.coverImage ? groupItem.coverImage.sources[0].uri : null ,
-                                          imageAlt: groupItem.imageAlt,
-                                          ratio:'1by1',
-                                          rounded: 'true',
-                                          className: 'smaller-carousel'
-                                        }
+
+                                          const mediaProps = {
+                                            imageUrl: get(groupItem, 'images[0].sources[0].uri'),
+                                            imageAlt: groupItem.imageAlt,
+                                            ratio: '1by1',
+                                            rounded: 'true',
+                                            className: 'smaller-carousel'
+                                          }
 
                                           return (
                                             <Row key={i}>

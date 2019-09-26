@@ -2,6 +2,7 @@ import React from 'react'
 import {
     Query
 } from 'react-apollo'
+import { get } from 'lodash'
 import {
     Content, Loader, Media
 } from '@christfellowshipchurch/flat-ui-web'
@@ -14,9 +15,8 @@ import getGroupContentItems from '../../queries/getGroupContentItems'
 import GridLayout from './GridLayout'
 
 // body is a react component
-const Grid = ({ id, title, htmlContent, coverImage, backgroundColor, reversePatternSide = false }) => {
-    const img = coverImage ? coverImage.sources[0].uri : null
-
+const Grid = ({ id, title, htmlContent, backgroundColor, reversePatternSide = false, images }) => {
+    const img = get(images, '[0].sources[0].uri', null)
 
 
     return (
@@ -45,7 +45,7 @@ const Grid = ({ id, title, htmlContent, coverImage, backgroundColor, reversePatt
                         backgroundImgReverse={reversePatternSide} >
                         {groupItems.map((groupItem, i) => {
                             const props = {
-                                imageUrl: groupItem.coverImage ? groupItem.coverImage.sources[0].uri : null,
+                                imageUrl: get(groupItem, 'images[0].sources[0].uri', ''),
                                 imageAlt: groupItem.imageAlt,
                                 videoUrl: groupItem.videos && groupItem.videos[0].sources.length
                                     ? groupItem.videos[0].sources[0].uri
