@@ -7,3 +7,4 @@ export default DefaultPage
 export const LoadingPage = Loading
 export const GridPage = GridTesting
 export const FooterPage = FooterTesting
+export * from './Breakouts'
