@@ -41,7 +41,7 @@ const Navbar = () => {
                 const img = find(data.images, (n) => n.name === 'Brand Image')
 
                 return (
-                    <div className='fixed-top'>
+                    <div className='sticky-top'>
                         <Nav vertical className='header-footer-color'>
                             <div className="d-flex">
                                 {img && get(img, 'sources', null)
@@ -92,7 +92,7 @@ const Navbar = () => {
                                             </NavLink>
                                         </h1>
                                         <h2 className='d-lg-none navLink'>
-                                            <NavLink 
+                                            <NavLink
                                                 onClick={() => buttonClick(link.call, link.action, title.navbar)}
                                                 className='text-white text-uppercase font-weight-bold'>
                                                 {link.call}

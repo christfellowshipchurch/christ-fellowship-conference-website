@@ -1,8 +1,10 @@
 $gray-600: #6d6d6d;
 $gray-900: #1A1818;
 $cyan: #00aeef;
+$orange: #f7941d;
 
 $primary: $cyan;
+$warning: $orange;
 
 $border-radius: 0px;
 
@@ -69,6 +71,11 @@ span,
 .smaller-carousel {
     width: 170px;
     margin: auto;
+}
+
+.badge {
+    font-family: "GothamHTF";
+    font-size: 100%;
 }
 
 .navbarExtend {
