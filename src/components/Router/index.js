@@ -9,6 +9,7 @@ import DefaultPage, {
     FooterPage,
     Categories,
     Sessions,
+    MapPage
 } from '../Page'
 
 const SessionsPropRouter = ({ match: { params: { category } } }) =>
@@ -23,6 +24,7 @@ const Router = () => (
         <Route exact path="/footer" component={FooterPage} />
         <Route exact path="/grid" component={GridPage} />
         <Route exact path="/loading" component={LoadingPage} />
+        <Route exact path="/map" component={MapPage} />
         <Route exact path="/:page" component={DefaultPage} />
 
         <Route path="*" component={DefaultPage} />
