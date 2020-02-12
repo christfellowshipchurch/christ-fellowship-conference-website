@@ -21,13 +21,17 @@ const title ={
 const socialMediaButton = (link, icon, call) => {
     if (link && link !== '') {
         return (
-            <a href="/#">
+            <a
+                target='_blank'
+                href={link}
+            >
                 <FontAwesomeIcon 
                     color='white' 
                     icon={icon} 
                     size='2x' 
                     className='mr-3'
-                    onClick={() => buttonClick(call, link, title.socialMedia, 'True')}>
+                    onClick={() => buttonClick(call, link, title.socialMedia, 'False')}
+                >
                 </FontAwesomeIcon>
             </a>
         )

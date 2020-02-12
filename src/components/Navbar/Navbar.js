@@ -61,8 +61,9 @@ const Navbar = () => {
                                         ? <div className='d-none d-sm-block'>
                                             <h5 className="mb-0">
                                                 <NavLink
-                                                    href="/#"
-                                                    onClick={() => buttonClick(quickAction.call, quickAction.action, title.quickAction, 'True')}
+                                                    href={quickAction.action}
+                                                    target='_blank'
+                                                    onClick={() => buttonClick(quickAction.call, quickAction.action, title.quickAction, 'False')}
                                                     className='py-4 text-white text-uppercase font-weight-bold'>
                                                     {quickAction.call}
                                                 </NavLink>
