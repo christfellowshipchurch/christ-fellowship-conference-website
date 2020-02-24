@@ -1,4 +1,4 @@
-# Christ Fellowship Conference 2020 Website
+# Christ Fellowship Conference Website
 
 This is a repository for the Christ Fellowship Conference website. 
 The website is a *ReactJS* Web App and uses *GraphQL* to pull content from *Rock RMS*.
