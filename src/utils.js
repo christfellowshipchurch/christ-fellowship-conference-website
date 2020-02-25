@@ -6,7 +6,7 @@ import {
 import { Content, Media } from '@christfellowshipchurch/flat-ui-web'
 import { Container, Row, Col, Button } from 'reactstrap'
 import PixelManager from './components/PixelManager'
-
+import RenderButtonWithChecks from './checkboxButton'
 
 export const mapEdgesToNodes = (data) => data.edges.map(n => n.node);
 export const redirectTo = (uri) => window.location.href = uri;
@@ -110,6 +110,8 @@ const renderContentWithImgSizing = (content) => {
     layout === 'right' || layout === 'left'
         ? header = 'h2' : header = 'h1'
 
+    const checkBoxSecurity = content.subtitle.includes("checkbox**")
+
     return (
         <div>
             {layout === 'original'
@@ -133,7 +135,7 @@ const renderContentWithImgSizing = (content) => {
             >
 
                 <Content.Subtitle className={`text-uppercase text-muted font-weight-bold ${textAlign}`}>
-                    {content.subtitle}
+                    {content.subtitle.split('**').pop()}
                 </Content.Subtitle>
 
                 <Content.Title className={`text-uppercase titleWeight ${textAlign} ${header}`}>
@@ -144,7 +146,15 @@ const renderContentWithImgSizing = (content) => {
                     {content.htmlContent}
                 </Content.Body>
 
-                {renderButtons(content.callsToAction, content.buttonColor, content.title, content.openLinksInNewTab)}
+                {checkBoxSecurity
+                    ?   <RenderButtonWithChecks
+                            callsToAction={content.callsToAction}
+                            buttonColor={content.buttonColor}
+                            title={content.title}
+                            openLinksInNewTab={content.openLinksInNewTab}
+                        />
+                    : renderButtons(content.callsToAction, content.buttonColor, content.title, content.openLinksInNewTab)
+                }
             </Content>
         </div>
     )
