@@ -7,7 +7,7 @@ import { faCheckSquare, faSquare } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Content from '@christfellowshipchurch/flat-ui-web/lib/Content';
 
-// import { buttonClick } from './utils'
+import { buttonClick } from './utils'
 
 const RenderButtonWithChecks = ({callsToAction, buttonColor, title, openLinksInNewTab}) => {
     const [checkOne, setCheckOne] = useState(false);
@@ -56,8 +56,9 @@ const RenderButtonWithChecks = ({callsToAction, buttonColor, title, openLinksInN
                     <Row className="my-2" key={i}>
                         <Col size="12">
                             <Button
-                            style={styles}
-                            disabled={!checkOne || !checkTwo}
+                                style={styles}
+                                disabled={!checkOne || !checkTwo}
+                                onClick={() => buttonClick(n.call, n.action, title, openLinksInNewTab)}
                             >
                                 {n.call}
                             </Button>
@@ -78,7 +79,7 @@ RenderButtonWithChecks.propTypes = {
 
 RenderButtonWithChecks.defaultProps = {
     callsToAction: [{
-        call: 'checkbox**DOWNLOAD NOW',
+        call: 'checkbox**DOWNLOAD now',
         action: '/#'
     }],
     buttonColor:'',
