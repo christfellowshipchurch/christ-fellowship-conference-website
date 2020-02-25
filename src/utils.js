@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import {
-    lowerCase, get
+    lowerCase, get, includes
 } from 'lodash';
 
 import { Content, Media } from '@christfellowshipchurch/flat-ui-web'
 import { Container, Row, Col, Button } from 'reactstrap'
 import PixelManager from './components/PixelManager'
-
+import RenderButtonWithChecks from './checkboxButton'
 
 export const mapEdgesToNodes = (data) => data.edges.map(n => n.node);
 export const redirectTo = (uri) => window.location.href = uri;
@@ -110,6 +110,8 @@ const renderContentWithImgSizing = (content) => {
     layout === 'right' || layout === 'left'
         ? header = 'h2' : header = 'h1'
 
+    const checkBoxSecurity = content.subtitle.includes("checkbox**")
+
     return (
         <div>
             {layout === 'original'
@@ -133,18 +135,27 @@ const renderContentWithImgSizing = (content) => {
             >
 
                 <Content.Subtitle className={`text-uppercase text-muted font-weight-bold ${textAlign}`}>
-                    {content.subtitle}
+                    {content.subtitle.split('**').pop()}
                 </Content.Subtitle>
 
                 <Content.Title className={`text-uppercase titleWeight ${textAlign} ${header}`}>
                     {content.title}
                 </Content.Title>
 
-                <Content.Body className={`pt-1 ${textAlign}`}>
+                <Content.Body className={`pt-2 ${textAlign}`}>
                     {content.htmlContent}
                 </Content.Body>
 
-                {renderButtons(content.callsToAction, content.buttonColor, content.title, content.openLinksInNewTab)}
+                {checkBoxSecurity
+                    ?   <RenderButtonWithChecks
+                            callsToAction={content.callsToAction}
+                            buttonColor={content.buttonColor}
+                            title={content.title}
+                            openLinksInNewTab={content.openLinksInNewTab}
+                        />
+                    : renderButtons(content.callsToAction, content.buttonColor, content.title, content.openLinksInNewTab)
+                }
+                    
             </Content>
         </div>
     )
@@ -164,21 +175,21 @@ export const buttonClick = (call, action, title, openLinksInNewTab) => {
 }
 
 export const renderButtons = (callsToAction, buttonColor, title, openLinksInNewTab) => (
-    <Container className="px-0">
-        {callsToAction.map((n, i) => {
-            const styles = {
-                backgroundColor: buttonColor,
-                borderColor: buttonColor
-            }
-            return (
-                <Row className="my-2" key={i}>
-                    <Col size="12">
-                        <Button style={styles} onClick={() => buttonClick(n.call, n.action, title, openLinksInNewTab)}>
-                            {n.call}
-                        </Button>
-                    </Col>
-                </Row>
-            )
-        })}
-    </Container>
-)
+        <Container className="px-0">
+            {callsToAction.map((n, i) => {
+                const styles = {
+                    backgroundColor: buttonColor,
+                    borderColor: buttonColor
+                }
+                return (
+                    <Row className="my-2" key={i}>
+                        <Col size="12">
+                            <Button style={styles} onClick={() => buttonClick(n.call, n.action, title, openLinksInNewTab)}>
+                                {n.call}
+                            </Button>
+                        </Col>
+                    </Row>
+                )
+            })}
+        </Container>
+    )

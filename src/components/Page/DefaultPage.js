@@ -144,7 +144,7 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
                                   <Row>
                                     <Col className="bg-white">
                                       <Accordion key={i}>
-                                        {groupItems.map((accordionItem, j) => {
+                                        {groupItems.map((accordionItem, i) => {
                                           switch (accordionItem.__typename) {
                                             case 'WebsiteContentItem':
                                               return (
