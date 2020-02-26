@@ -218,7 +218,7 @@ export const RenderButtonWithChecks = ({callsToAction, buttonColor, title, openL
                             color='#525252'
                             style={{fontSize: 24}}
                         />
-                        <p className='mb-0 pl-2 font-weight-light text-left'>
+                        <p className='mb-0 pl-2 text-left'>
                             I have read and agree to the
                             <a href='https://www.sdrock.com/terms-of-use/'> Terms & Conditions</a>
                         </p>
@@ -230,7 +230,7 @@ export const RenderButtonWithChecks = ({callsToAction, buttonColor, title, openL
                             color='#525252'
                             style={{fontSize: 24}}
                         />
-                        <p className='mb-0 pl-2 font-weight-light text-left'>I have read and agree to the book purchase recommendation</p>
+                        <p className='mb-0 pl-2 text-left'>I have read and agree to the book purchase recommendation</p>
                     </div>
                 </Col>
             </Row>
