@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     lowerCase, get
 } from 'lodash';
@@ -6,7 +6,11 @@ import {
 import { Content, Media } from '@christfellowshipchurch/flat-ui-web'
 import { Container, Row, Col, Button } from 'reactstrap'
 import PixelManager from './components/PixelManager'
-import RenderButtonWithChecks from './checkboxButton'
+
+import PropTypes from 'prop-types'
+import classnames from 'classnames'
+import { faCheckSquare, faSquare } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const mapEdgesToNodes = (data) => data.edges.map(n => n.node);
 export const redirectTo = (uri) => window.location.href = uri;
@@ -192,3 +196,80 @@ export const renderButtons = (callsToAction, buttonColor, title, openLinksInNewT
         })}
     </Container>
 )
+
+export const RenderButtonWithChecks = ({callsToAction, buttonColor, title, openLinksInNewTab}) => {
+    const [checkOne, setCheckOne] = useState(false);
+    const [checkTwo, setCheckTwo] = useState(false);
+    
+    return (
+        <Container className="px-0 py-2">
+            <Row className='my-2'>
+                <Col 
+                    className={classnames(
+                    '4',
+                    'd-flex',
+                    'flex-column'
+                    )}
+                >
+                    <div className='d-flex align-items-center mb-3'>
+                        <FontAwesomeIcon
+                            icon={checkOne ? faCheckSquare : faSquare}
+                            onClick={() => setCheckOne(!checkOne)}
+                            color='#525252'
+                            style={{fontSize: 24}}
+                        />
+                        <p className='mb-0 pl-2 font-weight-light text-left'>
+                            I have read and agree to the
+                            <a href='https://www.sdrock.com/terms-of-use/'> Terms & Conditions</a>
+                        </p>
+                    </div>
+                    <div className='d-flex align-items-center mb-3'>
+                        <FontAwesomeIcon
+                            icon={checkTwo ? faCheckSquare : faSquare}
+                            onClick={() => setCheckTwo(!checkTwo)}
+                            color='#525252'
+                            style={{fontSize: 24}}
+                        />
+                        <p className='mb-0 pl-2 font-weight-light text-left'>I have read and agree to the book purchase recommendation</p>
+                    </div>
+                </Col>
+            </Row>
+            {callsToAction.map((n, i) => {
+                const styles = {
+                    backgroundColor: buttonColor,
+                    borderColor: buttonColor
+                }
+                return (
+                    <Row className="my-2" key={i}>
+                        <Col size="12">
+                            <Button
+                                style={styles}
+                                disabled={!checkOne || !checkTwo}
+                                onClick={() => buttonClick(n.call, n.action, title, openLinksInNewTab)}
+                            >
+                                {n.call}
+                            </Button>
+                        </Col>
+                    </Row>
+                )
+            })}
+        </Container>
+    );
+  }
+
+RenderButtonWithChecks.propTypes = {
+    callsToAction: PropTypes.array,
+    buttonColor: PropTypes.string,
+    title: PropTypes.string,
+    openLinksInNewTab: PropTypes.bool
+}
+
+RenderButtonWithChecks.defaultProps = {
+    callsToAction: [{
+        call: 'checkbox**DOWNLOAD now',
+        action: '/#'
+    }],
+    buttonColor:'',
+    title:'',
+    openLinksInNewTab: false
+}
