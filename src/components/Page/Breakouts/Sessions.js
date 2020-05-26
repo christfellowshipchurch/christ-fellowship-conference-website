@@ -18,8 +18,6 @@ const Sessions = ({
             fetchPolicy: "cache-and-network"
         }
     )
-
-    console.log({ category })
     if (loading || error) return (
         <div className="vh-100 vw-100 d-flex justify-content-center align-items-center">
             <Loader />
@@ -27,8 +25,6 @@ const Sessions = ({
     )
 
     const breakoutCategory = get(data, 'getBreakoutSessionsByCategory[0].parent.value', '')
-
-    console.log({ data })
 
     return (
         <div className="container-fluid">

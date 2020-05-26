@@ -43,8 +43,6 @@ const DefaultPage = ({ title, match: { params: { page } } }) => {
         }
         if (error) { console.error("ERROR: ", error); return <h1 className="text-center">There was an error loading the page. Please try again.</h1> }
 
-        console.log({ data })
-
         // if (!data.getWebsitePageContentByTitle) window.location.replace("/")
 
         const nodes = mapEdgesToNodes(data.getWebsitePageContentByTitle.childContentItemsConnection)
