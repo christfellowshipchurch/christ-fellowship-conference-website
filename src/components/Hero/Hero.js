@@ -16,7 +16,8 @@ const Hero = ({ hide = false }) => hide
 
             <div className={heroContainer}>
                 <h1 className="font-weight-bold text-uppercase text-light">
-                    Feb 10-11 • West Palm Beach, FL
+                    {/* Date has been removed due to cancelation */}
+                    {/* Feb 10-11 • West Palm Beach, FL */}
                 </h1>
             </div>
         </div>

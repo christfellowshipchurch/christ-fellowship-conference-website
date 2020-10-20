@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Switch, Route, Redirect
+    Switch, Route
 } from 'react-router-dom';
 
 import DefaultPage, {
