@@ -1,10 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { useQuery } from 'react-apollo'
-import {
-    has
-} from 'lodash'
 
 const RegisterBanner = ({
     title,

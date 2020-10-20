@@ -1,7 +1,5 @@
 import React from 'react'
 
-const MapImg = require('./full-venue.png')
-
 const Map = () => <div className="container">
     <div className="row">
         <div className="col p-3">

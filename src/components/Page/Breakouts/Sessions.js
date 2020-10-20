@@ -1,6 +1,6 @@
 import React from 'react'
-import { Query, useQuery } from 'react-apollo'
-import { get, kebabCase } from 'lodash'
+import { useQuery } from 'react-apollo'
+import { get } from 'lodash'
 import classnames from 'classnames'
 
 import { Loader } from '@christfellowshipchurch/flat-ui-web'

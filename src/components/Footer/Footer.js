@@ -22,6 +22,7 @@ const socialMediaButton = (link, icon, call) => {
     if (link && link !== '') {
         return (
             <a
+                rel="noopener noreferrer"
                 target='_blank'
                 href={link}
             >
