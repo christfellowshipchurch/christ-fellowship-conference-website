@@ -1,7 +1,5 @@
 import React from 'react'
 import { hero, heroImg, heroContainer } from '../../styles/hero.module.css'
-import titleImg from './Chirst-Fellowship-Conference-2021-Title.png'
-import yearImg from './Christ-Fellowship-Conference-2021-Year.png'
 import logoImg from './christ-fellowship-conference-logo.png'
 
 
